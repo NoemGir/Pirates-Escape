@@ -12,7 +12,7 @@ package boundary;
  * INoyauFonctionnel : 
  * - de demander les chiffres que doivent afficher les dés,
  * - informer que le lancer de dés est terminé,
- * - les noms des pirates,
+ * - les noms des pirates
  * 
  * */
 public interface IFunctionnalKernel {
