@@ -15,6 +15,8 @@ package control;
  *   puisse poursuivre son travail.
  *  
 */
+
+/* tous les controleurs qui ont besoin de lancer des dés, ils s'inscrivent en ILancéDé */
 public interface IThrowDice {
 
 }

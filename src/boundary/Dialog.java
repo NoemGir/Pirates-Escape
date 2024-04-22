@@ -2,6 +2,10 @@ package boundary;
 
 /*
  *  Va appeler des methodes implementés dans FunctionnalKernelAdapter
+ * appel servir IBoundary codé avec les services de IPirate ?
+ *
+ *
+ * IHM 
  */
 public class Dialog implements IPirates {
 
