@@ -1,7 +1,7 @@
 # Pirates-Escape
 A board game where you embody two pirates fighting to be the first reaching the boat !
 
-Groupe de :
+Groupe de :  
 Noémie Gireaud, responsable architecture.  
 Louis Tenailleau--servant, responsable spécification.  
 Mounié Robin, responsable Test et chef de projet.  
