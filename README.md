@@ -9,3 +9,6 @@ SALAZAR Enzo, responsable UML.
 Jéré Corentin, responsable Noyau.  
 Payrau Fabien, responsable IHM.  
 
+## Documentations
+
+Dossier contenant la documentation : https://tinyurl.com/ILU4-PiratesEscapes
