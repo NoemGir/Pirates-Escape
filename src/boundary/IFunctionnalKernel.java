@@ -16,6 +16,7 @@ package boundary;
  * 
  * */
 public interface IFunctionnalKernel {
+	
 	public void getNumberOnDice();
 	public void diceFinished();
 	public void getPirateNames();

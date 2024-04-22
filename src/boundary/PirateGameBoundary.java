@@ -11,15 +11,19 @@ package boundary;
 public class PirateGameBoundary implements IBoundary{
 
 	@Override
-	public void throwDice() {
+	public void movePirate(String pirateName, int numeroCase) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void movePirate(int idPlayer) {
-		// TODO Auto-generated method stub
-		
-	}
+		@Override
+		public void displayPV() {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void throwDice(int affichage) {
+			// TODO Auto-generated method stub
+			
+		}
 
 }
