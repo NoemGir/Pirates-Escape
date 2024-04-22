@@ -2,7 +2,27 @@ package boundary;
 
 
 /*
+ *  PAS A METTRE DANS BOUNDary -> DANS CONTROL
+ *  UNIQUEMENT POUR IHM 
+ *  
  *  Va appeler des methodes implementés dans Dialog
+ *  
+ *  
+ *  quand controleur demande quelque chose, se met en attribut ( en fonction de l'interface)
+ *  chaque controle va dire : je suis de cette interface la
+ *  IHM repond par rapport a l'interface  = au controleur inscrit
+ *  interface noyau va parler au control
+ *  
+ *  les controleurs ont juste des appels ?
+ *  Les controleurs qui s'inscrivent se fait ici
+ *  
+ *  
+ *  quand lance dé, fait IPirate
+ *  
+ *  fait coordination entre IHM et ECB
+ *  
+ *  brancher les controles entre IHM et les controleurs 
+ *  
  */
 public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
@@ -25,13 +45,19 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 	}
 
 	@Override
-	public void throwDice() {
+	public void movePirate(int idPlayer) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void movePirate(int idPlayer) {
+	public void displayPV() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void throwDice(int affichage) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -13,10 +13,24 @@ package boundary;
  * - avancer le pirate,
  * - …, 
  * 
-*/
+ * 
+ * 
+ * difficulté : retour au backend ( void) -> faire un autre appel a methode qui va après avoir fait le boundary de retourne au back
+ * 
+ * 
+ * tous les services qu'ont doit donner a l'utilisateur, peut importe la sortie
+ * */
 public interface IBoundary {
+	/* affichage du lançage de dé, on lui donne le resultat*/
+	/* lance les dés, puis demande au controleur via ILancerDe pour obtenir le résultat
+	*/
+	
+	public void throwDice(int affichage);
+	
+	/* seul le jeton qui corrrspond a au pirate actel peut etre déplacé, et il doit etre glissé*/
+	/* en console : le pirate tant bouge jusqu'a la case tant  */
 
-	public void throwDice();
 	public void movePirate(int idPlayer);
 	
+	public void displayPV();
 }

@@ -14,6 +14,10 @@ package boundary;
  * - donner à l’utilisateur la possibilité de lancer les dés,
  * - afficher un message dans la zone de texte,
  * - vider la zone de texte,
+ * 
+ * 
+ * 
+ * tout ce qui est a faire dans l'IHM, ont le met dans IPirate
  * */
 public interface IPirates {
 	
