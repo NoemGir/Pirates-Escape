@@ -10,8 +10,8 @@ package boundary;
  */
 public class PirateGameBoundary implements IBoundary{
 
-		@Override
-	public void movePirate(int idPlayer) {
+	@Override
+	public void movePirate(String pirateName, int numeroCase) {
 		// TODO Auto-generated method stub
 		
 	}

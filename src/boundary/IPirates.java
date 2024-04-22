@@ -18,6 +18,7 @@ package boundary;
  * 
  * 
  * tout ce qui est a faire dans l'IHM, ont le met dans IPirate
+ * 
  * */
 public interface IPirates {
 	
