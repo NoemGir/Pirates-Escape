@@ -27,3 +27,6 @@ bin/
 hs_err_pid*
 replay_pid*
 .idea/
+/nbproject/private/
+build.xml
+/nbproject
