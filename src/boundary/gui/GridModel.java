@@ -21,10 +21,10 @@ public class GridModel extends javax.swing.JPanel {
     public GridModel() {
         initComponents();
         model = new HashMap();
-        for(Integer i = 0; i < 30; i++) {
-            Case case = new Case();
-            this.model.put(i, case);
-            this.panelPrincipal.add();
+        for(int i = 0; i < 30; i++) {
+            Case myCase = new Case();
+            this.model.put(i, myCase);
+
         }
     }
 
@@ -36,8 +36,8 @@ public class GridModel extends javax.swing.JPanel {
         return model.get(position);
     }
     
-    public void setCase(int position, Case case) {
-        model.put(position, case);
+    public void setCase(int position, Case myCase) {
+        model.put(position, myCase);
     }
 
     /**
