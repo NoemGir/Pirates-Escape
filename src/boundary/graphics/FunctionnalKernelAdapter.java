@@ -1,5 +1,6 @@
-package boundary;
+package boundary.graphics;
 
+import boundary.IBoundary;
 
 /*
  *  PAS A METTRE DANS BOUNDary -> DANS CONTROL
@@ -44,11 +45,6 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 		
 	}
 
-	@Override
-	public void displayPV() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void throwDice(int affichage) {
@@ -58,6 +54,12 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
 	@Override
 	public void movePirate(String pirateName, int numeroCase) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayPV(String pirateName, int health) {
 		// TODO Auto-generated method stub
 		
 	}

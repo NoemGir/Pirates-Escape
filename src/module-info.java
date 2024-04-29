@@ -1,5 +1,0 @@
-/**
- * 
- */
-module Pirates_Escape {
-}

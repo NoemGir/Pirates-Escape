@@ -25,12 +25,14 @@ public interface IBoundary {
 	/* lance les dés, puis demande au controleur via ILancerDe pour obtenir le résultat
 	*/
 	
-	public void throwDice(int affichage);
+	public void throwDice(int display);
 	
 	/* seul le jeton qui corrrspond a au pirate actel peut etre déplacé, et il doit etre glissé*/
 	/* en console : le pirate tant bouge jusqu'a la case tant  */
 
-	public void movePirate(String pirateName, int numeroCase);
+	public void movePirate(String pirateName, int numCase);
 	
-	public void displayPV();
+	public void displayPV(String pirateName, int health);
+	
+	public String askPirateName();
 }

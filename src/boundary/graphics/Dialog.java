@@ -1,9 +1,13 @@
-package boundary;
+package boundary.graphics;
+
+import boundary.IPirates;
 
 /*
  *  Va appeler des methodes implementés dans FunctionnalKernelAdapter
  * appel servir IBoundary codé avec les services de IPirate ?
  *
+ *Le contrôleur de dialogue gère le séquencement des entrées/sorties et agit comme médiateur
+ *entre l’interface du noyau fonctionnel et la présentation
  *
  * IHM
  */

@@ -9,5 +9,5 @@ package control;
  * implementer cette interface.
  */
 public interface IMovePirate {
-
+	public void move(String nomPirate, int value);
 }

@@ -1,4 +1,4 @@
-package application;
+package scenario;
 
 
 
@@ -7,6 +7,6 @@ package application;
  *  interface graphique et possibilité de bouger les jetons
  * 
  */
-public class GUIApplication {
+public class GUIScenario {
 
 }
