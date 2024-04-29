@@ -11,4 +11,4 @@ Payrau Fabien, responsable IHM.
 
 ## Documentations
 
-Documentation's folder : https://tinyurl.com/ILU4-PiratesEscapes
+Documentation's folder : [https://tinyurl.com/ILU4-PiratesEscapes](https://drive.google.com/drive/folders/1p80bX2aN1AoYfhftRy_U1ov-jBam528d)
