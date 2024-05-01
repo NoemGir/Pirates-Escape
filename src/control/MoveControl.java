@@ -1,5 +1,7 @@
 package control;
 
+import java.util.Random;
+
 import boundary.IBoundary;
 import model.entities.Board;
 import model.entities.Case;
@@ -7,14 +9,22 @@ import model.entities.Pirate;
 
 public class MoveControl implements IMovePirate, IThrowDice {
 	
-	Board board;
-	IBoundary boundary;
-	ActivateBoxControl activateBoxControl;
+	private Board board;
+	private IBoundary boundary;
+	private ActivateBoxControl activateBoxControl;
+	
+	private boolean playAgain = false;
+	
 
 	public MoveControl(IBoundary boundary, ActivateBoxControl activateBoxControl, Board board) {
 		this.boundary = boundary;
 		this.activateBoxControl = activateBoxControl;
 		this.board = board;
+	}
+	
+	public void throwAndMove(Pirate pirate) {
+		int resDice = throwDice(pirate.getName());
+		move(pirate, resDice);
 	}
 
 	@Override
@@ -28,9 +38,25 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
 	@Override
 	public int throwDice(String player) {
-		//TODO
-		return 0;
+		Random ran = new Random();
+		int de1 = ran.nextInt(6);
+		int de2 = ran.nextInt(6);
+		
+		int movement = de1 + de2;
+		boundary.throwDice(movement);
+		
+		if(de1 == de2) {
+			playAgain = true;
+		}
+		else {
+			playAgain = false;
+		}
+		return movement;
 	}
 
-
+	public boolean isPlayAgain() {
+		return playAgain;
+	}
+	
+	
 }

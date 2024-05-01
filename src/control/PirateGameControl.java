@@ -1,7 +1,5 @@
 package control;
 
-import java.util.Iterator;
-
 import boundary.IBoundary;
 import model.entities.Pirate;
 
@@ -53,9 +51,11 @@ public class PirateGameControl {
 			Pirate player = players[i%NB_PLAYER];
 			if(!player.isDead()) {
 				boundary.changeTurn(player.getName());
-				int movement = controlMove.throwDice(player.getName());
-				controlMove.move(player, movement);
-				ended = verifyEndGameControl.gameEnded(player.getName());
+				do {
+					controlMove.throwAndMove(player);
+					ended = verifyEndGameControl.gameEnded(player.getName());
+				}
+				while(controlMove.isPlayAgain() && !ended);
 			}
 		}
 	}
