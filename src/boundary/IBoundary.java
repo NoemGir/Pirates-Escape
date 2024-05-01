@@ -29,10 +29,14 @@ public interface IBoundary {
 	
 	/* seul le jeton qui corrrspond a au pirate actel peut etre déplacé, et il doit etre glissé*/
 	/* en console : le pirate tant bouge jusqu'a la case tant  */
-
-	public void movePirate(String pirateName, int numCase);
 	
 	public void displayPV(String pirateName, int health);
 	
 	public String askPirateName();
+	
+	public void endGame(boolean won, String pirateName, String reason);
+
+	public void changeTurn(String name);
+
+	void movePirate(String pirateName, String box);
 }

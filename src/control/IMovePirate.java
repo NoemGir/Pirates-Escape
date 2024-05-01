@@ -1,5 +1,7 @@
 package control;
 
+import model.entities.Pirate;
+
 /*
  * Afin de pouvoir synchroniser le jeu il faut avoir des interfaces permettant 
  * de gérer les demandes du dialogue
@@ -9,5 +11,5 @@ package control;
  * implementer cette interface.
  */
 public interface IMovePirate {
-	public void move(String nomPirate, int value);
+	public void move(Pirate pirate, int value);
 }

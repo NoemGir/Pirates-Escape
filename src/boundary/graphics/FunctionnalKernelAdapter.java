@@ -52,14 +52,33 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 		
 	}
 
+
 	@Override
-	public void movePirate(String pirateName, int numeroCase) {
+	public void displayPV(String pirateName, int health) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void displayPV(String pirateName, int health) {
+	public String askPirateName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void endGame(boolean won, String pirateName, String reason) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeTurn(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void movePirate(String pirateName, String box) {
 		// TODO Auto-generated method stub
 		
 	}

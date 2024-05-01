@@ -3,8 +3,17 @@ package model.entities;
 public class Pirate {
 	
 	private String name;
-	private int hp = 6;
+	private int hp;
 	
+	
+	public Pirate(String name, int hp) {
+		this.name = name;
+		this.hp = hp;
+	}
+	
+	public boolean isDead() {
+		return hp <= 0;
+	}
 	
 	public String getName() {
 		return name;
@@ -20,8 +29,5 @@ public class Pirate {
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
-	
-	public Pirate(String name) {
-		this.name = name;
-	}
+
 }

@@ -1,5 +1,7 @@
 package control;
 
+import java.util.Iterator;
+
 import boundary.IBoundary;
 import model.entities.Pirate;
 
@@ -15,33 +17,46 @@ import model.entities.Pirate;
  */
 public class PirateGameControl {
 	
-	private final int NB_PLAYER = 2;
+	public final int NB_PLAYER = 2;
+	public final int HEALTH_MAX = 6;
+
 	
 	private IBoundary boundary;
-	private IThrowDice controlThrowDice;
-	private IMovePirate controlMovePirate;
+	private MoveControl controlMove;
+	private VerifyEndGameControl verifyEndGameControl;
 	
-	public PirateGameControl(IBoundary boundary, IThrowDice controlThrowDice, IMovePirate controlMovePirate) {
+	public PirateGameControl(IBoundary boundary, MoveControl controlMove, VerifyEndGameControl verifyEndGameControl) {
 		this.boundary = boundary;
-		this.controlThrowDice = controlThrowDice;
-		this.controlMovePirate = controlMovePirate;
+		this.controlMove = controlMove;
+		this.verifyEndGameControl = verifyEndGameControl;
+	}
+	
+	public Pirate[] initGame() {
+		Pirate[] players = new Pirate[NB_PLAYER];
+		
+		for(int i = 0; i < NB_PLAYER; i++) {
+			Pirate newPirate = new Pirate(boundary.askPirateName(), HEALTH_MAX);
+			players[i] = newPirate;
+		}
+		
+		verifyEndGameControl.setPlayers(players);
+		return players;
 	}
 	
 	public void startGame() {
 		
-		Pirate players[] = new Pirate[NB_PLAYER];
-		for(int i = 0; i < NB_PLAYER; i++) {
-			Pirate p = new Pirate(boundary.askPirateName());
-			players[i] = p;
-		}
+		Pirate[] players = initGame();
 		
-		boolean fini = false;
+		boolean ended = false;
 		
-		for(int i = 0; !fini; i++) {
+		for(int i = 0; !ended; i++) {
 			Pirate player = players[i%NB_PLAYER];
-			int move = controlThrowDice.throwDice(player.getName());
-			controlMovePirate.move(player.getName(), move);
-			
+			if(!player.isDead()) {
+				boundary.changeTurn(player.getName());
+				int movement = controlMove.throwDice(player.getName());
+				controlMove.move(player, movement);
+				ended = verifyEndGameControl.gameEnded(player.getName());
+			}
 		}
 	}
 	

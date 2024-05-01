@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class PirateGameBoundary implements IBoundary{
 
 		@Override
-		public void movePirate(String pirateName, int numCase) {
-			System.out.println("Le pirate " + pirateName + " bouge sur la case " + numCase);
+		public void movePirate(String pirateName, String box) {
+			System.out.println("Le pirate " + pirateName + " bouge sur la case " + box);
 			
 		}
 		@Override
@@ -29,6 +29,20 @@ public class PirateGameBoundary implements IBoundary{
 			Scanner scan = new Scanner(System.in);
 			System.out.println("Donnez le nom de votre pirate :");
 			return scan.next();
+		}
+		@Override
+		public void endGame(boolean won, String pirateName, String reason) {
+			if(won) {
+				System.out.println("La partie est terminée !\n Le pirate " + pirateName +" a gagné : ");
+			}
+			else {
+				System.out.println(reason);
+			}
+
+		}
+		@Override
+		public void changeTurn(String pirateName) {
+			System.out.println("C'ets au tour de " + pirateName + " de se bouger les fesses !0" );
 		}
 
 }
