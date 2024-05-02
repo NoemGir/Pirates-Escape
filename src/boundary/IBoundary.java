@@ -25,7 +25,8 @@ public interface IBoundary {
 	/* lance les dés, puis demande au controleur via ILancerDe pour obtenir le résultat
 	*/
 	
-	public void throwDice(int display);
+	public void throwDice1(int display);
+	public void throwDice2(int display);
 	
 	/* seul le jeton qui corrrspond a au pirate actel peut etre déplacé, et il doit etre glissé*/
 	/* en console : le pirate tant bouge jusqu'a la case tant  */

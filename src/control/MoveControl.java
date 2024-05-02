@@ -35,15 +35,14 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	}
 
 
-
 	@Override
 	public int throwDice(String player) {
 		Random ran = new Random();
-		int de1 = ran.nextInt(6);
-		int de2 = ran.nextInt(6);
-		
+		int de1 = ran.nextInt(6)+1;
+		int de2 = ran.nextInt(6)+1;
 		int movement = de1 + de2;
-		boundary.throwDice(movement);
+		boundary.throwDice1(de1);
+		boundary.throwDice2(de2);
 		
 		if(de1 == de2) {
 			playAgain = true;

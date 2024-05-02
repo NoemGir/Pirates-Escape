@@ -47,7 +47,13 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
 
 	@Override
-	public void throwDice(int affichage) {
+	public void throwDice1(int affichage) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void throwDice2(int affichage) {
 		// TODO Auto-generated method stub
 		
 	}

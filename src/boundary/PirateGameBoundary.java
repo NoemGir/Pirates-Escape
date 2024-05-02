@@ -12,7 +12,7 @@ public class PirateGameBoundary implements IBoundary{
 
 		@Override
 		public void movePirate(String pirateName, String box) {
-			System.out.println("Le pirate " + pirateName + " bouge sur la case " + box);
+			System.out.println("Le pirate " + pirateName + " bouge sur la case : " + box);
 			
 		}
 		@Override
@@ -21,8 +21,13 @@ public class PirateGameBoundary implements IBoundary{
 			
 		}
 		@Override
-		public void throwDice(int display) {
-			System.out.println("Le dé affiche " + display);
+		public void throwDice1(int display) {
+			System.out.println("Le premier dé affiche " + display);
+		}
+		
+		@Override
+		public void throwDice2(int display) {
+			System.out.println("Le second dé affiche " + display);
 		}
 		
 		public String askPirateName() {
@@ -33,7 +38,7 @@ public class PirateGameBoundary implements IBoundary{
 		@Override
 		public void endGame(boolean won, String pirateName, String reason) {
 			if(won) {
-				System.out.println("La partie est terminée !\n Le pirate " + pirateName +" a gagné : ");
+				System.out.println("La partie est terminée !\n Le pirate " + pirateName +" a gagné : " + reason);
 			}
 			else {
 				System.out.println(reason);
@@ -42,7 +47,7 @@ public class PirateGameBoundary implements IBoundary{
 		}
 		@Override
 		public void changeTurn(String pirateName) {
-			System.out.println("C'ets au tour de " + pirateName + " de se bouger les fesses !0" );
+			System.out.println("C'est au tour de " + pirateName + " de se bouger les fesses !" );
 		}
 
 }
