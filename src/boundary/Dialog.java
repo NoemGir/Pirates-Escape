@@ -5,7 +5,7 @@ package boundary;
  * appel servir IBoundary codé avec les services de IPirate ?
  *
  *
- * IHM 
+ * IHM
  */
 public class Dialog implements IPirates {
 
