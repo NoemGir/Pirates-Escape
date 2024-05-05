@@ -1,6 +1,7 @@
 package boundary.graphics;
 
 import boundary.IBoundary;
+import control.PirateGameControl;
 
 /*
  *  PAS A METTRE DANS BOUNDary -> DANS CONTROL
@@ -27,6 +28,10 @@ import boundary.IBoundary;
  */
 public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
+    private Dialog dialog;
+    private PirateGameControl pirateGameControl;
+    
+    
 	@Override
 	public void getNumberOnDice() {
 		// TODO Auto-generated method stub

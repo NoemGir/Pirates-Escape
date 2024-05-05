@@ -6,7 +6,12 @@ import boundary.IBoundary;
 import model.entities.Board;
 import model.entities.Case;
 import model.entities.Pirate;
-
+/*
+ *  @author Noémie GIREAUD
+ *
+ *
+ *
+**/
 public class MoveControl implements IMovePirate, IThrowDice {
 	
 	private Board board;

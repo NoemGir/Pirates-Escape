@@ -19,7 +19,7 @@
     <Property name="rows" type="int" value="5"/>
   </Layout>
   <SubComponents>
-    <Container class="boundary.graphics.HeartPanel" name="heartPanel1">
+    <Container class="boundary.graphics.personalizedComponents.HeartPanel" name="heartPanel1">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -34,7 +34,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="boundary.graphics.HeartPanel" name="heartPanel2">
+    <Container class="boundary.graphics.personalizedComponents.HeartPanel" name="heartPanel2">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -49,7 +49,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="boundary.graphics.HeartPanel" name="heartPanel3">
+    <Container class="boundary.graphics.personalizedComponents.HeartPanel" name="heartPanel3">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -64,7 +64,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="boundary.graphics.HeartPanel" name="heartPanel4">
+    <Container class="boundary.graphics.personalizedComponents.HeartPanel" name="heartPanel4">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -79,7 +79,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="boundary.graphics.HeartPanel" name="heartPanel5">
+    <Container class="boundary.graphics.personalizedComponents.HeartPanel" name="heartPanel5">
 
       <Layout>
         <DimensionLayout dim="0">

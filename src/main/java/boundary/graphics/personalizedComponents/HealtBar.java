@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.graphics;
+package boundary.graphics.personalizedComponents;
 
 /**
  *
@@ -73,11 +73,11 @@ public class HealtBar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        heartPanel1 = new boundary.graphics.HeartPanel();
-        heartPanel2 = new boundary.graphics.HeartPanel();
-        heartPanel3 = new boundary.graphics.HeartPanel();
-        heartPanel4 = new boundary.graphics.HeartPanel();
-        heartPanel5 = new boundary.graphics.HeartPanel();
+        heartPanel1 = new boundary.graphics.personalizedComponents.HeartPanel();
+        heartPanel2 = new boundary.graphics.personalizedComponents.HeartPanel();
+        heartPanel3 = new boundary.graphics.personalizedComponents.HeartPanel();
+        heartPanel4 = new boundary.graphics.personalizedComponents.HeartPanel();
+        heartPanel5 = new boundary.graphics.personalizedComponents.HeartPanel();
 
         setLayout(new java.awt.GridLayout(5, 1));
 
@@ -148,11 +148,11 @@ public class HealtBar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private boundary.graphics.HeartPanel heartPanel1;
-    private boundary.graphics.HeartPanel heartPanel2;
-    private boundary.graphics.HeartPanel heartPanel3;
-    private boundary.graphics.HeartPanel heartPanel4;
-    private boundary.graphics.HeartPanel heartPanel5;
+    private boundary.graphics.personalizedComponents.HeartPanel heartPanel1;
+    private boundary.graphics.personalizedComponents.HeartPanel heartPanel2;
+    private boundary.graphics.personalizedComponents.HeartPanel heartPanel3;
+    private boundary.graphics.personalizedComponents.HeartPanel heartPanel4;
+    private boundary.graphics.personalizedComponents.HeartPanel heartPanel5;
     // End of variables declaration//GEN-END:variables
 
 }

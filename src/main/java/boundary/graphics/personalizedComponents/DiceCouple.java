@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.graphics;
+package boundary.graphics.personalizedComponents;
 
 /**
  *
@@ -32,8 +32,8 @@ public class DiceCouple extends javax.swing.JPanel {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        dice1 = new boundary.graphics.Dice();
-        dice2 = new boundary.graphics.Dice();
+        dice1 = new boundary.graphics.personalizedComponents.Dice();
+        dice2 = new boundary.graphics.personalizedComponents.Dice();
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -100,8 +100,8 @@ public class DiceCouple extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private boundary.graphics.Dice dice1;
-    private boundary.graphics.Dice dice2;
+    private boundary.graphics.personalizedComponents.Dice dice1;
+    private boundary.graphics.personalizedComponents.Dice dice2;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

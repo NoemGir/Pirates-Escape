@@ -2,11 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.graphics;
+package boundary.graphics.personalizedComponents;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Polygon;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import javax.swing.Timer;
 
 /**
  *
@@ -14,13 +16,20 @@ import java.awt.Polygon;
  */
 public class PiratePawn extends javax.swing.JPanel {
     private Color color = new Color(109, 7, 26);
+    
+    private Timer timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
+    private Timer timerX = new Timer(10, (ActionEvent e) -> {moveX(e);});
+    
+    private Point location;
+    private Point destination;
    
     /**
      * Creates new form PiratePawn
      */
     public PiratePawn() {
-        
         initComponents();
+        location = getLocation();
+        destination = getLocation();
     }
   public void setColor(Color color) {
         this.color = color;
@@ -55,17 +64,53 @@ public class PiratePawn extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    public void moveHorizontally(int newX){
+        destination.x = newX - getSize().width/2;
+        timerX.start();
+    }
+    
+    public void moveX(ActionEvent e){
+        if(location.x < destination.x){
+            location.translate(1, 0);
+        }
+        else{
+            location.translate(-1, 0);
+        }
+        setLocation(location.x, location.y); 
+        if(location.x == destination.x){
+            timerX.stop();
+        }
+    }
+        
+    public void moveY(ActionEvent e){
+        if(location.y < destination.y){
+            location.translate(0, 1);
+        }
+        else{
+            location.translate(0, -1);
+        }
+        setLocation(location.x, location.y); 
+        if(location.y == destination.y){
+            timerY.stop();
+        }
+    }
+    
+    public void moveVertically(int newY){
+        destination.y = newY - getSize().height/2;
+        timerY.start();
+    }
+            
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
 
     }//GEN-LAST:event_formMouseDragged
-@Override
-public void paintComponent(Graphics g){
-    g.setColor(color);
-    int[] xPoints = {getHeight()/2, getHeight(), getHeight()/2, 0};
-    int[] yPoints = {0,getWidth()/2 , getWidth(), getWidth()/2};
-    g.fillPolygon(xPoints, yPoints, 4);  
-}
+
+    @Override
+    public void paintComponent(Graphics g){
+        g.setColor(color);
+        int[] xPoints = {getHeight()/2, getHeight(), getHeight()/2, 0};
+        int[] yPoints = {0,getWidth()/2 , getWidth(), getWidth()/2};
+        g.fillPolygon(xPoints, yPoints, 4);  
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

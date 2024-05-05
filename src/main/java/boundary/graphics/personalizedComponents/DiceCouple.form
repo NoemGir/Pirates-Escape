@@ -58,7 +58,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Container class="boundary.graphics.Dice" name="dice1">
+    <Container class="boundary.graphics.personalizedComponents.Dice" name="dice1">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -73,7 +73,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="boundary.graphics.Dice" name="dice2">
+    <Container class="boundary.graphics.personalizedComponents.Dice" name="dice2">
 
       <Layout>
         <DimensionLayout dim="0">
