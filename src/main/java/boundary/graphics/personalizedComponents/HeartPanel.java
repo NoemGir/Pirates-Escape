@@ -30,7 +30,7 @@ public class HeartPanel extends javax.swing.JPanel {
         }
     }
     
-    public void repaintCoeur(boolean plein){
+    public void repaintHeart(boolean plein){
         this.plein = plein;
         repaint();
     }
@@ -39,10 +39,10 @@ public class HeartPanel extends javax.swing.JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (this.plein){
-            g.drawImage(imagePlein, 0, 0, 100, 100, this);
+            g.drawImage(imagePlein, 0, 0, 80, 80, this);
         }
         else{
-            g.drawImage(imageVide, 0, 0, 100, 100, this);
+            g.drawImage(imageVide, 0, 0, 80, 80, this);
         }
     }
     
@@ -56,6 +56,8 @@ public class HeartPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setPreferredSize(new java.awt.Dimension(80, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,5 +75,5 @@ public class HeartPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private BufferedImage imagePlein;
     private BufferedImage imageVide;
-    private boolean plein;
+    private boolean plein = true;
 }

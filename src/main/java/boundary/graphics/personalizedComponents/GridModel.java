@@ -4,14 +4,12 @@
  */
 package boundary.graphics.personalizedComponents;
 
+import boundary.graphics.Dialog;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JLabel;
-import model.entities.Case;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,8 +17,7 @@ import model.entities.Case;
  */
 public class GridModel extends javax.swing.JPanel {
     
-    private Map<Integer,CasePanel> model;
-
+    private Dialog dialog;
     /**
      * Creates new form GridModel
      */
@@ -28,30 +25,40 @@ public class GridModel extends javax.swing.JPanel {
         initComponents();
         manualInit();
     }
-
-    public Map<Integer, CasePanel> getModel() {
-        return model;
-    }
     
-    public CasePanel getCase(int position) {
-        return model.get(position);
-    }
-    
-    public void setCase(int position, CasePanel myCase) {
-        model.put(position, myCase);
+    public void setDialog(Dialog dialog) {
+        this.dialog = dialog;
+        dialog.addPiratePawn(piratePawn1);
+        dialog.addPiratePawn(piratePawn2);
     }
     
     private void manualInit(){
-        model = new HashMap();
         for(int i = 0; i < 30; i++) {
             CasePanel myCase = new CasePanel();
-            myCase.setBackground(new Color((int) (i*8.5), 255, 255));
-            this.model.put(i, myCase);
+            myCase.setText("" + i);
             gridPanel.add(myCase);   
         }
-        movePirate1(0);
-        movePirate2(0);
+        
+        piratePawn2.setOffset(3);
+        piratePawn2.setColor(Color.yellow);
+        
+        Component panelCase = gridPanel.getComponent(0);
+        Point locat = new Point(panelCase.getSize().width/2, panelCase.getSize().height/2) ;
+        piratePawn1.moveTo(new Point(50, 50));
+        
+        System.out.println(" 1 is in " + piratePawn1.getLocation());
+
+        piratePawn2.moveTo(new Point(100, 100));
+        System.out.println("2 is in " + piratePawn2.getLocation());
+
     }
+
+    public JLayeredPane getjLayeredPane1() {
+        return jLayeredPane1;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,17 +68,17 @@ public class GridModel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         piratePawn1 = new boundary.graphics.personalizedComponents.PiratePawn();
         piratePawn2 = new boundary.graphics.personalizedComponents.PiratePawn();
         gridPanel = new javax.swing.JPanel();
 
-        setPreferredSize(new java.awt.Dimension(1000, 800));
+        setPreferredSize(new java.awt.Dimension(550, 400));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
         });
-        setLayout(new javax.swing.OverlayLayout(this));
 
         javax.swing.GroupLayout piratePawn1Layout = new javax.swing.GroupLayout(piratePawn1);
         piratePawn1.setLayout(piratePawn1Layout);
@@ -84,8 +91,6 @@ public class GridModel extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        add(piratePawn1);
-
         javax.swing.GroupLayout piratePawn2Layout = new javax.swing.GroupLayout(piratePawn2);
         piratePawn2.setLayout(piratePawn2Layout);
         piratePawn2Layout.setHorizontalGroup(
@@ -97,40 +102,69 @@ public class GridModel extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        add(piratePawn2);
-
         gridPanel.setLayout(new java.awt.GridLayout(6, 5));
-        add(gridPanel);
+
+        jLayeredPane1.setLayer(piratePawn1, javax.swing.JLayeredPane.MODAL_LAYER);
+        jLayeredPane1.setLayer(piratePawn2, javax.swing.JLayeredPane.PALETTE_LAYER);
+        jLayeredPane1.setLayer(gridPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(piratePawn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(piratePawn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(454, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(piratePawn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(piratePawn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(349, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-       Point location = evt.getPoint();
-       Component casePanel = gridPanel.getComponentAt(location);
-       location = casePanel.getLocation();
-       piratePawn1.moveHorizontally(location.x + casePanel.getSize().width/2);
-       piratePawn1.moveVertically(location.y + casePanel.getSize().height/2);
-    }//GEN-LAST:event_formMousePressed
-
-    public void movePirate1(int box){
-        System.out.println("movePirate1() " + box);
-        Component casePanel = gridPanel.getComponent(box);
-        Point location = casePanel.getLocation();
-        System.out.println("casePanel =  " + location.toString());
-        piratePawn1.moveHorizontally(location.x + casePanel.getSize().width/2);
-        piratePawn1.moveVertically(location.y + casePanel.getSize().height/2);
+    public JPanel getGridPanel() {
+        return gridPanel;
     }
     
-    public void movePirate2(int box){
-        System.out.println("movePirate2() " + box);
-        Component casePanel = gridPanel.getComponent(box);
-        Point location = casePanel.getLocation();
-        System.out.println("casePanel =  " + location.toString());
-        piratePawn2.moveHorizontally(location.x + casePanel.getSize().width/2);
-        piratePawn2.moveVertically(location.y + casePanel.getSize().height/2);
-    }
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        dialog.eventMousePressedGrid(evt.getPoint());
+    }//GEN-LAST:event_formMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private boundary.graphics.personalizedComponents.PiratePawn piratePawn1;
     private boundary.graphics.personalizedComponents.PiratePawn piratePawn2;
     // End of variables declaration//GEN-END:variables

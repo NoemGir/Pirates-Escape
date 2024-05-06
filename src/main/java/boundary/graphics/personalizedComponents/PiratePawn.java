@@ -16,26 +16,27 @@ import javax.swing.Timer;
  */
 public class PiratePawn extends javax.swing.JPanel {
     private boolean activated;
+    private int offset = 0;
     
     private Color color = new Color(109, 7, 26);
-    
-    private Timer timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
-    private Timer timerX = new Timer(10, (ActionEvent e) -> {moveX(e);});
-    
-    private Point location;
-    private Point destination;
-   
+
     /**
      * Creates new form PiratePawn
      */
     public PiratePawn() {
         initComponents();
-        location = getLocation();
-        destination = getLocation();
     }
-  public void setColor(Color color) {
+    
+    public void setColor(Color color) {
         this.color = color;
     }
+    
+    public void moveTo(Point newLocation){
+        System.out.println("boundary.graphics.personalizedComponents.PiratePawn.moveTo()" + (newLocation.x - getSize().width + offset) + " " + (newLocation.y - getSize().height + offset));
+        setLocation(newLocation.x - getSize().width + offset, newLocation.y - getSize().height + offset);
+        repaint();
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,41 +62,7 @@ public class PiratePawn extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    public void moveHorizontally(int newX){
-        destination.x = newX - getSize().width/2;
-        timerX.start();
-    }
-    
-    public void moveX(ActionEvent e){
-        if(location.x < destination.x){
-            location.translate(1, 0);
-        }
-        else{
-            location.translate(-1, 0);
-        }
-        setLocation(location.x, location.y); 
-        if(location.x == destination.x){
-            timerX.stop();
-        }
-    }
-        
-    public void moveY(ActionEvent e){
-        if(location.y < destination.y){
-            location.translate(0, 1);
-        }
-        else{
-            location.translate(0, -1);
-        }
-        setLocation(location.x, location.y); 
-        if(location.y == destination.y){
-            timerY.stop();
-        }
-    }
-    
-    public void moveVertically(int newY){
-        destination.y = newY - getSize().height/2;
-        timerY.start();
-    }
+
        
     public void activate(){
         this.activated = true;
@@ -115,6 +82,14 @@ public class PiratePawn extends javax.swing.JPanel {
         int[] xPoints = {getHeight()/2, getHeight(), getHeight()/2, 0};
         int[] yPoints = {0,getWidth()/2 , getWidth(), getWidth()/2};
         g.fillPolygon(xPoints, yPoints, 4);  
+    }
+
+    public void setOffset(int i) {
+        this.offset = i;
+    }
+    
+    public int getOffset(){
+        return offset;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

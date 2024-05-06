@@ -4,6 +4,7 @@
  */
 package boundary.graphics.personalizedComponents;
 
+import boundary.graphics.Dialog;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
@@ -17,6 +18,9 @@ import javax.swing.Timer;
  * @author Robin
  */
 public class Dice extends javax.swing.JPanel {
+    
+    Dialog dialog;
+    
     private int value = 1;
     private int nbAnimation = 0;
     private int storedValue = 0;
@@ -59,50 +63,56 @@ public class Dice extends javax.swing.JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    switch(value){
-        case 1:
-            g.drawImage(image1, 0, 0, 100, 100, this);
-            break;
-        case 2:
-            g.drawImage(image2, 0, 0, 100, 100, this);
-            break;
-        case 3:
-            g.drawImage(image3, 0, 0, 100, 100, this);
-            break;
-        case 4:
-            g.drawImage(image4, 0, 0, 100, 100, this);
-            break;
-        case 5:
-            g.drawImage(image5, 0, 0, 100, 100, this);
-            break;
-        case 6:
-            g.drawImage(image6, 0, 0, 100, 100, this);
-            break;
-        default:
-            g.drawImage(image7, 0, 0, 100, 100, this);
-    }
+        super.paintComponent(g);
+        switch(value){
+            case 1:
+                g.drawImage(image1, 0, 0, 100, 100, this);
+                break;
+            case 2:
+                g.drawImage(image2, 0, 0, 100, 100, this);
+                break;
+            case 3:
+                g.drawImage(image3, 0, 0, 100, 100, this);
+                break;
+            case 4:
+                g.drawImage(image4, 0, 0, 100, 100, this);
+                break;
+            case 5:
+                g.drawImage(image5, 0, 0, 100, 100, this);
+                break;
+            case 6:
+                g.drawImage(image6, 0, 0, 100, 100, this);
+                break;
+            default:
+                g.drawImage(image7, 0, 0, 100, 100, this);
+        }
     
     }
     public void  setDiceValue(int v){
         value = v;
-        storedValue =v;
+        storedValue = v;
         nbAnimation = 0;
         this.timer.start();
     }
     
     private void timerEventHandler(java.awt.event.ActionEvent e){
-        if(nbAnimation<40){
-            this.value= (random.nextInt()%7);
+        if(nbAnimation < 30 + random.nextInt()%15){
+            this.value = (random.nextInt()%7);
             nbAnimation++;
             repaint();
         }else{
-            this.value=storedValue;
+            this.value = storedValue;
             timer.stop();
             repaint();
-            
+            dialog.diceFinished();
         }
     }
+
+    public void setDialog(Dialog dialog) {
+        this.dialog = dialog;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

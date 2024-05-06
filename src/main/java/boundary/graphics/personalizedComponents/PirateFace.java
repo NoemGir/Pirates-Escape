@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.imageio.ImageIO;
 
 /**
@@ -14,15 +15,13 @@ import javax.imageio.ImageIO;
  * @author Fabien
  */
 public class PirateFace extends javax.swing.JPanel {
-    private BufferedImage image;
-    private Image scaledImage;
-    private String pathName = "C:\\Users\\payra\\Desktop\\imagepirate\\tete1.jpg";
-
+    
+    private Image scaledImage; 
+    private String imageName = "/jackSparrow.jpg";
     /**
      * Creates new form ImagePanel
      */
-    public PirateFace(String pathName) {
-        this.pathName = pathName;
+    public PirateFace() {
         initComponents();
         loadImage();
     }
@@ -31,9 +30,9 @@ public class PirateFace extends javax.swing.JPanel {
     private void loadImage(){
         
         try{
-           image=ImageIO.read(new File(pathName));
-           scaledImage= image.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
-        }catch(IOException e){
+           BufferedImage image = ImageIO.read(new File(getClass().getResource(imageName).toURI()));
+           scaledImage = image.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
+        }catch(URISyntaxException | IOException e){
             throw new RuntimeException("Impossible de charger l'image",e);
         }   
     }
@@ -45,15 +44,21 @@ public class PirateFace extends javax.swing.JPanel {
     public void greyImage(){
         //TODO
     }
+
+    public void setPirateImage(String pathName) {
+        this.imageName = pathName;
+        loadImage();
+        repaint();
+    }
     
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         if(scaledImage != null){
-            g.drawImage(scaledImage,0,0,this);
+            g.drawImage(scaledImage,0,0,120, 120, this);
         }
     }
-    
+    /*
     @Override
     public Dimension getPreferredSize(){
         if(scaledImage!=null){
@@ -61,7 +66,7 @@ public class PirateFace extends javax.swing.JPanel {
         }
         return super.getPreferredSize();
     }
-    
+    */
      
     
     @SuppressWarnings("unchecked")
