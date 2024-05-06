@@ -15,6 +15,8 @@ import javax.swing.Timer;
  * @author noemi
  */
 public class PiratePawn extends javax.swing.JPanel {
+    private boolean activated;
+    
     private Color color = new Color(109, 7, 26);
     
     private Timer timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
@@ -47,11 +49,6 @@ public class PiratePawn extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(40, 40));
         setMinimumSize(new java.awt.Dimension(40, 40));
         setPreferredSize(new java.awt.Dimension(40, 40));
-        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                formMouseDragged(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,11 +96,19 @@ public class PiratePawn extends javax.swing.JPanel {
         destination.y = newY - getSize().height/2;
         timerY.start();
     }
-            
-    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+       
+    public void activate(){
+        this.activated = true;
+    }
+    
+    public void desactivate(){
+        this.activated = false;
+    }
 
-    }//GEN-LAST:event_formMouseDragged
-
+    public boolean isActivated() {
+        return activated;
+    }
+    
     @Override
     public void paintComponent(Graphics g){
         g.setColor(color);

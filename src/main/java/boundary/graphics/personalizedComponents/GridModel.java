@@ -65,6 +65,7 @@ public class GridModel extends javax.swing.JPanel {
         piratePawn2 = new boundary.graphics.personalizedComponents.PiratePawn();
         gridPanel = new javax.swing.JPanel();
 
+        setPreferredSize(new java.awt.Dimension(1000, 800));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);

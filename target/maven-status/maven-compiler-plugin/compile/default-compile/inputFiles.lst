@@ -4,8 +4,8 @@ C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\bounda
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\entities\Pirate.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\HealtBar.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\ActivateSpecialBoxControl.java
+C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\FramePrincipal.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\CasePanel.java
-C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\MainFrame.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\VerifyEndGameControl.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\PirateFace.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\IThrowDice.java
@@ -25,5 +25,6 @@ C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\scenar
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\GridModel.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\ActivateBoxControl.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\entities\Case.java
+C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\panel.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\ActivateBombControl.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\Dice.java

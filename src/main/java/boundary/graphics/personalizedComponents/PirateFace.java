@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author payrau
+ * @author Fabien
  */
 public class PirateFace extends javax.swing.JPanel {
     private BufferedImage image;
@@ -21,21 +21,30 @@ public class PirateFace extends javax.swing.JPanel {
     /**
      * Creates new form ImagePanel
      */
-    public PirateFace() {
+    public PirateFace(String pathName) {
+        this.pathName = pathName;
         initComponents();
         loadImage();
-  
-}
+    }
+    
+    
     private void loadImage(){
         
-    try{
+        try{
            image=ImageIO.read(new File(pathName));
            scaledImage= image.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
         }catch(IOException e){
             throw new RuntimeException("Impossible de charger l'image",e);
-           }
-           
-        }
+        }   
+    }
+    
+    public void colorImage(){
+        //TODO
+    }
+    
+    public void greyImage(){
+        //TODO
+    }
     
     @Override
     protected void paintComponent(Graphics g){

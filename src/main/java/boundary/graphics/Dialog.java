@@ -1,6 +1,8 @@
 package boundary.graphics;
 
 import boundary.IPirates;
+import boundary.graphics.personalizedComponents.PirateFace;
+import boundary.graphics.personalizedComponents.PiratePawn;
 
 /*
  *  Va appeler des methodes implementés dans FunctionnalKernelAdapter
@@ -12,11 +14,30 @@ import boundary.IPirates;
  * IHM
  */
 public class Dialog implements IPirates {
-
+    
+    private PirateFace pirateFace1;
+    private PirateFace pirateFace2;
+    private PiratePawn piratePawn1;
+    private PiratePawn piratePawn2;
+    private int idPirate;
+    
+        
 	@Override
 	public void changePirate() {
-		// TODO Auto-generated method stub
-		
+        //switch réalisé si le jeu est adapté a plus de 2 joueurs 
+		switch (idPirate){
+                    case 0: 
+                        pirateFace1.colorImage();
+                        pirateFace2.greyImage();
+                        piratePawn1.activate();
+                        piratePawn2.desactivate();
+                        break;
+                    case 1:
+                        pirateFace2.colorImage();
+                        pirateFace1.greyImage();
+                        piratePawn2.activate();
+                        piratePawn1.desactivate();
+                }
 	}
 
 	@Override
@@ -27,8 +48,7 @@ public class Dialog implements IPirates {
 
 	@Override
 	public void display(String message) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
