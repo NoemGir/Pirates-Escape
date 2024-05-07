@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.graphics;
+package boundary.graphics.personalizedComponents;
+
+import boundary.graphics.Dialog;
 
 /**
  *
@@ -10,6 +12,7 @@ package boundary.graphics;
  */
 public class DiceCouple extends javax.swing.JPanel {
 
+    private Dialog dialog;
     /**
      * Creates new form CoupleDe
      */
@@ -20,6 +23,13 @@ public class DiceCouple extends javax.swing.JPanel {
     public void displayDices(int val1,int val2){
         dice1.setDiceValue(val1);
         dice2.setDiceValue(val2);
+    }
+    
+    public void setDialog(Dialog dialog){
+        this.dialog = dialog;
+        
+        dice1.setDialog(dialog);
+        dice2.setDialog(dialog);
     }
 
     /**
@@ -32,10 +42,11 @@ public class DiceCouple extends javax.swing.JPanel {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        dice1 = new boundary.graphics.Dice();
-        dice2 = new boundary.graphics.Dice();
+        dice1 = new boundary.graphics.personalizedComponents.Dice();
+        dice2 = new boundary.graphics.personalizedComponents.Dice();
 
-        jButton1.setText("jButton1");
+        jButton1.setText("lancer les dés");
+        jButton1.setMargin(new java.awt.Insets(2, 5, 3, 5));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -46,7 +57,7 @@ public class DiceCouple extends javax.swing.JPanel {
         dice1.setLayout(dice1Layout);
         dice1Layout.setHorizontalGroup(
             dice1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 102, Short.MAX_VALUE)
         );
         dice1Layout.setVerticalGroup(
             dice1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,38 +81,39 @@ public class DiceCouple extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(dice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(dice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(dice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(dice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       displayDices(3,4);
+        int display1 = dialog.getDiceResult();
+        int display2 = dialog.getDiceResult();
+        displayDices(display1,display2);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private boundary.graphics.Dice dice1;
-    private boundary.graphics.Dice dice2;
+    private boundary.graphics.personalizedComponents.Dice dice1;
+    private boundary.graphics.personalizedComponents.Dice dice2;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

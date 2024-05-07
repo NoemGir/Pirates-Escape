@@ -2,28 +2,44 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.graphics;
+package boundary.graphics.personalizedComponents;
 
+import boundary.graphics.GraphicsUtils;
+import boundary.graphics.SlidingPawn;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Polygon;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import javax.swing.Timer;
 
 /**
  *
  * @author noemi
  */
 public class PiratePawn extends javax.swing.JPanel {
+    
+    private boolean activated;
+    private int offset = 0;
     private Color color = new Color(109, 7, 26);
-   
+    private Component box;
     /**
      * Creates new form PiratePawn
      */
     public PiratePawn() {
-        
         initComponents();
     }
-  public void setColor(Color color) {
+    
+    public void setColor(Color color) {
         this.color = color;
+    }
+
+    public void setBox(Component box) {
+        this.box = box;
+    }
+    
+    public void moveTo(Point newLocation){
+        setLocation(GraphicsUtils.computeLocationInsidePawn(newLocation, this));
     }
 
     /**
@@ -38,11 +54,6 @@ public class PiratePawn extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(40, 40));
         setMinimumSize(new java.awt.Dimension(40, 40));
         setPreferredSize(new java.awt.Dimension(40, 40));
-        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                formMouseDragged(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -56,16 +67,41 @@ public class PiratePawn extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+       
+    public void activate(){
+        this.activated = true;
+    }
+    
+    public void desactivate(){
+        this.activated = false;
+    }
 
-    }//GEN-LAST:event_formMouseDragged
-@Override
-public void paintComponent(Graphics g){
-    g.setColor(color);
-    int[] xPoints = {getHeight()/2, getHeight(), getHeight()/2, 0};
-    int[] yPoints = {0,getWidth()/2 , getWidth(), getWidth()/2};
-    g.fillPolygon(xPoints, yPoints, 4);  
-}
+    public boolean isActivated() {
+        return activated;
+    }
+    
+    @Override
+    public void paintComponent(Graphics g){
+        g.setColor(color);
+        int[] xPoints = {getHeight()/2, getHeight(), getHeight()/2, 0};
+        int[] yPoints = {0,getWidth()/2 , getWidth(), getWidth()/2};
+        g.fillPolygon(xPoints, yPoints, 4);  
+    }
+
+    public void setOffset(int i) {
+        this.offset = i;
+    }
+    
+    public int getOffset(){
+        return offset;
+    }
+
+    void resetLocation() {
+        if(box != null){
+            Point location = GraphicsUtils.computeLocationPawnInCase(box);
+            moveTo(location);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

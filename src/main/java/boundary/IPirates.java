@@ -22,8 +22,10 @@ package boundary;
  * */
 public interface IPirates {
 	
-	public void changePirate();
+	public void changePirate(int idPirate);
 	public void activateThrowDice();
+        public void desactivateThrowDice();
 	public void display(String message);
-	public void erase();
+        public void changeHeart(int idPirate, int hp);
+        public void movePirate(int idPirate, int box);
 }

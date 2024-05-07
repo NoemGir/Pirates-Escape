@@ -6,7 +6,12 @@ import boundary.IBoundary;
 import model.entities.Board;
 import model.entities.Case;
 import model.entities.Pirate;
-
+/*
+ *  @author Noémie GIREAUD
+ *
+ *
+ *
+**/
 public class MoveControl implements IMovePirate, IThrowDice {
 	
 	private Board board;
@@ -23,7 +28,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	}
 	
 	public void throwAndMove(Pirate pirate) {
-		int resDice = throwDice(pirate.getName());
+		int resDice = throwDice();
 		move(pirate, resDice);
 	}
 
@@ -36,21 +41,9 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
 
 	@Override
-	public int throwDice(String player) {
+	public int throwDice() {
 		Random ran = new Random();
-		int de1 = ran.nextInt(6)+1;
-		int de2 = ran.nextInt(6)+1;
-		int movement = de1 + de2;
-		boundary.throwDice1(de1);
-		boundary.throwDice2(de2);
-		
-		if(de1 == de2) {
-			playAgain = true;
-		}
-		else {
-			playAgain = false;
-		}
-		return movement;
+		return ran.nextInt(6)+1;
 	}
 
 	public boolean isPlayAgain() {

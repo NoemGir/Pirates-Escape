@@ -4,7 +4,10 @@
  */
 package boundary.graphics;
 
+import boundary.graphics.personalizedComponents.PiratePawn;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,13 +17,9 @@ import javax.imageio.ImageIO;
  *
  * @author payrau
  */
-public class Utils {
-    public static void main(String[] args){
-        convertToBlackAndWhite("C:\\Users\\payra\\Documents\\NetBeansProjects\\Pirate\\src\\main\\java\\com\\mycompany\\pirate\\tete2.jpg","C:\\Users\\payra\\Documents\\NetBeansProjects\\Pirate\\src\\main\\java\\com\\mycompany\\pirate\\tete2NB.jpg");
-        
-    }
+public class GraphicsUtils {
 
-    private static void convertToBlackAndWhite(String inputFilePath, String outputFilePath) {
+    public static void convertToBlackAndWhite(String inputFilePath, String outputFilePath) {
         try{
             BufferedImage inputImage=ImageIO.read(new File(inputFilePath));
             int width = inputImage.getWidth();
@@ -40,6 +39,18 @@ public class Utils {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+    
+    public static Point computeLocationPawnInCase(Component box){
+        int dest_x = box.getLocation().x + box.getSize().width/2;
+        int dest_y = box.getLocation().y + box.getSize().height/2;
+        return new Point(dest_x, dest_y);
+    }
+    
+    public static Point computeLocationInsidePawn(Point location, PiratePawn pawn){
+        int dest_x = location.x - pawn.getSize().width/2 + pawn.getOffset();
+        int dest_y = location.y - pawn.getSize().height/2 + pawn.getOffset();
+        return new Point(dest_x, dest_y);
     }
     
 }

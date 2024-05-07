@@ -2,58 +2,51 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.graphics;
+package boundary.graphics.personalizedComponents;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.imageio.ImageIO;
 
 /**
  *
- * @author payrau
+ * @author corentin
  */
-public class Jack extends javax.swing.JPanel {
-    private BufferedImage image;
-private Image scaledImage;
-
+public class HeartPanel extends javax.swing.JPanel {
     /**
-     * Creates new form ImagePanel
+     * Creates new form PanelCoeur
      */
-    public Jack() {
+    public HeartPanel() {
         initComponents();
-        loadImage();
-  
-}
-    private void loadImage(){
-        
-    try{
-           image=ImageIO.read(new File("C:\\Users\\payra\\Desktop\\imagepirate\\tete2.jpg"));
-           scaledImage= image.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
-        }catch(IOException e){
-            throw new RuntimeException("Impossible de charger l'image",e);
-           }
-           
+        try{
+            imagePlein = ImageIO.read(new File(getClass().getResource("/coeurPlein.png").toURI()));
+            imageVide = ImageIO.read(new File(getClass().getResource("/coeurVide.png").toURI()));
         }
+        catch (URISyntaxException | IOException ex) {
+            System.out.println(ex);
+        }
+    }
     
+    public void repaintHeart(boolean plein){
+        this.plein = plein;
+        repaint();
+    }
+
     @Override
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if(scaledImage != null){
-            g.drawImage(scaledImage,0,0,this);
+        if (this.plein){
+            g.drawImage(imagePlein, 0, 0, 80, 80, this);
+        }
+        else{
+            g.drawImage(imageVide, 0, 0, 80, 80, this);
         }
     }
     
-    @Override
-    public Dimension getPreferredSize(){
-        if(scaledImage!=null){
-            return new Dimension(scaledImage.getWidth(this),scaledImage.getHeight(this));
-        }
-        return super.getPreferredSize();
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +56,8 @@ private Image scaledImage;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setPreferredSize(new java.awt.Dimension(80, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,7 +71,9 @@ private Image scaledImage;
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+    private BufferedImage imagePlein;
+    private BufferedImage imageVide;
+    private boolean plein = true;
 }
