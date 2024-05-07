@@ -10,11 +10,9 @@ import boundary.graphics.personalizedComponents.MainFrame;
 import boundary.graphics.personalizedComponents.PiratePawn;
 import java.awt.Component;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLayeredPane;
-import javax.swing.Timer;
 
 /*
  *  Va appeler des methodes implementés dans FunctionnalKernelAdapter
@@ -27,7 +25,8 @@ import javax.swing.Timer;
  */
 public class Dialog implements IPirates {
     
-    private FunctionnalKernelAdapter adapter;            
+    private FunctionnalKernelAdapter adapter;     
+    
     private List<PirateFace> listPirateFace = new ArrayList<>();
     private List<PiratePawn> listPiratePawn = new ArrayList<>();
     private List<HealthBar> listPirateHealth = new ArrayList<>();
@@ -37,17 +36,24 @@ public class Dialog implements IPirates {
     
     private int idPirate;
     
+    private SlidingPawn slidingPawn = new SlidingPawn();
     private PiratePawn movablePawn;
-    private CasePanel rightCase;
-    private Timer timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
-    private Timer timerX = new Timer(10, (ActionEvent e) -> {moveX(e);});
-    private Point location;
-    private Point destination;
+    private CasePanel rightDestination;
     
     private int nbDiceRunning = 0;
 
     public Dialog(FunctionnalKernelAdapter adapter) {
         this.adapter = adapter;
+        slidingPawn.setDialog(this);
+    }
+    
+    public void initGame(){
+        rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(0);
+        
+        for(PiratePawn pawn : listPiratePawn){
+            pawn.setBox(rightDestination);
+            pawn.moveTo(GraphicsUtils.computeLocationPawnInCase(rightDestination));
+        }
     }
     
     @Override
@@ -60,6 +66,34 @@ public class Dialog implements IPirates {
         layeredPaneGrid.setLayer(listPiratePawn.get(idPirate), javax.swing.JLayeredPane.MODAL_LAYER);
         
         idPirate = idNewPirate;
+    }
+    
+    @Override
+    public void movePirate(int idNewPirate, int box){
+        movablePawn = listPiratePawn.get(idNewPirate);
+        movablePawn.activate();
+        
+        rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(box);
+        rightDestination.putGreenBorder();
+    }
+    
+    public void verifyCaseMove(){
+        Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
+        movablePawn.setBox(arrivedCase);
+        if(arrivedCase.equals(rightDestination)){
+            movablePawn = null;
+            rightDestination.putBlackBorder();
+            adapter.moveFinished();
+        }
+        else{
+            System.out.println("mauvaise destination");
+        }
+    }
+    
+    public void eventMousePressedGrid(Point point) {
+        if(movablePawn != null){
+            slidingPawn.slidePawnToBox(movablePawn, gridModel.getGridPanel().getComponentAt(point));
+        }
     }
 
     @Override
@@ -83,79 +117,6 @@ public class Dialog implements IPirates {
             adapter.diceFinished();
         }
     }
-    
-    @Override
-    public void movePirate(int idNewPirate, int box){
-        PiratePawn pawn = listPiratePawn.get(idNewPirate);
-        movablePawn = pawn;
-        pawn.activate();
-        
-        CasePanel panelBox = (CasePanel) gridModel.getGridPanel().getComponent(box);
-        location = pawn.getLocation();
-        panelBox.putGreenBorder();
-        rightCase = panelBox;
-    }
-    
-    public void eventMousePressedGrid(Point point){
-        System.out.println("pressed in " + point);
-        if(movablePawn != null){
-            Component casePanel = gridModel.getGridPanel().getComponentAt(point);
-            destination = computeLocationPawnInCase(casePanel);
-            System.out.println("destination =  " + destination);
-            timerX.start();
-            timerY.start();
-        }
-    }
-    
-    public Point computeLocationPawnInCase(Component box){
-        System.out.println("size of box = " + box.getSize());
-        System.out.println("loc of box = " + box.getLocation());
-
-        int dest_x = box.getLocation().x + box.getSize().width/2;
-        System.out.println("dest_x = " + dest_x);
-        int dest_y = box.getLocation().y + box.getSize().height/2;
-        System.out.println("dest_y = " + dest_y);
-        return new Point(dest_x, dest_y);
-    }
-    
-    private void moveX(ActionEvent e){
-        if(location.x < destination.x){
-            location.translate(1, 0);
-        }
-        else{
-            location.translate(-1, 0);
-        }
-        movablePawn.moveTo(location); 
-        if(location.x == destination.x){
-            timerX.stop();
-            if(!timerY.isRunning()){
-                adapter.moveFinished();
-            }
-        }
-    }
-        
-    private void moveY(ActionEvent e){
-        if(location.y < destination.y){
-            location.translate(0, 1);
-        }
-        else{
-            location.translate(0, -1);
-        }
-        movablePawn.moveTo(location); 
-        if(location.y == destination.y){
-            timerY.stop();
-            if(!timerX.isRunning()){
-                adapter.moveFinished();
-            }
-        }
-    }
-    
-    public void isRightCase(){
-        movablePawn = null;
-        rightCase.putBlackBorder();
-        adapter.moveFinished();
-    }
-
 
     @Override
     public void display(String message) {

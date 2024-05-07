@@ -7,6 +7,7 @@ package boundary.graphics.personalizedComponents;
 import boundary.graphics.Dialog;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.Point;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -39,18 +40,8 @@ public class GridModel extends javax.swing.JPanel {
             gridPanel.add(myCase);   
         }
         
-        piratePawn2.setOffset(3);
+        piratePawn2.setOffset(6);
         piratePawn2.setColor(Color.yellow);
-        
-        Component panelCase = gridPanel.getComponent(0);
-        Point locat = new Point(panelCase.getSize().width/2, panelCase.getSize().height/2) ;
-        piratePawn1.moveTo(new Point(50, 50));
-        
-        System.out.println(" 1 is in " + piratePawn1.getLocation());
-
-        piratePawn2.moveTo(new Point(100, 100));
-        System.out.println("2 is in " + piratePawn2.getLocation());
-
     }
 
     public JLayeredPane getjLayeredPane1() {
@@ -155,7 +146,12 @@ public class GridModel extends javax.swing.JPanel {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         dialog.eventMousePressedGrid(evt.getPoint());
     }//GEN-LAST:event_formMousePressed
-
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        piratePawn1.resetLocation();
+        piratePawn2.resetLocation();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;
     private javax.swing.JLayeredPane jLayeredPane1;

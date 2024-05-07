@@ -4,7 +4,10 @@
  */
 package boundary.graphics.personalizedComponents;
 
+import boundary.graphics.GraphicsUtils;
+import boundary.graphics.SlidingPawn;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -15,11 +18,11 @@ import javax.swing.Timer;
  * @author noemi
  */
 public class PiratePawn extends javax.swing.JPanel {
+    
     private boolean activated;
     private int offset = 0;
-    
     private Color color = new Color(109, 7, 26);
-
+    private Component box;
     /**
      * Creates new form PiratePawn
      */
@@ -30,12 +33,14 @@ public class PiratePawn extends javax.swing.JPanel {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    public void setBox(Component box) {
+        this.box = box;
+    }
     
     public void moveTo(Point newLocation){
-        setLocation(newLocation.x - getSize().width/2 + offset, newLocation.y - getSize().height/2 + offset);
-        repaint();
+        setLocation(GraphicsUtils.computeLocationInsidePawn(newLocation, this));
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,6 +94,13 @@ public class PiratePawn extends javax.swing.JPanel {
     
     public int getOffset(){
         return offset;
+    }
+
+    void resetLocation() {
+        if(box != null){
+            Point location = GraphicsUtils.computeLocationPawnInCase(box);
+            moveTo(location);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

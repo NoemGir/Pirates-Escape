@@ -18,6 +18,7 @@ boundary\graphics\personalizedComponents\PirateFace.class
 scenario\GUIScenario.class
 boundary\graphics\personalizedComponents\GridModel.class
 boundary\graphics\personalizedComponents\HeartPanel.class
+boundary\graphics\SlidingPawn.class
 boundary\graphics\personalizedComponents\MainFrame$1.class
 boundary\graphics\personalizedComponents\GridModel$1.class
 control\MoveControl.class

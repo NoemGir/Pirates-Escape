@@ -38,6 +38,7 @@ public class GUIScenario {
         MainFrame mainFrame = new MainFrame();
         mainFrame.setDialog(dialog);
         mainFrame.showMainFrame();
+        dialog.initGame();
         dialog.movePirate(0, 5);
     }
 }
