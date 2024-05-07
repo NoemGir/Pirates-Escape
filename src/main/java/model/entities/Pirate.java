@@ -4,6 +4,7 @@ public class Pirate {
 	
 	private String name;
 	private int hp;
+        private int position = 0;
 	
 	
 	public Pirate(String name, int hp) {
@@ -29,5 +30,13 @@ public class Pirate {
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
+
+        public int getPosition() {
+            return position;
+        }
+
+        public void setPosition(int position) {
+            this.position = position;
+        }
 
 }

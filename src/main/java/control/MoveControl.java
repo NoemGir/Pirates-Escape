@@ -3,6 +3,7 @@ package control;
 import java.util.Random;
 
 import boundary.IBoundary;
+import model.entities.Dice;
 import model.entities.Board;
 import model.entities.Case;
 import model.entities.Pirate;
@@ -12,6 +13,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	private Board board;
 	private IBoundary boundary;
 	private ActivateBoxControl activateBoxControl;
+        private Dice dice;
 	
 	private boolean playAgain = false;
 	
@@ -20,11 +22,14 @@ public class MoveControl implements IMovePirate, IThrowDice {
 		this.boundary = boundary;
 		this.activateBoxControl = activateBoxControl;
 		this.board = board;
+                this.dice = new Dice();
 	}
 	
 	public void throwAndMove(Pirate pirate) {
-		int resDice = throwDice(pirate.getName());
-		move(pirate, resDice);
+		int d1 = dice.throwDice();
+                int d2 = dice.throwDice();
+                int distance = d1+d2;
+		move(pirate, dis"tance);
 	}
 
 	@Override
@@ -43,13 +48,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
 		int movement = de1 + de2;
 		boundary.throwDice1(de1);
 		boundary.throwDice2(de2);
-		
-		if(de1 == de2) {
-			playAgain = true;
-		}
-		else {
-			playAgain = false;
-		}
+		playAgain =de1 == de2;
 		return movement;
 	}
 
