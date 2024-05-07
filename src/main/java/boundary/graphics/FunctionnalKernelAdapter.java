@@ -1,6 +1,7 @@
 package boundary.graphics;
 
 import boundary.IBoundary;
+import control.IMovePirate;
 import control.IThrowDice;
 import control.PirateGameControl;
 import java.util.List;
@@ -30,23 +31,36 @@ import java.util.List;
  */
 public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
-    private Dialog dialog;
+    private IPirates dialog;
     private PirateGameControl pirateGameControl;
+    private IMovePirate movePirate;
     private IThrowDice throwDice;
     
+    
     @Override
-    public int getNumberOnDice() {
-        return throwDice.throwDice();
+    public void startGame() {
+        dialog.startGame();
+    }
+    
+    @Override
+    public int getNumberOnDice(int idDice) {
+        if(idDice == 0){
+            return throwDice.getFirstDiceDisplay();
+        }
+        else{
+            return throwDice.getSecondDiceDisplay();
+        }
     }
 
     @Override
     public void diceFinished() {
-            // TODO Auto-generated method stub
+        dialog.desactivateThrowDice();
+        throwDice.doubleDicesFinished();
     }
 
     @Override
     public void moveFinished() {
-            // TODO Auto-generated method stub
+        movePirate.moveFinished();
     }
 
     @Override
@@ -56,45 +70,34 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
 
     @Override
-    public void throwDice1(int affichage) {
-            // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void throwDice2(int affichage) {
-            // TODO Auto-generated method stub
-
+    public void throwDoubleDice() {
+        dialog.activateThrowDice();
     }
 
 
     @Override
-    public void displayPV(String pirateName, int health) {
-            // TODO Auto-generated method stub
-
+    public void displayPV(String pirateName, int idPirate, int health) {
+        dialog.changeHeart(idPirate, health);
     }
 
     @Override
-    public String askPirateName() {
-            // TODO Auto-generated method stub
-            return null;
+    public String askPirateName(int idPirate) {
+            return dialog.askName(idPirate);
     }
 
     @Override
     public void endGame(boolean won, String pirateName, String reason) {
-            // TODO Auto-generated method stub
-
+            dialog.endGame();
     }
 
     @Override
-    public void changeTurn(String name) {
-            // TODO Auto-generated method stub
-
+    public void changePlayer(String name, int idPirate) {
+        dialog.changePirate(idPirate);
     }
 
     @Override
-    public void movePirate(String pirateName, String box) {
-            // TODO Auto-generated method stu
+    public void movePirate(String pirateName, int idPirate, String box, int boxNumber) {
+            dialog.movePirate( idPirate, boxNumber);
     }
 
     public void setDialog(Dialog dialog) {
@@ -104,7 +107,10 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public void setThrowDice(IThrowDice throwDice) {
         this.throwDice = throwDice;
     }
-    
-    
 
+    public void setMovePirate(IMovePirate movePirate) {
+        this.movePirate = movePirate;
+    }
+    
+    
 }

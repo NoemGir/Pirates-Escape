@@ -5,8 +5,9 @@ import java.util.function.*;
 
 public class GargamelleCase extends Case {
 
-	public GargamelleCase(String name, int number) {
-		super(name, number);
+	public GargamelleCase(int number) {
+		super(number);
+                setName("Gargamelle");
 	}
 
 	@Override

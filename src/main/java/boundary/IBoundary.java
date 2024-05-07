@@ -24,20 +24,17 @@ public interface IBoundary {
 	/* affichage du lançage de dé, on lui donne le resultat*/
 	/* lance les dés, puis demande au controleur via ILancerDe pour obtenir le résultat
 	*/
+        public void startGame();
 	
-	public void throwDice1(int display);
-	public void throwDice2(int display);
+	public void throwDoubleDice();
 	
-	/* seul le jeton qui corrrspond a au pirate actel peut etre déplacé, et il doit etre glissé*/
-	/* en console : le pirate tant bouge jusqu'a la case tant  */
+	public void displayPV(String pirateName, int idPirate, int health);
 	
-	public void displayPV(String pirateName, int health);
-	
-	public String askPirateName();
+	public String askPirateName(int idPirate);
 	
 	public void endGame(boolean won, String pirateName, String reason);
 
-	public void changeTurn(String name);
+	public void changePlayer(String name, int idPirate);
 
-	void movePirate(String pirateName, String box);
+	void movePirate(String pirateName, int idPirate, String box, int boxNumber);
 }

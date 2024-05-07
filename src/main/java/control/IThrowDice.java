@@ -19,5 +19,9 @@ package control;
 /* tous les controleurs qui ont besoin de lancer des dés, ils s'inscrivent en ILancéDé */
 public interface IThrowDice {
 	
-	public int throwDice();
+	public int getFirstDiceDisplay();
+        
+        public int getSecondDiceDisplay();
+        
+        public void doubleDicesFinished();
 }

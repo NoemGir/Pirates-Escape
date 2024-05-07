@@ -5,8 +5,9 @@ import java.util.function.*;
 
 public class SwapCase extends Case {
 
-	public SwapCase(String name, int number) {
-		super(name, number);
+	public SwapCase(int number) {
+		super(number);
+                setName("Swap");
 	}
 	
 	@Override

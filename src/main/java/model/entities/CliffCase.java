@@ -9,8 +9,9 @@ public class CliffCase extends Case {
 	* @param number
 	* @param destination
 	*/
-	public CliffCase(String name, Integer number) {
-		super(name, number);
+	public CliffCase(int number) {
+		super(number);
+                setName("Falaise");
 	}
 	
 	@Override

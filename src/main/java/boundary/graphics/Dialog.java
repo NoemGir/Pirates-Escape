@@ -1,6 +1,5 @@
 package boundary.graphics;
 
-import boundary.IPirates;
 import boundary.graphics.personalizedComponents.CasePanel;
 import boundary.graphics.personalizedComponents.PirateFace;
 import boundary.graphics.personalizedComponents.DiceCouple;
@@ -12,6 +11,7 @@ import java.awt.Component;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Icon;
 import javax.swing.JLayeredPane;
 
 /*
@@ -47,12 +47,35 @@ public class Dialog implements IPirates {
         slidingPawn.setDialog(this);
     }
     
-    public void initGame(){
+    @Override
+    public void startGame() {
         rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(0);
         
         for(PiratePawn pawn : listPiratePawn){
             pawn.setBox(rightDestination);
             pawn.moveTo(GraphicsUtils.computeLocationPawnInCase(rightDestination));
+        }    
+        diceCouple.setEnabled(false);
+        mainFrame.showMainFrame();
+    }
+    
+    @Override
+    public void endGame() {
+        mainFrame.dispose();
+    }
+
+    @Override
+    public String askName(int idPirate) {
+        Icon icon = GraphicsUtils.getIcon(listPirateFace.get(idPirate).getImageName());
+        String name = mainFrame.popUpAskName(icon);
+        if(name != null && !name.equals("")){
+            System.out.println("nom donné = '" + name + "'");
+            return name;
+        }
+        else{
+            System.out.println("Le nom donné est incorrect");
+            System.exit(1);
+            return null;
         }
     }
     
@@ -107,8 +130,8 @@ public class Dialog implements IPirates {
             diceCouple.setEnabled(false);
     }
     
-    public int getDiceResult(){
-        return adapter.getNumberOnDice();
+    public int getDiceResult(int idDice){
+        return adapter.getNumberOnDice(idDice);
     }
     
     public void diceFinished(){

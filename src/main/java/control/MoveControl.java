@@ -18,48 +18,68 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	private Board board;
 	private IBoundary boundary;
 	private ActivateBoxControl activateBoxControl;
-        private Dice dice;
+        private PirateGameControl pirateGameControl;
+        
+        private Pirate actualPirate;
+        
+        private Dice dice1;
+        private Dice dice2;
 
 	private boolean playAgain = false;
-
 
 	public MoveControl(IBoundary boundary, ActivateBoxControl activateBoxControl, Board board) {
 		this.boundary = boundary;
 		this.activateBoxControl = activateBoxControl;
 		this.board = board;
-                this.dice = new Dice();
-	}
-
-	public void throwAndMove(Pirate pirate) {
-		int d1 = dice.throwDice();
-                int d2 = dice.throwDice();
-                int distance = d1+d2;
-		move(pirate, dis"tance);
+                this.dice1 = new Dice();
+                this.dice2 = new Dice();
 	}
 
 	@Override
 	public void move(Pirate pirate, int value) {
-		Case box = board.move(pirate.getName(), value);
-		boundary.movePirate(pirate.getName(), box.getName());
-		activateBoxControl.activateBox(pirate, box);
+            Case box = board.move(pirate.getName(), value);
+            boundary.movePirate(pirate.getName(), pirate.getIdPirate(), box.getName(), box.getNumber());
+            activateBoxControl.activateBox(pirate, box);
 	}
+        
+        public void throwDiceMovement(Pirate pirate){
+            actualPirate = pirate;
+            dice1.throwDice();
+            dice2.throwDice();
+            
+            boundary.throwDoubleDice();
+        }
+        
+        @Override
+        public void doubleDicesFinished() {
+            int distance = dice1.getDisplayValue() + dice2.getDisplayValue();
+            move(actualPirate, distance);
+        }
+    
+        @Override
+        public void moveFinished() {
+            if(dice1.getDisplayValue() == dice2.getDisplayValue()){
+               throwDiceMovement(actualPirate);
+            }
+            else{
+                pirateGameControl.newPlayerTurn(actualPirate);
+            }
+        }
 
 
 	@Override
-	public int throwDice() {
-		Random ran = new Random();
-		int de1 = ran.nextInt(6)+1;
-		int de2 = ran.nextInt(6)+1;
-		int movement = de1 + de2;
-		boundary.throwDice1(de1);
-		boundary.throwDice2(de2);
-		playAgain =de1 == de2;
-		return movement;
+	public int getFirstDiceDisplay() {
+            return dice1.getDisplayValue();
+	}
+        
+	@Override
+	public int getSecondDiceDisplay() {
+            return dice2.getDisplayValue();
 	}
 
-	public boolean isPlayAgain() {
-		return playAgain;
-	}
-
-
+    public void setPirateGameControl(PirateGameControl pirateGameControl) {
+        this.pirateGameControl = pirateGameControl;
+    }
+        
+        
 }

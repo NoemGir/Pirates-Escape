@@ -19,8 +19,11 @@ import java.util.List;
  * */
 public interface IFunctionnalKernel {
 	
-	public int getNumberOnDice();
+	public int getNumberOnDice(int idDice);
+        
 	public void diceFinished();
+        
         public void moveFinished();
+        
 	public List<String> getPirateNames();
 }

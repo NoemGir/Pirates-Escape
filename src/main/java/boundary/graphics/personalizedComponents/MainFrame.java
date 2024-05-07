@@ -7,6 +7,9 @@ package boundary.graphics.personalizedComponents;
 import boundary.graphics.Dialog;
 import java.awt.Component;
 import java.awt.Point;
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -192,6 +195,21 @@ public class MainFrame extends javax.swing.JFrame {
         return displayTextArea.getText();
     }
     
+    public String popUpAskName(Icon icon) {
+        JTextField nameTextField = new JTextField();
+        
+        JOptionPane.showOptionDialog(null,
+            nameTextField,
+            "Donnez le nom du pirate :",
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            icon,
+            null,
+            null
+        );
+        return nameTextField.getText();
+    }
+    
     public void showMainFrame() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -239,4 +257,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel rightPanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
+
 }

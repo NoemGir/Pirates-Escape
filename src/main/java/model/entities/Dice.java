@@ -11,12 +11,23 @@ import java.util.Random;
  * @author Robin
  */
 public class Dice {
+    
+    private int displayValue = 1;
+    
     public Dice(){
         
     }
     public int throwDice() {
-		Random ran = new Random();
-        	return ran.nextInt(6)+1;
+            Random ran = new Random();
+            displayValue = ran.nextInt(6)+1;
+            System.out.println("dice : " + displayValue);
+            return displayValue;
 	}
+
+    public int getDisplayValue() {
+        return displayValue;
+    }
+    
+    
     
 }

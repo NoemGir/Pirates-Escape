@@ -49,6 +49,12 @@ public class PirateFace extends javax.swing.JPanel {
         loadImage();
         repaint();
     }
+
+    public String getImageName() {
+        return imageName;
+    }
+    
+    
     
     @Override
     protected void paintComponent(Graphics g){

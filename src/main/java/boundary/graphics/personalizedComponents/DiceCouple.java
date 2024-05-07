@@ -105,8 +105,8 @@ public class DiceCouple extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int display1 = dialog.getDiceResult();
-        int display2 = dialog.getDiceResult();
+        int display1 = dialog.getDiceResult(0);
+        int display2 = dialog.getDiceResult(1);
         displayDices(display1,display2);
     }//GEN-LAST:event_jButton1ActionPerformed
 

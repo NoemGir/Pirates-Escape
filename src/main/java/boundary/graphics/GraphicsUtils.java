@@ -7,11 +7,17 @@ package boundary.graphics;
 import boundary.graphics.personalizedComponents.PiratePawn;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -53,4 +59,17 @@ public class GraphicsUtils {
         return new Point(dest_x, dest_y);
     }
     
+    public static Icon getIcon(String path){       
+        URL imageURL = new GraphicsUtils().getClass().getResource(path);
+        ImageIcon imageIcon = new ImageIcon(imageURL);
+        if(imageIcon != null){
+            Image image = imageIcon.getImage(); // Transform it
+            Image scaledImage = image.getScaledInstance(70, 70, java.awt.Image.SCALE_SMOOTH);
+            return new ImageIcon(scaledImage); 
+        }
+        else{
+            System.out.println("IMAGE : " + imageURL + " non trouvée");
+            return null;
+        }
+    }
 }

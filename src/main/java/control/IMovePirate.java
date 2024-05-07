@@ -11,5 +11,7 @@ import model.entities.Pirate;
  * implementer cette interface.
  */
 public interface IMovePirate {
+        
+        public void moveFinished();
 	public void move(Pirate pirate, int value);
 }

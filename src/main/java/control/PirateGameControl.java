@@ -1,7 +1,9 @@
 package control;
 
 import boundary.IBoundary;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import model.entities.Board;
 import model.entities.Pirate;
 
@@ -21,51 +23,71 @@ public class PirateGameControl {
 	public final int HEALTH_MAX = 6;
 
 	private Board board;
+        
 	private IBoundary boundary;
-	private MoveControl controlMove;
-	private VerifyEndGameControl verifyEndGameControl;
-        private List<String> pirateNames;
+        private MoveControl moveControl;
+        private VerifyEndGameControl verifyEndControl;
+        
+        private List<String> pirateNames = new ArrayList<>();
+        
+        ListIterator<Pirate> itPirate;
 	
-	public PirateGameControl(Board board, IBoundary boundary, MoveControl controlMove, VerifyEndGameControl verifyEndGameControl) {
+	public PirateGameControl(Board board, IBoundary boundary, MoveControl moveControl, VerifyEndGameControl verifyEndControl) {
 		this.board = board;
 		this.boundary = boundary;
-		this.controlMove = controlMove;
-		this.verifyEndGameControl = verifyEndGameControl;
+                this.moveControl = moveControl;
+                this.verifyEndControl = verifyEndControl;
 	}
+        
+        public void startGame() {
+            boundary.startGame();
+            initGame();  
+            newPlayerTurn(null);
+	}
+        
+        public void newPlayerTurn(Pirate pirate){
+            if(verifyEndControl.gameEnded(board.getListPirate(), pirate )){
+                System.out.println("jeux bien terminé !");
+                return;
+            }
+            Pirate newPirate = changePlayer();
+            moveControl.throwDiceMovement(newPirate);     
+        }
+        
+        private Pirate changePlayer(){
+            if(!itPirate.hasNext()){ 
+                itPirate = board.getListPirate().listIterator();
+            }
+            
+            Pirate actualPlayer = itPirate.next();
+
+            for( ;actualPlayer.isDead(); actualPlayer = itPirate.next()){
+                if(!itPirate.hasNext()){ 
+                    itPirate = board.getListPirate().listIterator();
+                }
+            }
+
+            boundary.changePlayer(actualPlayer.getName(), actualPlayer.getIdPirate());
+            return actualPlayer;
+        }
 	
-	public Pirate[] initGame() {
-		Pirate[] players = new Pirate[NB_PLAYER];
+	private void initGame() {
 		
 		for(int i = 0; i < NB_PLAYER; i++) {
-			String newName = boundary.askPirateName();
+			String newName = boundary.askPirateName(i);
+                        
+                        Pirate newPirate = new Pirate(i, newName, HEALTH_MAX);
                         pirateNames.add(newName);
-			Pirate newPirate = new Pirate(newName, HEALTH_MAX);
-			board.addPlayer(newName);
-			players[i] = newPirate;
-		}
-		return players;
+			board.addPlayer(newPirate);
+                }
+                
+                itPirate = board.getListPirate().listIterator();
+
 	}
 
     public List<String> getPirateNames() {
         return pirateNames;
     }
 
-	public void startGame() {
-		
-		Pirate[] players = initGame();
-		
-		boolean ended = false;
-		
-		for(int i = 0; !ended; i++) {
-			Pirate player = players[i%NB_PLAYER];
-			if(!player.isDead()) {
-				boundary.changeTurn(player.getName());
-				do {
-					controlMove.throwAndMove(player);
-					ended = verifyEndGameControl.gameEnded(players, player.getName());
-				}
-				while(controlMove.isPlayAgain() && !ended);
-			}
-		}
-	}
+
 }

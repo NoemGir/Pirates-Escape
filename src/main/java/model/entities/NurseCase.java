@@ -5,8 +5,9 @@ import java.util.function.*;
 
 public class NurseCase extends Case {
 
-	public NurseCase(String name, int number) {
-		super(name, number);
+	public NurseCase(int number) {
+		super(number);
+                setName("Nurse");
 	}
 	
 	@Override

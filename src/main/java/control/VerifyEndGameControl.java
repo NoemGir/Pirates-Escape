@@ -17,9 +17,9 @@ public class VerifyEndGameControl {
 		this.boundary = boundary;
 	}
 	
-	public boolean reachedEnd(String player) {
-		if( board.getLocation().containsValue(board.getNbCase()-1)) {
-			boundary.endGame(true, player, "il a atteint le bateau en premier ! :D");
+	public boolean reachedEnd(Pirate player) {
+		if(player != null && player.getPosition() == 29) {
+			boundary.endGame(true, player.getName(), "il a atteint le bateau en premier ! :D");
 			return true;
 		}
 		return false;
@@ -47,7 +47,7 @@ public class VerifyEndGameControl {
 	}
 	
 	
-	public boolean gameEnded(Pirate[] players, String actualPlayer) {
-		return countDeath(List.of(players)) || reachedEnd(actualPlayer);
+	public boolean gameEnded(List<Pirate> players, Pirate actualPlayer) {
+		return countDeath(players) || reachedEnd(actualPlayer);
 	}
 }

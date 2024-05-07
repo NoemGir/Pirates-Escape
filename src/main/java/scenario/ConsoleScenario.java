@@ -22,17 +22,16 @@ public class ConsoleScenario {
 		Board board = new Board(NB_CASES, NB_PLAYERS);
 		
 		for(int i = 0; i < NB_CASES; i++) {
-			board.addCase(new Case("Case " + (i+1)));
+			board.addCase(new Case(i));
 		}
 		
 		PirateGameBoundary pirateGameBoundary = new PirateGameBoundary();
 		
 		ActivateBoxControl activateBoxControl = new ActivateBoxControl();
-		VerifyEndGameControl VerifyEndGameControl = new VerifyEndGameControl(pirateGameBoundary, board);
-		MoveControl moveControl = new MoveControl(pirateGameBoundary, activateBoxControl, board);
-		PirateGameControl pirateGameControl = new PirateGameControl(board, pirateGameBoundary, moveControl, VerifyEndGameControl);
-		
-		
+		MoveControl moveControl = new MoveControl(pirateGameBoundary,activateBoxControl, board);
+                VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(pirateGameBoundary, board);
+                PirateGameControl pirateGameControl = new PirateGameControl(board, pirateGameBoundary,moveControl, verifyEndGameControl);
+     
 		pirateGameControl.startGame();
 	}
 }

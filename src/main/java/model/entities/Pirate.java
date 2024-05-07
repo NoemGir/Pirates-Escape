@@ -3,16 +3,17 @@ package model.entities;
 import java.util.function.Function;
 
 public class Pirate {
-	private Integer position;
+        private int idPirate;
+	private Integer position = 0;
 	private String name;
 	private Integer hp;
 
 
-	public Pirate(String name, Integer hp) {
-		this.name = name;
-		this.hp = hp;
+	public Pirate(int idPirate, String name, Integer hp) {
+            this.idPirate = idPirate;
+            this.name = name;
+            this.hp = hp;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -56,5 +57,11 @@ public class Pirate {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+    public int getIdPirate() {
+        return idPirate;
+    }
+        
+        
 
 }

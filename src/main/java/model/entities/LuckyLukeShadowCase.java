@@ -5,8 +5,9 @@ import java.util.function.*;
 
 public class LuckyLukeShadowCase extends Case {
 
-	public LuckyLukeShadowCase(String name, int number) {
-		super(name, number);
+	public LuckyLukeShadowCase(int number) {
+		super(number);
+                setName("Lucky Luke Shadow");
 	}
 	
 	@Override

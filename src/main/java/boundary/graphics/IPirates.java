@@ -1,4 +1,4 @@
-package boundary;
+package boundary.graphics;
 
 
 
@@ -22,10 +22,21 @@ package boundary;
  * */
 public interface IPirates {
 	
+        public void startGame();
+        
+        public void endGame();
+        
+        public String askName(int idPirate);
+        
 	public void changePirate(int idPirate);
+        
 	public void activateThrowDice();
+        
         public void desactivateThrowDice();
+        
 	public void display(String message);
+        
         public void changeHeart(int idPirate, int hp);
+        
         public void movePirate(int idPirate, int box);
 }

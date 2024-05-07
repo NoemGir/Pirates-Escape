@@ -1,14 +1,12 @@
 package model.entities;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class Board{
 	
 	private int nbCase;
-	private LinkedList<Pirate> listePirate= new LinkedList<>();
+	private LinkedList<Pirate> listPirate = new LinkedList<>();
 	private List<Case> cases = new LinkedList<>();
 	
 	public Board(int nbCase, int nbPlayer) {
@@ -18,8 +16,9 @@ public class Board{
 
 	public Case move(String pirate, int distance) {
                 int position = getPlayer(pirate).getPosition();
-                int destination =position+distance;
-                if(destination<=this.nbCase){
+                System.out.println("players " + pirate +" : position = " + position + " desination = " + (position + distance));
+                int destination = position + distance;
+                if(destination <= this.nbCase){
                     getPlayer(pirate).setPosition(destination);
                 }else{
                     getPlayer(pirate).setPosition(this.nbCase-(destination-this.nbCase));
@@ -31,17 +30,22 @@ public class Board{
 		return getPlayer(pirate).getPosition();
 	}
 	
-	public void addPlayer(String playerName) {
-		listePirate.add(new Pirate(playerName, 5));
+	public void addPlayer(Pirate player) {
+		listPirate.add(player);
 	}
         public Pirate getPlayer(String playerName) {
-		for(Pirate p : listePirate){
+		for(Pirate p : listPirate){
                     if(p.getName().equals(playerName)){
                         return p;
                     }
                 }
                 return null;
 	}
+
+    public LinkedList<Pirate> getListPirate() {
+        return listPirate;
+    }
+        
 	public int getNbCase() {
 		return nbCase;
 	}

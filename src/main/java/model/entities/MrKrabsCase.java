@@ -5,8 +5,9 @@ import java.util.function.*;
 
 public class MrKrabsCase extends Case {
 
-	public MrKrabsCase(String name, int number) {
-		super(name, number);
+	public MrKrabsCase(int number) {
+		super(number);
+                setName("MrKrabs");
 	}
 	
 	@Override

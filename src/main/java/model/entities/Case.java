@@ -4,12 +4,10 @@ import java.util.function.*;
 import java.util.*;
 
 public class Case {
-	private String name;
+	private String name = "Case Normale";
 	private int number;
 	
-	public Case(String name, int number) {
-		super();
-		this.name = name;
+	public Case(int number) {
 		this.number = number;
 	}
 
@@ -28,4 +26,14 @@ public class Case {
 	public String getName() {
 		return name;
 	}
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+    
+    
 }
