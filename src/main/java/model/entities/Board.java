@@ -8,42 +8,42 @@ import java.util.Map;
 public class Board{
 	
 	private int nbCase;
-	private Map<String, Integer> location = new HashMap<>();
+	private LinkedList<Pirate> listePirate= new LinkedList<>();
 	private List<Case> cases = new LinkedList<>();
 	
 	public Board(int nbCase, int nbPlayer) {
-		this.nbCase = nbCase;	
+		this.nbCase = nbCase;
 	}
 	
 
 	public Case move(String pirate, int distance) {
-		int locationPirate = location.get(pirate);
-		int destination = locationPirate + distance;
-		
-		if( destination < nbCase) {
-			location.put(pirate, destination); 
-		} 
-		else {
-			location.put(pirate, 2*(nbCase-1) - distance - locationPirate);
-		}
-		return cases.get(location.get(pirate));
+                int position = getPlayer(pirate).getPosition();
+                int destination =position+distance;
+                if(destination<=this.nbCase){
+                    getPlayer(pirate).setPosition(destination);
+                }else{
+                    getPlayer(pirate).setPosition(this.nbCase-(destination-this.nbCase));
+                }
+                return cases.get(getPlayer(pirate).getPosition());
 	}
 	
 	public int getLocationPlayer(String pirate) {
-		return location.get(pirate);
+		return getPlayer(pirate).getPosition();
 	}
 	
 	public void addPlayer(String playerName) {
-		location.put(playerName, 0);
-		
+		listePirate.add(new Pirate(playerName, 5));
 	}
-
+        public Pirate getPlayer(String playerName) {
+		for(Pirate p : listePirate){
+                    if(p.getName().equals(playerName)){
+                        return p;
+                    }
+                }
+                return null;
+	}
 	public int getNbCase() {
 		return nbCase;
-	}
-
-	public Map<String, Integer> getLocation() {
-		return location;
 	}
 	
 	public void addCase(Case box) {

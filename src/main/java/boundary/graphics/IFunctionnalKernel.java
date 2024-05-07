@@ -1,5 +1,7 @@
 package boundary.graphics;
 
+import java.util.List;
+
 
 
 /* Deuxième interface de la partie Graphique
@@ -17,7 +19,8 @@ package boundary.graphics;
  * */
 public interface IFunctionnalKernel {
 	
-	public void getNumberOnDice();
+	public int getNumberOnDice();
 	public void diceFinished();
-	public void getPirateNames();
+        public void moveFinished();
+	public List<String> getPirateNames();
 }

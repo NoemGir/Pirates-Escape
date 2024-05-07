@@ -1,6 +1,7 @@
 package control;
 
 import boundary.IBoundary;
+import java.util.List;
 import model.entities.Board;
 import model.entities.Pirate;
 
@@ -23,6 +24,7 @@ public class PirateGameControl {
 	private IBoundary boundary;
 	private MoveControl controlMove;
 	private VerifyEndGameControl verifyEndGameControl;
+        private List<String> pirateNames;
 	
 	public PirateGameControl(Board board, IBoundary boundary, MoveControl controlMove, VerifyEndGameControl verifyEndGameControl) {
 		this.board = board;
@@ -36,13 +38,18 @@ public class PirateGameControl {
 		
 		for(int i = 0; i < NB_PLAYER; i++) {
 			String newName = boundary.askPirateName();
+                        pirateNames.add(newName);
 			Pirate newPirate = new Pirate(newName, HEALTH_MAX);
 			board.addPlayer(newName);
 			players[i] = newPirate;
 		}
 		return players;
 	}
-	
+
+    public List<String> getPirateNames() {
+        return pirateNames;
+    }
+
 	public void startGame() {
 		
 		Pirate[] players = initGame();
