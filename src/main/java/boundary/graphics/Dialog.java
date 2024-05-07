@@ -97,19 +97,27 @@ public class Dialog implements IPirates {
     }
     
     public void eventMousePressedGrid(Point point){
+        System.out.println("pressed in " + point);
         if(movablePawn != null){
             Component casePanel = gridModel.getGridPanel().getComponentAt(point);
             destination = computeLocationPawnInCase(casePanel);
+            System.out.println("destination =  " + destination);
             timerX.start();
             timerY.start();
         }
     }
     
     public Point computeLocationPawnInCase(Component box){
+        System.out.println("size of box = " + box.getSize());
+        System.out.println("loc of box = " + box.getLocation());
+
         int dest_x = box.getLocation().x + box.getSize().width/2;
+        System.out.println("dest_x = " + dest_x);
         int dest_y = box.getLocation().y + box.getSize().height/2;
+        System.out.println("dest_y = " + dest_y);
         return new Point(dest_x, dest_y);
     }
+    
     private void moveX(ActionEvent e){
         if(location.x < destination.x){
             location.translate(1, 0);

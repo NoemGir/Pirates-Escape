@@ -41,7 +41,7 @@ public class CasePanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(500, 500));
+        setMaximumSize(new java.awt.Dimension(1000, 1000));
         setPreferredSize(new java.awt.Dimension(70, 70));
 
         jLabel1.setText("jLabel1");

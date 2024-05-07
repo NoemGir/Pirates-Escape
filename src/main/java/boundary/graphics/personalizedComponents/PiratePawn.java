@@ -32,8 +32,7 @@ public class PiratePawn extends javax.swing.JPanel {
     }
     
     public void moveTo(Point newLocation){
-        System.out.println("boundary.graphics.personalizedComponents.PiratePawn.moveTo()" + (newLocation.x - getSize().width + offset) + " " + (newLocation.y - getSize().height + offset));
-        setLocation(newLocation.x - getSize().width + offset, newLocation.y - getSize().height + offset);
+        setLocation(newLocation.x - getSize().width/2 + offset, newLocation.y - getSize().height/2 + offset);
         repaint();
     }
    
