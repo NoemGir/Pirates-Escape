@@ -66,7 +66,7 @@ public class Dialog implements IPirates {
 
     @Override
     public String askName(int idPirate) {
-        Icon icon = GraphicsUtils.getIcon(listPirateFace.get(idPirate).getImageName());
+        Icon icon = GraphicsUtils.getIcon(listPirateFace.get(idPirate).getImageName()+".jpg");
         String name = mainFrame.popUpAskName(icon);
         if(name != null && !name.equals("")){
             System.out.println("nom donné = '" + name + "'");
@@ -81,8 +81,8 @@ public class Dialog implements IPirates {
     
     @Override
     public void changePirate(int idNewPirate) {
-        listPirateFace.get(idPirate).greyImage();
-        listPirateFace.get(idNewPirate).colorImage();
+        for(PirateFace p : listPirateFace)
+            p.ChangeImage();
         
         JLayeredPane layeredPaneGrid = gridModel.getjLayeredPane1();
         layeredPaneGrid.setLayer(listPiratePawn.get(idPirate), javax.swing.JLayeredPane.PALETTE_LAYER);

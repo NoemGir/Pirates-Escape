@@ -18,7 +18,7 @@ public class PirateFace extends javax.swing.JPanel {
     private Image scaledImage;
     private Image color; 
     private Image grey; 
-    private String imageName = "/jackSparrow.jpg";
+    private String imageName = "/jackSparrow";
     /**
      * Creates new form ImagePanel
      */
@@ -31,19 +31,22 @@ public class PirateFace extends javax.swing.JPanel {
     private void loadImage(){
         
         try{
-           BufferedImage image = ImageIO.read(new File(getClass().getResource(imageName).toURI()));
+           BufferedImage image = ImageIO.read(new File(getClass().getResource(imageName+".jpg").toURI()));
            scaledImage = image.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
+           color = scaledImage;
+           grey = ImageIO.read(new File(getClass().getResource(imageName+"-modified.jpg").toURI()));
         }catch(URISyntaxException | IOException e){
             throw new RuntimeException("Impossible de charger l'image",e);
         }   
     }
     
-    public void colorImage(){
-        //TODO
-    }
-    
-    public void greyImage(){
-        //TODO
+    public void ChangeImage(){
+        if(scaledImage.equals(color)){
+            scaledImage=grey;
+        }else {
+            scaledImage=color;
+        }
+        repaint();
     }
 
     public void setPirateImage(String pathName) {

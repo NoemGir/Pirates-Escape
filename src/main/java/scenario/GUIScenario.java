@@ -9,6 +9,7 @@ import control.PirateGameControl;
 import control.VerifyEndGameControl;
 import model.entities.Board;
 import model.entities.Case;
+import model.entities.CliffCase;
 import static scenario.ConsoleScenario.NB_CASES;
 import static scenario.ConsoleScenario.NB_PLAYERS;
 
@@ -25,7 +26,14 @@ public class GUIScenario {
         Board board = new Board(NB_CASES, NB_PLAYERS);
 		
         for(int i = 0; i < NB_CASES; i++) {
-                board.addCase(new Case(i));
+            switch(i){
+                case 1:
+                   board.addCase(new Case(i));
+                default:
+                   board.addCase(new CliffCase(i));
+
+            }
+                
         }
                 
         FunctionnalKernelAdapter functionnalKernelAdapter = new FunctionnalKernelAdapter();

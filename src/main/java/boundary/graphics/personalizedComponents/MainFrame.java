@@ -23,7 +23,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        pirateFace2.setPirateImage("/harlock.jpg");
+        pirateFace2.setPirateImage("/harlock");
+        pirateFace2.ChangeImage();
     }
 
     public void setDialog(Dialog dialog) {
