@@ -19,10 +19,10 @@ import static scenario.ConsoleScenario.NB_PLAYERS;
  *  Lancer l'application en mode GUI, avec interface graphique et possibilité de bouger les jetons
  */
 public class GUIScenario {
-    
+
     public static void main(String[] args) {
         Board board = new Board(NB_CASES, NB_PLAYERS);
-		
+
         for(int i = 0; i < NB_CASES; i++) {
             switch(i){
                 case 0:
@@ -45,27 +45,26 @@ public class GUIScenario {
                    break;
                 default:
                    board.addCase(new CliffCase(i));
-
             }
-                
+
         }
-                
+
         FunctionnalKernelAdapter functionnalKernelAdapter = new FunctionnalKernelAdapter();
         Dialog dialog = new Dialog(functionnalKernelAdapter);
         ActivateBoxControl activateBoxControl = new ActivateBoxControl();
         MoveControl moveControl = new MoveControl(functionnalKernelAdapter,activateBoxControl, board);
-	VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(functionnalKernelAdapter);
-	PirateGameControl pirateGameControl = new PirateGameControl(board, functionnalKernelAdapter,moveControl, verifyEndGameControl);
-        
+        VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(functionnalKernelAdapter);
+        PirateGameControl pirateGameControl = new PirateGameControl(board, functionnalKernelAdapter,moveControl, verifyEndGameControl);
+
         functionnalKernelAdapter.setThrowDice(moveControl);
         functionnalKernelAdapter.setDialog(dialog);
         functionnalKernelAdapter.setMovePirate(moveControl);
         functionnalKernelAdapter.setPirateGameControl(pirateGameControl);
         moveControl.setPirateGameControl(pirateGameControl);
-        
+
         MainFrame mainFrame = new MainFrame();
         mainFrame.setDialog(dialog);
-        
+
         pirateGameControl.startGame();
     }
 }

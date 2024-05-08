@@ -16,21 +16,21 @@ import java.awt.Point;
  * @author Noémie GIREAUD
  */
 public class PiratePawn extends javax.swing.JPanel {
-    
+
     private int offset = 0;
-    private Color color = new Color(255, 0, 0);
+    private Color color = Color.red;
     private Component box;
-    
+
     /**
      * Creates new form PiratePawn
      */
     public PiratePawn() {
         initComponents();
     }
-    
+
     /**
      * Définie la couleur du pion
-     * 
+     *
      * @param color future couleur du pion
      */
     public void setColor(Color color) {
@@ -39,16 +39,16 @@ public class PiratePawn extends javax.swing.JPanel {
 
     /**
      * Défine la case du pion
-     * 
+     *
      * @param box La case sur laquelle est placée le pion
      */
     public void setBox(Component box) {
         this.box = box;
     }
-    
+
     /**
      * Défine la localisation du pion
-     * 
+     *
      * @param newLocation Lles coordonnées de la nouvelle localisation
      */
     public void moveTo(Point newLocation){
@@ -80,13 +80,13 @@ public class PiratePawn extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     @Override
     public void paintComponent(Graphics g){
         g.setColor(color);
         int[] xPoints = {getHeight()/2, getHeight(), getHeight()/2, 0};
         int[] yPoints = {0,getWidth()/2 , getWidth(), getWidth()/2};
-        g.fillPolygon(xPoints, yPoints, 4);  
+        g.fillPolygon(xPoints, yPoints, 4);
     }
 
     /**
@@ -96,21 +96,21 @@ public class PiratePawn extends javax.swing.JPanel {
     public void setOffset(int i) {
         this.offset = i;
     }
-    
+
     /**
      * Récupère le offset du pion
-     * 
+     *
      * @return le niveau de offset du pion
      */
     public int getOffset(){
         return offset;
     }
-    
-    
+
+
     /**
      * Fait en sorte que le pion se replace correctement au centre de sa case
      * Methode appellée lorsque un repaint du plateau est activé, le plus souvent si la fenêtre change de taille
-     * 
+     *
      */
     void resetLocation() {
         if(box != null){

@@ -6,9 +6,7 @@ package boundary.graphics.personalizedComponents;
 
 import boundary.graphics.Dialog;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Point;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 

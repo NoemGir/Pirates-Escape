@@ -55,11 +55,12 @@ public class Dialog implements IPirates {
         }
         diceCouple.setEnabled(false);
         mainFrame.showMainFrame();
+        GraphicsUtils.playSound("/main_sound.wav");
     }
 
     @Override
     public void endGame() {
-        mainFrame.dispose();
+        display("Jeu Terminé");
     }
 
     @Override
@@ -67,7 +68,7 @@ public class Dialog implements IPirates {
         Icon icon = GraphicsUtils.getIcon(listPirateFace.get(idPirate).getImageName()+".jpg");
         String name = mainFrame.popUpAskName(icon);
         if(name != null && !name.equals("")){
-            System.out.println("nom donné = '" + name + "'");
+            display("Nom du pirate " + idPirate + " : " + name);
             return name;
         }
         else{
@@ -97,6 +98,12 @@ public class Dialog implements IPirates {
         rightDestination.putGreenBorder();
     }
 
+    @Override
+    public void movePirateAuto(int idNewPirate, int box){
+        slidingPawn.slidePawnToBox(listPiratePawn.get(idNewPirate), gridModel.getGridPanel().getComponent(box));
+        listPiratePawn.get(idNewPirate).setBox(gridModel.getGridPanel().getComponent(box));
+    }
+    
     /**
      * Une fois un pion arrivé sur une case, vérifie si la case d'arrivée correspond bien la case de destination voulu
      */
@@ -107,7 +114,6 @@ public class Dialog implements IPirates {
             movablePawn = null;
             rightDestination.putBlackBorder();
             adapter.moveFinished();
-            diceCouple.getButton().setEnabled(true);
         }
         else{
             System.out.println("mauvaise destination");
@@ -128,7 +134,7 @@ public class Dialog implements IPirates {
 
     @Override
     public void activateThrowDice() {
-        diceCouple.setEnabled(true);
+        diceCouple.getButton().setEnabled(true);
         nbDiceRunning = 2;
     }
 
@@ -160,13 +166,21 @@ public class Dialog implements IPirates {
     @Override
     public void display(String message) {
         String existingText = mainFrame.getText();
-        String newDisplay = existingText + "\n" + message;
+        String newDisplay = existingText + message + "\n";
         mainFrame.setText(newDisplay);
     }
 
     @Override
     public void changeHeart(int idNewPirate, int hp) {
-        listPirateHealth.get(idNewPirate).repaintHearts(hp);
+        HealthBar bar = listPirateHealth.get(idNewPirate);
+        if(bar.getHearts() > hp){
+            GraphicsUtils.playSound(bar.getSoundDamage());
+            display("Aïe ! Le pirate " + adapter.getPirateName(idPirate) + "perd " + (bar.getHearts() - hp) + " PV...");
+        }
+        else{
+            display("Un miracle se produit ! le pirate " + adapter.getPirateName(idPirate) + "gagne " + (hp - bar.getHearts()) + " PV !!" );
+        }
+        bar.repaintHearts(hp);
     }
 
     public void setDiceCouple(DiceCouple diceCouple) {

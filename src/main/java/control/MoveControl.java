@@ -64,8 +64,9 @@ public class MoveControl implements IMovePirate, IThrowDice {
         public void moveFinished() {
             activateBoxControl.activateBox(board.getListPirate(),pirateGameControl.getActivPirate(),box);
             if(dice1.getDisplayValue() == dice2.getDisplayValue()){
-               pirateGameControl.verifyEndGameManagement(actualPirate);
-               throwDiceMovement(actualPirate);
+               if (!pirateGameControl.verifyEndGameManagement(actualPirate)){
+                   throwDiceMovement(actualPirate);
+               }
             }
             else{
                 pirateGameControl.newPlayerTurn(pirateGameControl.getActivPirate());

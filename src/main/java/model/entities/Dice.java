@@ -20,7 +20,6 @@ public class Dice {
     public int throwDice() {
             Random ran = new Random();
             displayValue = ran.nextInt(6)+1;
-            System.out.println("dice : " + displayValue);
             return displayValue;
 	}
 

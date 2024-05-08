@@ -16,6 +16,9 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 /**
  * Cette classe regroupe des méthodes pouvant être utiles aux classes présentes dans le boundary 
@@ -102,4 +105,28 @@ public class GraphicsUtils {
         return new ImageIcon(scaledImage); 
 
     }
+    
+    /**
+    * Joue un son donné en argument
+    * 
+    * @author Noémie GIREAUD
+    * 
+    * @param soundName le nom du fichier de son à jouer
+    */
+    public static void playSound(String soundName){
+        try {
+            URL audioFileURL = new GraphicsUtils().getClass().getResource(soundName);
+            if(audioFileURL != null){
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(audioFileURL.toURI()));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+                }
+            
+        } catch (Exception ex) {
+            System.out.println("Erreur lors de la lecture du son " + soundName);
+            ex.printStackTrace();
+        }
+    }
+    
 }

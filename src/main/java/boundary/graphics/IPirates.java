@@ -19,7 +19,6 @@ public interface IPirates {
 
     /**
     * Montre l'affichage de fin de partie
-    * TODO
     */
     public void endGame();
 
@@ -70,4 +69,12 @@ public interface IPirates {
     * @param box le numero de la case sur laquelle il doit attérir
     */
     public void movePirate(int idPirate, int box);
+    
+    /**
+    * Bouge le pirate indiqué sur la case donné
+    * 
+    * @param idPirate l'identifiant du joueur qui doit jouer
+    * @param box le numero de la case sur laquelle il doit attérir
+    */
+    public void movePirateAuto(int idPirate, int box);
 }
