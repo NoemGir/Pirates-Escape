@@ -13,8 +13,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 /**
+ * Panel Personnalisé représentant le plateau
  *
- * @author louistenailleau
+ * @author Louis TENAILLEAU
  */
 public class GridModel extends javax.swing.JPanel {
     
@@ -47,8 +48,6 @@ public class GridModel extends javax.swing.JPanel {
     public JLayeredPane getjLayeredPane1() {
         return jLayeredPane1;
     }
-    
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -146,6 +145,7 @@ public class GridModel extends javax.swing.JPanel {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         dialog.eventMousePressedGrid(evt.getPoint());
     }//GEN-LAST:event_formMousePressed
+    
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

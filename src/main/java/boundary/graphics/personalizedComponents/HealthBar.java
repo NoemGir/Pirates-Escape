@@ -5,8 +5,9 @@
 package boundary.graphics.personalizedComponents;
 
 /**
+ * Panel personnalisé représentant une bare de vie de pirate
  *
- * @author corentin
+ * @author Corentin JERE
  */
 public class HealthBar extends javax.swing.JPanel {
 

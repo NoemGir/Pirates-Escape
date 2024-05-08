@@ -12,8 +12,9 @@ import java.net.URISyntaxException;
 import javax.imageio.ImageIO;
 
 /**
+ * Panel personnalisé représentant un coeur de pirate
  *
- * @author corentin
+ * @author Corentin JERE
  */
 public class HeartPanel extends javax.swing.JPanel {
     /**
@@ -45,8 +46,6 @@ public class HeartPanel extends javax.swing.JPanel {
             g.drawImage(imageVide, 0, 0, 80, 80, this);
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

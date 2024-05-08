@@ -3,40 +3,71 @@ package boundary.graphics;
 
 
 
-/* Premiere interface de la partie graphique
+/**
  * 
- * Rassemble toutes les méthodes 
- * implémentées par le dialogue appelées depuis le noyau fonctionnel.
+ * Rassemble toutes les méthodes implémentées par le dialogue appelées depuis le noyau fonctionnel.
  * 
- * 
- * Exemple de méthodes de l’interface IPirates : 
- * - changer le pirate en jeu,
- * - donner à l’utilisateur la possibilité de lancer les dés,
- * - afficher un message dans la zone de texte,
- * - vider la zone de texte,
- * 
- * 
- * 
- * tout ce qui est a faire dans l'IHM, ont le met dans IPirate
+ * @author Noémie GIREAUD
  * 
  * */
 public interface IPirates {
 	
-        public void startGame();
-        
-        public void endGame();
-        
-        public String askName(int idPirate);
-        
-	public void changePirate(int idPirate);
-        
-	public void activateThrowDice();
-        
-        public void desactivateThrowDice();
-        
-	public void display(String message);
-        
-        public void changeHeart(int idPirate, int hp);
-        
-        public void movePirate(int idPirate, int box);
+    /**
+    * Commence la présentation du jeu
+    */
+    public void startGame();
+
+    /**
+    * Montre l'affichage de fin de partie
+    * TODO
+    */
+    public void endGame();
+
+    /**
+    * Demande a l'utilisateur le nom qu'il souhaite donner a son pirate
+    * 
+    * @param idPirate l'identifiant du pirate qui recevra le nom
+    * @return le nom de pirate donné par l'utilisateur
+    */
+    public String askName(int idPirate);
+
+    /**
+    * Indique le joueur auquel c'est le tour de jouer
+    * 
+    * @param idPirate l'identifiant du joueur qui doit jouer
+    */
+    public void changePirate(int idPirate);
+
+    /**
+    * Active la possibilité de jeter les dés
+    */
+    public void activateThrowDice();
+
+    /**
+    * Sésactive la possibilité de jeter les dés
+    */
+    public void desactivateThrowDice();
+
+    /**
+    * Ajoute le message dans le display du jeu
+    * 
+    * @param message Le message à ajouter
+    */
+    public void display(String message);
+
+    /**
+    * Affiche la vie restante du Pirate identifié
+    * 
+    * @param idPirate l'identifiant du pirate
+    * @param hp le nombre de coeur restant au pirate
+    */
+    public void changeHeart(int idPirate, int hp);
+
+    /**
+    * Rend le déplacement du pirate possible 
+    * 
+    * @param idPirate l'identifiant du joueur qui doit jouer
+    * @param box le numero de la case sur laquelle il doit attérir
+    */
+    public void movePirate(int idPirate, int box);
 }

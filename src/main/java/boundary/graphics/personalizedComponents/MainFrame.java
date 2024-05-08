@@ -5,15 +5,14 @@
 package boundary.graphics.personalizedComponents;
 
 import boundary.graphics.Dialog;
-import java.awt.Component;
-import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
+ * Frame possédant l'ensemble des composants de l'interface graphique
  *
- * @author noemi
+ * @author Rabien
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -38,8 +37,6 @@ public class MainFrame extends javax.swing.JFrame {
         dialog.addPirateHealth(healthBar1);
         dialog.addPirateHealth(healthBar2);
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -188,14 +185,28 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Affiche le texte donné sur le textArea
+     * @param text 
+     */
     public void setText(String text){
         displayTextArea.setText(text);
     }
     
+    /**
+     *  Renvoie le texte présent sur le textArea
+     * @return texte du textArea
+     */
     public String getText(){
         return displayTextArea.getText();
     }
     
+    /**
+     * Fait venir une pop up demandant le nom du pirate 
+     * 
+     * @param icon La tête du pirate associé au nom
+     * @return le nom de pirate donné
+     */
     public String popUpAskName(Icon icon) {
         JTextField nameTextField = new JTextField();
         
@@ -211,6 +222,9 @@ public class MainFrame extends javax.swing.JFrame {
         return nameTextField.getText();
     }
     
+    /**
+     * Affiche la frame
+     */
     public void showMainFrame() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

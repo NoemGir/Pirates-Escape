@@ -54,5 +54,10 @@ public class Board{
 	public void addCase(Case box) {
 		cases.add(box);
 	}
+
+    public List<Case> getCases() {
+        return cases;
+    }
 	
+        
 }

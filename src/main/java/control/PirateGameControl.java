@@ -1,92 +1,116 @@
 package control;
 
 import boundary.IBoundary;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ListIterator;
 import model.entities.Board;
 import model.entities.Pirate;
 
-/*
- * Utilise d'autre Controls tels que MoveControl, VerifyEndGameControl, ActivateBoxControl....
- * 
- */
-
 /**
+ * Controleur principal, chargé dde gerer l'ordre des évènements du jeu
  * 
  * @author Noémie GIREAUD
  * @author Robin MOUNIÉ
  */
-public class PirateGameControl {
+public class PirateGameControl{
 	
-	public final int NB_PLAYER = 2;
-	public final int HEALTH_MAX = 6;
+    public final int NB_PLAYER = 2;
+    public final int HEALTH_MAX = 6;
 
-	private Board board;
+    private Board board;
+
+    private IBoundary boundary;
+    private MoveControl moveControl;
+    private VerifyEndGameControl verifyEndControl;
+
+    private ListIterator<Pirate> itPirate;
+
+    /**
+     * Créé une nouvelle instance de PirateGameControl
+     * 
+     * @param board le plateau
+     * @param boundary le boundary
+     * @param moveControl le controleur de movement
+     * @param verifyEndControl le controleur de vérification de fin de jeu
+     */
+    public PirateGameControl(Board board, IBoundary boundary, MoveControl moveControl, VerifyEndGameControl verifyEndControl) {
+        this.board = board;
+        this.boundary = boundary;
+        this.moveControl = moveControl;
+        this.verifyEndControl = verifyEndControl;
+    }
         
-	private IBoundary boundary;
-        private MoveControl moveControl;
-        private VerifyEndGameControl verifyEndControl;
-        
-        private List<String> pirateNames = new ArrayList<>();
-        
-        ListIterator<Pirate> itPirate;
-	
-	public PirateGameControl(Board board, IBoundary boundary, MoveControl moveControl, VerifyEndGameControl verifyEndControl) {
-		this.board = board;
-		this.boundary = boundary;
-                this.moveControl = moveControl;
-                this.verifyEndControl = verifyEndControl;
-	}
-        
-        public void startGame() {
-            boundary.startGame();
-            initGame();  
-            newPlayerTurn(null);
-	}
-        
-        public void newPlayerTurn(Pirate pirate){
-            if(verifyEndControl.gameEnded(board.getListPirate(), pirate )){
-                System.out.println("jeux bien terminé !");
-                return;
-            }
-            Pirate newPirate = changePlayer();
-            moveControl.throwDiceMovement(newPirate);     
+    /**
+     *  Initie et commence le jeu
+     */
+    public void startGame() {
+        boundary.startGame();
+        initGame();  
+        newPlayerTurn(null);
+    }
+
+    /**
+     * Vérifie fin de jeu et lance un tour pour un nouveau joueur 
+     * 
+     * @param pirate le nouveau joueur
+     */
+    public void newPlayerTurn(Pirate pirate){
+        verifyEndGameManagement(pirate);
+        Pirate newPirate = changePlayer();
+        moveControl.throwDiceMovement(newPirate);     
+    }
+    
+    /**
+     * Change le joueur actuelle
+     * Cette methode est necessaire pour adapter le code à un nombre de joueur suppérieur a 2
+     * 
+     * @return le joueur suivant
+     */
+    private Pirate changePlayer(){
+        if(!itPirate.hasNext()){ 
+            itPirate = board.getListPirate().listIterator();
         }
-        
-        private Pirate changePlayer(){
+        Pirate actualPlayer = itPirate.next();
+        for( ;actualPlayer.isDead(); actualPlayer = itPirate.next()){
             if(!itPirate.hasNext()){ 
                 itPirate = board.getListPirate().listIterator();
             }
-            
-            Pirate actualPlayer = itPirate.next();
-
-            for( ;actualPlayer.isDead(); actualPlayer = itPirate.next()){
-                if(!itPirate.hasNext()){ 
-                    itPirate = board.getListPirate().listIterator();
-                }
-            }
-
-            boundary.changePlayer(actualPlayer.getName(), actualPlayer.getIdPirate());
-            return actualPlayer;
         }
+
+        boundary.changePlayer(actualPlayer.getIdPirate());
+        return actualPlayer;
+    }
 	
-	private void initGame() {
-		
-		for(int i = 0; i < NB_PLAYER; i++) {
-			String newName = boundary.askPirateName(i);
-                        
-                        Pirate newPirate = new Pirate(i, newName, HEALTH_MAX);
-                        pirateNames.add(newName);
-			board.addPlayer(newPirate);
-                }
-                
-                itPirate = board.getListPirate().listIterator();
+    /**
+     * Initie les joueurs présents dans le jeu
+     */
+    private void initGame() {
+        for(int i = 0; i < NB_PLAYER; i++) {
+            String newName = boundary.askPirateName(i);
 
-	}
-
-    public List<String> getPirateNames() {
-        return pirateNames;
+            Pirate newPirate = new Pirate(i, newName, HEALTH_MAX);
+            board.addPlayer(newPirate);
+        }
+        itPirate = board.getListPirate().listIterator();
+    }
+    
+    /**
+     * Vérifie si le jeu et terminé et continue en conséquence
+     * 
+     * @param pirate le pirate qui vient de jouer
+     */
+    public void verifyEndGameManagement(Pirate pirate){
+        if(verifyEndControl.gameEnded(board.getListPirate(), pirate )){
+            System.out.println("jeux bien terminé !");
+            return;
+        }
+    }
+    
+    public String getPirateName(int idPirate){
+        return board.getListPirate().get(idPirate).getName();
+    }
+    
+    public String getCaseName(int idBox){
+        return board.getCases().get(idBox).getName();
     }
 
 

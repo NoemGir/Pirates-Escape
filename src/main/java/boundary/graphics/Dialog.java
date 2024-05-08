@@ -1,5 +1,6 @@
 package boundary.graphics;
 
+import boundary.GraphicsUtils;
 import boundary.graphics.personalizedComponents.CasePanel;
 import boundary.graphics.personalizedComponents.PirateFace;
 import boundary.graphics.personalizedComponents.DiceCouple;
@@ -14,18 +15,15 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.JLayeredPane;
 
-/*
- *  Va appeler des methodes implementés dans FunctionnalKernelAdapter
- * appel servir IBoundary codé avec les services de IPirate ?
- *
- *Le contrôleur de dialogue gère le séquencement des entrées/sorties et agit comme médiateur
- *entre l’interface du noyau fonctionnel et la présentation
- *
- * IHM
- */
+/**
+* Le Dialog s'occupe de gérer les liens entre les différentes composants graphiques, et le Noyau fonctionnel
+* 
+* @author Noémie GIREAUD
+* @author Robin MOUNIER
+*/
 public class Dialog implements IPirates {
     
-    private FunctionnalKernelAdapter adapter;     
+    private IFunctionnalKernel adapter;     
     
     private List<PirateFace> listPirateFace = new ArrayList<>();
     private List<PiratePawn> listPiratePawn = new ArrayList<>();
@@ -94,12 +92,14 @@ public class Dialog implements IPirates {
     @Override
     public void movePirate(int idNewPirate, int box){
         movablePawn = listPiratePawn.get(idNewPirate);
-        movablePawn.activate();
         
         rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(box);
         rightDestination.putGreenBorder();
     }
     
+    /**
+     * Une fois un pion arrivé sur une case, vérifie si c'est la case de destination voulu
+     */
     public void verifyCaseMove(){
         Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
         movablePawn.setBox(arrivedCase);
@@ -114,6 +114,12 @@ public class Dialog implements IPirates {
         }
     }
     
+    /**
+    * EventHandler qui s'active lorsque la souris est appuyée sur la grille. 
+    * Si un pion peut bouger, celui-ci va glisser jusqu'à la case sur lequel le joueur a cliqué
+    * 
+    * @param point Les coordonnées sur lesquelles la souris a cliqué
+    */
     public void eventMousePressedGrid(Point point) {
         if(movablePawn != null){
             slidingPawn.slidePawnToBox(movablePawn, gridModel.getGridPanel().getComponentAt(point));
@@ -131,10 +137,19 @@ public class Dialog implements IPirates {
             diceCouple.setEnabled(false);
     }
     
+    /**
+    * Récupère le nombre inscrit sur le dé identifié
+    * 
+    * @param idDice l'identificateur du dé 
+    * @return le nombre inscrit sur le dés identifié
+    */
     public int getDiceResult(int idDice){
         return adapter.getNumberOnDice(idDice);
     }
     
+    /**
+    * Indique a l'adaptateur Fonctionnel quand les deux dés on terminés de tourner
+    */
     public void diceFinished(){
         nbDiceRunning -= 1;
         if(nbDiceRunning == 0){

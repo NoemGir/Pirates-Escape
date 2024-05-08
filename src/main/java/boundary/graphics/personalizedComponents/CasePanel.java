@@ -5,8 +5,9 @@
 package boundary.graphics.personalizedComponents;
 
 /**
+ * Panel personnalisé correspondant à une case du plateau
  *
- * @author noemi
+ * @author Noémie GIREAUD
  */
 public class CasePanel extends javax.swing.JPanel {
 
@@ -17,15 +18,26 @@ public class CasePanel extends javax.swing.JPanel {
         initComponents();
     }
     
+    /**
+    * Indique le texte à écrire sur la case 
+    * 
+    * @param texte Le texte à écrire
+    */
     public void setText(String texte){
         jLabel1.setText(texte);
     }
     
+    /**
+    * Ajoute une bordure verte sur la case
+    */
     public void putGreenBorder(){
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0), 2));
     }
     
-        public void putBlackBorder(){
+    /**
+    * Remet une bordeur classique à la case
+    */
+    public void putBlackBorder(){
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 1));
     }
     

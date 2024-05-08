@@ -14,13 +14,14 @@ import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 /**
+ * Panel Personnalisé représentant un dé
  *
- * @author Robin
+ * @author Robin MOUNIER
  */
 public class Dice extends javax.swing.JPanel {
-    
-    Dialog dialog;
-    
+
+    private Dialog dialog;
+
     private int value = 1;
     private int nbAnimation = 0;
     private int storedValue = 0;
@@ -31,14 +32,14 @@ public class Dice extends javax.swing.JPanel {
     private BufferedImage image5;
     private BufferedImage image6;
     private BufferedImage image7;
-    Timer timer = new Timer(50, new java.awt.event.ActionListener() {
+    private Timer timer = new Timer(50, new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timerEventHandler(e);
             }
         });
     private Random random = new Random();
-    
+
     /**
      * Creates new form Dice
      */
@@ -52,13 +53,11 @@ public class Dice extends javax.swing.JPanel {
             image5 = ImageIO.read(new File(getClass().getResource("/5.png").toURI()));
             image6 = ImageIO.read(new File(getClass().getResource("/6.png").toURI()));
             image7 = ImageIO.read(new File(getClass().getResource("/7.png").toURI()));
-         
+
     }catch(Exception e){
         System.out.println(e);
     }
-        
         repaint();
-        
     }
 
     @Override
@@ -86,7 +85,7 @@ public class Dice extends javax.swing.JPanel {
             default:
                 g.drawImage(image7, 0, 0, 100, 100, this);
         }
-    
+
     }
     public void  setDiceValue(int v){
         value = v;
@@ -94,7 +93,7 @@ public class Dice extends javax.swing.JPanel {
         nbAnimation = 0;
         this.timer.start();
     }
-    
+
     private void timerEventHandler(java.awt.event.ActionEvent e){
         if(nbAnimation < 30 + random.nextInt()%15){
             this.value = (random.nextInt()%7);
@@ -111,8 +110,8 @@ public class Dice extends javax.swing.JPanel {
     public void setDialog(Dialog dialog) {
         this.dialog = dialog;
     }
-    
-    
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -4,25 +4,23 @@
  */
 package boundary.graphics.personalizedComponents;
 
-import boundary.graphics.GraphicsUtils;
-import boundary.graphics.SlidingPawn;
+import boundary.GraphicsUtils;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import javax.swing.Timer;
 
 /**
+ * Panel personnalisé représentant un pion
  *
- * @author noemi
+ * @author Noémie GIREAUD
  */
 public class PiratePawn extends javax.swing.JPanel {
     
-    private boolean activated;
     private int offset = 0;
     private Color color = new Color(109, 7, 26);
     private Component box;
+    
     /**
      * Creates new form PiratePawn
      */
@@ -30,14 +28,29 @@ public class PiratePawn extends javax.swing.JPanel {
         initComponents();
     }
     
+    /**
+     * Définie la couleur du pion
+     * 
+     * @param color future couleur du pion
+     */
     public void setColor(Color color) {
         this.color = color;
     }
 
+    /**
+     * Défine la case du pion
+     * 
+     * @param box La case sur laquelle est placée le pion
+     */
     public void setBox(Component box) {
         this.box = box;
     }
     
+    /**
+     * Défine la localisation du pion
+     * 
+     * @param newLocation Lles coordonnées de la nouvelle localisation
+     */
     public void moveTo(Point newLocation){
         setLocation(GraphicsUtils.computeLocationInsidePawn(newLocation, this));
     }
@@ -67,18 +80,6 @@ public class PiratePawn extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-       
-    public void activate(){
-        this.activated = true;
-    }
-    
-    public void desactivate(){
-        this.activated = false;
-    }
-
-    public boolean isActivated() {
-        return activated;
-    }
     
     @Override
     public void paintComponent(Graphics g){
@@ -88,14 +89,29 @@ public class PiratePawn extends javax.swing.JPanel {
         g.fillPolygon(xPoints, yPoints, 4);  
     }
 
+    /**
+     * Définie l'offset du pion
+     * @param i le niveau de offset
+     */
     public void setOffset(int i) {
         this.offset = i;
     }
     
+    /**
+     * Récupère le offset du pion
+     * 
+     * @return le niveau de offset du pion
+     */
     public int getOffset(){
         return offset;
     }
-
+    
+    
+    /**
+     * Fait en sorte que le pion se replace correctement au centre de sa case
+     * Methode appellée lorsque un repaint du plateau est activé, le plus souvent si la fenêtre change de taille
+     * 
+     */
     void resetLocation() {
         if(box != null){
             Point location = GraphicsUtils.computeLocationPawnInCase(box);

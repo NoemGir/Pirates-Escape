@@ -1,5 +1,6 @@
 package boundary;
 
+import control.PirateGameControl;
 import java.util.Scanner;
 
 /*
@@ -10,45 +11,62 @@ import java.util.Scanner;
  */
 public class PirateGameBoundary implements IBoundary{
     
-                @Override
-                public void startGame() {
-                    System.out.println("Le jeu peut commencer !!\n");
-                }
+    private PirateGameControl pirateGameControl;
 
-		@Override
-		public void movePirate(String pirateName, int idPirate, String box, int boxNumber) {
-			System.out.println("Le pirate " + pirateName + " bouge sur la case : " + box);
-			
-		}
-		@Override
-		public void displayPV(String pirateName, int idPirate, int health) {
-			System.out.println("Le pirate " + pirateName + " possède  " + health + " coeurs");
-			
-		}
-                
-		@Override
-		public void throwDoubleDice() {
-			System.out.println("Lancement de dés ! ");
-                }
-                
-		@Override
-		public String askPirateName(int idPirate) {
-			Scanner scan = new Scanner(System.in);
-			System.out.println("Donnez le nom de votre pirate :");
-			return scan.next();
-		}
-		@Override
-		public void endGame(boolean won, String pirateName, String reason) {
-			if(won) {
-				System.out.println("La partie est terminée !\n Le pirate " + pirateName +" a gagné : " + reason);
-			}
-			else {
-				System.out.println(reason);
-			}
+    @Override
+    public void startGame() {
+        System.out.println("Le jeu peut commencer !!\n");
+    }
 
-		}
-		@Override
-		public void changePlayer(String pirateName, int idPirate) {
-			System.out.println("\nC'est au tour de " + pirateName + " de se bouger les fesses !" );
-		}
+    @Override
+    public void movePirate( int idPirate, int boxNumber) {
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        String box = pirateGameControl.getCaseName(idPirate);
+        System.out.println("Le pirate " + pirateName + " bouge sur la case : " + box);
+
+    }
+    
+    
+    @Override
+    public void displayPV(int idPirate, int health) {
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        System.out.println("Le pirate " + pirateName + " possède  " + health + " coeurs");
+
+    }
+
+    @Override
+    public void throwDoubleDice() {
+        System.out.println("Lancement de dés ! ");
+    }
+
+    @Override
+    public String askPirateName(int idPirate) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Donnez le nom de votre pirate :");
+        return scan.next();
+    }
+    
+    @Override
+    public void endGame(int idPirate, String reason) {
+        if(idPirate != -1) {
+            String pirateName = pirateGameControl.getPirateName(idPirate);
+            System.out.println("La partie est terminée !\n Le pirate " + pirateName +" a gagné : " + reason);
+        }
+        else {
+            System.out.println(reason);
+        }
+    }
+    
+    
+    @Override
+    public void changePlayer(int idPirate) {
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        System.out.println("\nC'est au tour de " + pirateName + " de se bouger les fesses !" );
+    }
+
+    public void setPirateGameControl(PirateGameControl pirateGameControl) {
+        this.pirateGameControl = pirateGameControl;
+    }
+                
+    
 }
