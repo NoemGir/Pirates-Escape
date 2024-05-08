@@ -15,6 +15,7 @@ import javax.swing.JButton;
 public class DiceCouple extends javax.swing.JPanel {
 
     private Dialog dialog;
+    private int player =0;
     /**
      * Creates new form CoupleDe
      */
@@ -25,6 +26,11 @@ public class DiceCouple extends javax.swing.JPanel {
     public void displayDices(int val1,int val2){
         dice1.setDiceValue(val1);
         dice2.setDiceValue(val2);
+    }
+    public void setDicesPlayer(){
+        dice1.setJoueur(player);
+        dice2.setJoueur(player);
+        player=(player+1) %2;
     }
     
     public void setDialog(Dialog dialog){

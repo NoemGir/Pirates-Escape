@@ -11,16 +11,15 @@ import javax.imageio.ImageIO;
 
 /**
  * Panel Personnalisé représentant le visage du pirate
- * 
+ *
  * @author Fabien
  */
 public class PirateFace extends javax.swing.JPanel {
-    
+
     private Image scaledImage;
-    private Image color; 
-    private Image grey; 
-    private String imageName = "/jackSparrow.jpg";
-    
+    private Image color;
+    private Image grey;
+    private String imageName = "/jackSparrow";
     /**
      * Creates new form ImagePanel
      */
@@ -28,23 +27,26 @@ public class PirateFace extends javax.swing.JPanel {
         initComponents();
         loadImage();
     }
-    
-    
+
+
     private void loadImage(){
         try{
-           BufferedImage image = ImageIO.read(new File(getClass().getResource(imageName).toURI()));
+           BufferedImage image = ImageIO.read(new File(getClass().getResource(imageName+".jpg").toURI()));
            scaledImage = image.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
+           color = scaledImage;
+           grey = ImageIO.read(new File(getClass().getResource(imageName+"-modified.jpg").toURI()));
         }catch(URISyntaxException | IOException e){
             throw new RuntimeException("Impossible de charger l'image",e);
-        }   
+        }
     }
-    
-    public void colorImage(){
-        //TODO
-    }
-    
-    public void greyImage(){
-        //TODO
+
+    public void ChangeImage(){
+        if(scaledImage.equals(color)){
+            scaledImage=grey;
+        }else {
+            scaledImage=color;
+        }
+        repaint();
     }
 
     public void setPirateImage(String pathName) {
@@ -56,7 +58,7 @@ public class PirateFace extends javax.swing.JPanel {
     public String getImageName() {
         return imageName;
     }
-    
+
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -64,7 +66,7 @@ public class PirateFace extends javax.swing.JPanel {
             g.drawImage(scaledImage,0,0,120, 120, this);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -85,5 +87,5 @@ public class PirateFace extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-     
+
 }

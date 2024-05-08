@@ -23,7 +23,6 @@ public class Board{
                 }else{
                     getPlayer(pirate).setPosition(this.nbCase-(destination-this.nbCase)-2);
                 }
-                System.out.println("Framboise : "+getPlayer(pirate).getPosition());
                 return cases.get(getPlayer(pirate).getPosition());
 	}
 	
