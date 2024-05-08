@@ -10,13 +10,15 @@ import java.net.URISyntaxException;
 import javax.imageio.ImageIO;
 
 /**
- *
+ * Panel Personnalisé représentant le visage du pirate
+ * 
  * @author Fabien
  */
 public class PirateFace extends javax.swing.JPanel {
     
     private Image scaledImage; 
     private String imageName = "/jackSparrow.jpg";
+    
     /**
      * Creates new form ImagePanel
      */
@@ -27,7 +29,6 @@ public class PirateFace extends javax.swing.JPanel {
     
     
     private void loadImage(){
-        
         try{
            BufferedImage image = ImageIO.read(new File(getClass().getResource(imageName).toURI()));
            scaledImage = image.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
@@ -54,8 +55,6 @@ public class PirateFace extends javax.swing.JPanel {
         return imageName;
     }
     
-    
-    
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -63,16 +62,6 @@ public class PirateFace extends javax.swing.JPanel {
             g.drawImage(scaledImage,0,0,120, 120, this);
         }
     }
-    /*
-    @Override
-    public Dimension getPreferredSize(){
-        if(scaledImage!=null){
-            return new Dimension(scaledImage.getWidth(this),scaledImage.getHeight(this));
-        }
-        return super.getPreferredSize();
-    }
-    */
-     
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

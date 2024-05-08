@@ -15,9 +15,7 @@ import static scenario.ConsoleScenario.NB_PLAYERS;
 
 
 /*
- *  Ici, on poura lancer l'application en mode GUI, avec
- *  interface graphique et possibilité de bouger les jetons
- * 
+ *  Lancer l'application en mode GUI, avec interface graphique et possibilité de bouger les jetons
  */
 public class GUIScenario {
     
@@ -32,12 +30,13 @@ public class GUIScenario {
         Dialog dialog = new Dialog(functionnalKernelAdapter);
         ActivateBoxControl activateBoxControl = new ActivateBoxControl();
         MoveControl moveControl = new MoveControl(functionnalKernelAdapter,activateBoxControl, board);
-	VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(functionnalKernelAdapter, board);
+	VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(functionnalKernelAdapter);
 	PirateGameControl pirateGameControl = new PirateGameControl(board, functionnalKernelAdapter,moveControl, verifyEndGameControl);
         
         functionnalKernelAdapter.setThrowDice(moveControl);
         functionnalKernelAdapter.setDialog(dialog);
         functionnalKernelAdapter.setMovePirate(moveControl);
+        functionnalKernelAdapter.setPirateGameControl(pirateGameControl);
         moveControl.setPirateGameControl(pirateGameControl);
         
         MainFrame mainFrame = new MainFrame();

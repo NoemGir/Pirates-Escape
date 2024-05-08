@@ -7,8 +7,9 @@ package boundary.graphics.personalizedComponents;
 import boundary.graphics.Dialog;
 
 /**
- *
- * @author Robin
+ * Panel Personnalisé représentant l'ensemble de dés ainsi que leur bouton associé
+ * 
+ * @author Robin MOUNIER
  */
 public class DiceCouple extends javax.swing.JPanel {
 

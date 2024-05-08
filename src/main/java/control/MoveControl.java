@@ -7,12 +7,13 @@ import model.entities.Dice;
 import model.entities.Board;
 import model.entities.Case;
 import model.entities.Pirate;
-/*
+
+/**
+ * Controleur servant à générer les déplacements du joueur actuelle sur le plateau
+ * 
+ *  @author Robin MOUNIÉ
  *  @author Noémie GIREAUD
- *
- *
- *
-**/
+*/
 public class MoveControl implements IMovePirate, IThrowDice {
 
 	private Board board;
@@ -25,8 +26,13 @@ public class MoveControl implements IMovePirate, IThrowDice {
         private Dice dice1;
         private Dice dice2;
 
-	private boolean playAgain = false;
-
+        /**
+         * Crée une nouvelle instance de MoveControl
+         * 
+         * @param boundary
+         * @param activateBoxControl
+         * @param board 
+         */
 	public MoveControl(IBoundary boundary, ActivateBoxControl activateBoxControl, Board board) {
 		this.boundary = boundary;
 		this.activateBoxControl = activateBoxControl;
@@ -38,10 +44,15 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	@Override
 	public void move(Pirate pirate, int value) {
             Case box = board.move(pirate.getName(), value);
-            boundary.movePirate(pirate.getName(), pirate.getIdPirate(), box.getName(), box.getNumber());
+            boundary.movePirate(pirate.getIdPirate(), box.getNumber());
             activateBoxControl.activateBox(pirate, box);
 	}
         
+        /**
+         * Le pirate donné lance les dés 
+         * 
+         * @param pirate pirate qui lance les dés
+         */
         public void throwDiceMovement(Pirate pirate){
             actualPirate = pirate;
             dice1.throwDice();
@@ -59,6 +70,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
         @Override
         public void moveFinished() {
             if(dice1.getDisplayValue() == dice2.getDisplayValue()){
+               pirateGameControl.verifyEndGameManagement(actualPirate);
                throwDiceMovement(actualPirate);
             }
             else{
@@ -79,7 +91,5 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
     public void setPirateGameControl(PirateGameControl pirateGameControl) {
         this.pirateGameControl = pirateGameControl;
-    }
-        
-        
+    }  
 }

@@ -1,6 +1,5 @@
 boundary\graphics\personalizedComponents\DiceCouple.class
 control\ActivateBoxControl.class
-boundary\graphics\GraphicsUtils.class
 model\entities\SwapCase.class
 control\IMovePirate.class
 boundary\graphics\Dialog.class
@@ -14,7 +13,6 @@ model\entities\Dice.class
 boundary\graphics\personalizedComponents\GridModel$1.class
 model\entities\Pirate.class
 boundary\graphics\personalizedComponents\MainFrame.class
-boundary\HealtBar.class
 model\entities\NurseCase.class
 boundary\graphics\personalizedComponents\Dice.class
 control\VerifyEndGameControl.class
@@ -34,8 +32,8 @@ boundary\graphics\personalizedComponents\PirateFace.class
 boundary\graphics\personalizedComponents\GridModel.class
 boundary\graphics\personalizedComponents\HeartPanel.class
 boundary\graphics\personalizedComponents\MainFrame$1.class
-boundary\PanelCoeur.class
 control\MoveControl.class
+boundary\GraphicsUtils.class
 control\IThrowDice.class
 boundary\IBoundary.class
 scenario\ConsoleScenario.class

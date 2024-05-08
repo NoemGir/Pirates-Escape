@@ -4,36 +4,19 @@ import boundary.IBoundary;
 import control.IMovePirate;
 import control.IThrowDice;
 import control.PirateGameControl;
-import java.util.List;
 
-/*
- *  PAS A METTRE DANS BOUNDary -> DANS CONTROL
- *  UNIQUEMENT POUR IHM 
- *  
- *  Va appeler des methodes implementés dans Dialog
- *  
- *  
- *  quand controleur demande quelque chose, se met en attribut ( en fonction de l'interface)
- *  chaque controle va dire : je suis de cette interface la
- *  IHM repond par rapport a l'interface  = au controleur inscrit
- *  interface noyau va parler au control
- *  
- *  les controleurs ont juste des appels ?
- *  Les controleurs qui s'inscrivent se fait ici
- *  
- *  
- *  quand lance dé, fait IPirate
- *  
- *  fait coordination entre IHM et ECB
- *  
- *  brancher les controles entre IHM et les controleurs 
- *  
+/**
+ * Fait le lien entre les controleurs et le dialog IHM grace à son implémentation de IBoundary
+ * Il appellera les methodes de IPirates pour demander des services aux Dialog,
+ * et le Dialog passera par lui pour communiquer avec les controleurs grace à son implentation de IFunctionnalKernel
+ * 
+ * @author Noémie GIREAUD
  */
 public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
     private IPirates dialog;
-    private PirateGameControl pirateGameControl;
     private IMovePirate movePirate;
+    private PirateGameControl pirateGameControl;
     private IThrowDice throwDice;
     
     
@@ -63,10 +46,6 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
         movePirate.moveFinished();
     }
 
-    @Override
-    public List<String> getPirateNames() {
-        return pirateGameControl.getPirateNames();
-    }
 
 
     @Override
@@ -76,7 +55,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
 
     @Override
-    public void displayPV(String pirateName, int idPirate, int health) {
+    public void displayPV(int idPirate, int health) {
         dialog.changeHeart(idPirate, health);
     }
 
@@ -86,21 +65,31 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     }
 
     @Override
-    public void endGame(boolean won, String pirateName, String reason) {
+    public void endGame(int idPirate, String reason) {
             dialog.endGame();
     }
 
     @Override
-    public void changePlayer(String name, int idPirate) {
+    public void changePlayer( int idPirate) {
         dialog.changePirate(idPirate);
     }
 
     @Override
-    public void movePirate(String pirateName, int idPirate, String box, int boxNumber) {
+    public void movePirate(int idPirate, int boxNumber) {
             dialog.movePirate( idPirate, boxNumber);
     }
 
-    public void setDialog(Dialog dialog) {
+    @Override
+    public String getPirateName(int idPirate) {
+        return pirateGameControl.getPirateName(idPirate);
+    }
+    
+    @Override
+    public String getCaseName(int idCase) {
+        return pirateGameControl.getCaseName(idCase);
+    }
+    
+    public void setDialog(IPirates dialog) {
         this.dialog = dialog;
     } 
 
@@ -111,6 +100,9 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public void setMovePirate(IMovePirate movePirate) {
         this.movePirate = movePirate;
     }
-    
+
+    public void setPirateGameControl(PirateGameControl pirateGameControl) {
+        this.pirateGameControl = pirateGameControl;
+    }
     
 }
