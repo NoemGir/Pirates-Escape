@@ -87,7 +87,7 @@ public class Dialog implements IPirates {
         JLayeredPane layeredPaneGrid = gridModel.getjLayeredPane1();
         layeredPaneGrid.setLayer(listPiratePawn.get(idPirate), javax.swing.JLayeredPane.PALETTE_LAYER);
         layeredPaneGrid.setLayer(listPiratePawn.get(idPirate), javax.swing.JLayeredPane.MODAL_LAYER);
-        
+        diceCouple.setDicesPlayer();
         idPirate = idNewPirate;
     }
     
