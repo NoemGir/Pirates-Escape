@@ -11,6 +11,8 @@ package boundary.graphics.personalizedComponents;
  */
 public class HealthBar extends javax.swing.JPanel {
 
+    private int hearts;
+    private String soundDamage = "/damage_taken_sound.wav";
     /**
      * Creates new form HealtBar
      */
@@ -19,8 +21,9 @@ public class HealthBar extends javax.swing.JPanel {
         repaintHearts(5);
     }
 
-    public void repaintHearts(int nbCoeur){
-        switch (nbCoeur){
+    public void repaintHearts(int hearts){
+        this.hearts = hearts;
+        switch (hearts){
             case 5:
                 heartPanel5.repaintHeart(true);
                 heartPanel4.repaintHeart(true);
@@ -148,6 +151,16 @@ public class HealthBar extends javax.swing.JPanel {
 
         add(heartPanel5);
     }// </editor-fold>//GEN-END:initComponents
+    
+    public int getHearts() {
+        return hearts;
+    }
+
+    public String getSoundDamage() {
+        return soundDamage;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private boundary.graphics.personalizedComponents.HeartPanel heartPanel1;

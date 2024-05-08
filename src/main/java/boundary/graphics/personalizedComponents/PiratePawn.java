@@ -18,7 +18,7 @@ import java.awt.Point;
 public class PiratePawn extends javax.swing.JPanel {
     
     private int offset = 0;
-    private Color color = new Color(109, 7, 26);
+    private Color color = Color.red;
     private Component box;
     
     /**

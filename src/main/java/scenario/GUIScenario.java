@@ -27,9 +27,9 @@ public class GUIScenario {
             switch(i){
                 case 1:
                    board.addCase(new Case(i));
+                   break;
                 default:
                    board.addCase(new CliffCase(i));
-
             }
                 
         }

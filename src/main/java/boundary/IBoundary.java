@@ -51,10 +51,25 @@ public interface IBoundary {
     public void changePlayer(int idPirate);
 
     /**
-    * Active l'étape de déplacement du pirate
+    * Active l'étape de déplacement du pirate -> l'utilisateur devra bouger le pion lui même
     * 
     * @param idPirate l'identifiant du joueur qui doit jouer
     * @param boxNumber le numero de la case sur laquelle il doit attérir
     */
-    void movePirate(int idPirate, int boxNumber);
+    public void movePirate(int idPirate, int boxNumber);
+    
+   /**
+    * Active l'étape de déplacement du pirate -> il se déplacera automatiquement
+    * 
+    * @param idPirate l'identifiant du joueur qui doit jouer
+    * @param boxNumber le numero de la case sur laquelle il doit attérir
+    */
+    public void movePirateAuto(int idPirate, int boxNumber);
+    
+    /**
+    * Indique que le joueur peut jouer encore un tour
+    * 
+    * @param idPirate l'identifiant du joueur
+    */
+    public void playAgain(int idPirate);
 }

@@ -70,8 +70,9 @@ public class MoveControl implements IMovePirate, IThrowDice {
         @Override
         public void moveFinished() {
             if(dice1.getDisplayValue() == dice2.getDisplayValue()){
-               pirateGameControl.verifyEndGameManagement(actualPirate);
-               throwDiceMovement(actualPirate);
+               if (!pirateGameControl.verifyEndGameManagement(actualPirate)){
+                   throwDiceMovement(actualPirate);
+               }
             }
             else{
                 pirateGameControl.newPlayerTurn(actualPirate);

@@ -54,9 +54,10 @@ public class PirateGameControl{
      * @param pirate le nouveau joueur
      */
     public void newPlayerTurn(Pirate pirate){
-        verifyEndGameManagement(pirate);
-        Pirate newPirate = changePlayer();
-        moveControl.throwDiceMovement(newPirate);     
+        if (!verifyEndGameManagement(pirate)){
+            Pirate newPirate = changePlayer();
+            moveControl.throwDiceMovement(newPirate);    
+        }    
     }
     
     /**
@@ -97,12 +98,14 @@ public class PirateGameControl{
      * Vérifie si le jeu et terminé et continue en conséquence
      * 
      * @param pirate le pirate qui vient de jouer
+     * @return True si le jeu est terminé, false sinon
      */
-    public void verifyEndGameManagement(Pirate pirate){
+    public boolean verifyEndGameManagement(Pirate pirate){
         if(verifyEndControl.gameEnded(board.getListPirate(), pirate )){
             System.out.println("jeux bien terminé !");
-            return;
+            return true;
         }
+        return false;
     }
     
     public String getPirateName(int idPirate){

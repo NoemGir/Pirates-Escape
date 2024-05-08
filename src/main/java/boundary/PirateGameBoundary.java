@@ -26,7 +26,25 @@ public class PirateGameBoundary implements IBoundary{
     public void movePirate( int idPirate, int boxNumber) {
         String pirateName = pirateGameControl.getPirateName(idPirate);
         String box = pirateGameControl.getCaseName(idPirate);
-        System.out.println("Le pirate " + pirateName + " bouge sur la case : " + box);
+        System.out.println("Le pirate " + pirateName + " doit bouger sur la case " + boxNumber + " : " + box);
+      //Décommenter section suivante si déplacement manuelle avec console
+        /*
+        Scanner scan = new Scanner(System.in);
+        String givenBox;
+        do{
+            System.out.println("Ecrivez le numéro de la case où bouger votre pirate :");
+            givenBox = scan.next();
+            
+        }while (!givenBox.equals(String.valueOf(boxNumber)));
+        */
+        movePirate.moveFinished();
+    }
+    
+    @Override
+    public void movePirateAuto(int idPirate, int boxNumber) {
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        String box = pirateGameControl.getCaseName(idPirate);
+        System.out.println("Le pirate " + pirateName + " bouge automatiquement sur la case " + boxNumber + " : " + box);
         movePirate.moveFinished();
     }
     
@@ -69,6 +87,12 @@ public class PirateGameBoundary implements IBoundary{
     public void changePlayer(int idPirate) {
         String pirateName = pirateGameControl.getPirateName(idPirate);
         System.out.println("\nC'est au tour de " + pirateName + " de se bouger les fesses !" );
+    }
+        
+    @Override
+    public void playAgain(int idPirate) {
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        System.out.println("Le pirate adverse viens de se fouler la cheville ! " + pirateName + " peut rejouer");
     }
 
     public void setPirateGameControl(PirateGameControl pirateGameControl) {

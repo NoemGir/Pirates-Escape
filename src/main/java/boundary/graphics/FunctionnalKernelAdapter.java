@@ -23,6 +23,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     @Override
     public void startGame() {
         dialog.startGame();
+        dialog.display("Le jeu peut commencer !!");
     }
     
     @Override
@@ -46,11 +47,10 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
         movePirate.moveFinished();
     }
 
-
-
     @Override
     public void throwDoubleDice() {
         dialog.activateThrowDice();
+        dialog.display("Les dés peuvent être lancés !");
     }
 
 
@@ -61,24 +61,52 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
     @Override
     public String askPirateName(int idPirate) {
-            return dialog.askName(idPirate);
+        return dialog.askName(idPirate);
     }
 
     @Override
     public void endGame(int idPirate, String reason) {
-            dialog.endGame();
+        dialog.display("La partie est terminée ! :D");
+        if(idPirate == -1){
+            dialog.display("Il n'y a aucun vainqueur ..." + reason);
+        }
+        else{
+            String pirateName = pirateGameControl.getPirateName(idPirate);
+            dialog.display(pirateName + " a gagné !! " + reason);
+        }
+        dialog.endGame();
     }
 
     @Override
     public void changePlayer( int idPirate) {
         dialog.changePirate(idPirate);
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        System.out.println("\nC'est au tour de " + pirateName + " de jouer. AArggh !! " );
+  
     }
 
     @Override
     public void movePirate(int idPirate, int boxNumber) {
-            dialog.movePirate( idPirate, boxNumber);
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        String box = pirateGameControl.getCaseName(boxNumber);
+        dialog.movePirate( idPirate, boxNumber);
+        dialog.display("Le pirate " + pirateName + " doit bouger sur la case " + boxNumber + " : " + box);
     }
-
+    
+    @Override
+    public void movePirateAuto(int idPirate, int boxNumber) {
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        String box = pirateGameControl.getCaseName(boxNumber);
+        dialog.movePirateAuto( idPirate, boxNumber);
+        dialog.display("Le pirate " + pirateName + "bouge sur la case " + boxNumber + " : " + box);
+    }
+    
+    @Override
+    public void playAgain(int idPirate) {
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        dialog.display("Le pirate adverse viens de se fouler la cheville ! " + pirateName + " peut rejouer");
+    }
+    
     @Override
     public String getPirateName(int idPirate) {
         return pirateGameControl.getPirateName(idPirate);
@@ -104,5 +132,4 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public void setPirateGameControl(PirateGameControl pirateGameControl) {
         this.pirateGameControl = pirateGameControl;
     }
-    
 }
