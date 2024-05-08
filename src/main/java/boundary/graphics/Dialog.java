@@ -107,6 +107,7 @@ public class Dialog implements IPirates {
             movablePawn = null;
             rightDestination.putBlackBorder();
             adapter.moveFinished();
+            diceCouple.getButton().setEnabled(true);
         }
         else{
             System.out.println("mauvaise destination");
@@ -176,4 +177,5 @@ public class Dialog implements IPirates {
     public void addPirateHealth(HealthBar healthBar){
         listPirateHealth.add(healthBar);
     }
+
 }

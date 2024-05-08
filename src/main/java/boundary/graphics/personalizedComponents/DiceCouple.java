@@ -5,6 +5,7 @@
 package boundary.graphics.personalizedComponents;
 
 import boundary.graphics.Dialog;
+import javax.swing.JButton;
 
 /**
  *
@@ -30,6 +31,9 @@ public class DiceCouple extends javax.swing.JPanel {
         
         dice1.setDialog(dialog);
         dice2.setDialog(dialog);
+    }
+    public JButton getButton(){
+        return this.jButton1;
     }
 
     /**
@@ -108,6 +112,7 @@ public class DiceCouple extends javax.swing.JPanel {
         int display1 = dialog.getDiceResult(0);
         int display2 = dialog.getDiceResult(1);
         displayDices(display1,display2);
+        jButton1.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

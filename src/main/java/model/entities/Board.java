@@ -18,11 +18,12 @@ public class Board{
                 int position = getPlayer(pirate).getPosition();
                 System.out.println("players " + pirate +" : position = " + position + " desination = " + (position + distance));
                 int destination = position + distance;
-                if(destination <= this.nbCase){
+                if(destination < this.nbCase){
                     getPlayer(pirate).setPosition(destination);
                 }else{
-                    getPlayer(pirate).setPosition(this.nbCase-(destination-this.nbCase));
+                    getPlayer(pirate).setPosition(this.nbCase-(destination-this.nbCase)-2);
                 }
+                System.out.println("Framboise : "+getPlayer(pirate).getPosition());
                 return cases.get(getPlayer(pirate).getPosition());
 	}
 	

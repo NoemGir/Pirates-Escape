@@ -24,13 +24,13 @@ public class Dice extends javax.swing.JPanel {
     private int value = 1;
     private int nbAnimation = 0;
     private int storedValue = 0;
-    BufferedImage image1;
-    BufferedImage image2;
-    BufferedImage image3;
-    BufferedImage image4;
-    BufferedImage image5;
-    BufferedImage image6;
-    BufferedImage image7;
+    private BufferedImage image1;
+    private BufferedImage image2;
+    private BufferedImage image3;
+    private BufferedImage image4;
+    private BufferedImage image5;
+    private BufferedImage image6;
+    private BufferedImage image7;
     Timer timer = new Timer(50, new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

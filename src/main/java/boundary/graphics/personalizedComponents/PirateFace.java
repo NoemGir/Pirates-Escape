@@ -15,7 +15,9 @@ import javax.imageio.ImageIO;
  */
 public class PirateFace extends javax.swing.JPanel {
     
-    private Image scaledImage; 
+    private Image scaledImage;
+    private Image color; 
+    private Image grey; 
     private String imageName = "/jackSparrow.jpg";
     /**
      * Creates new form ImagePanel
