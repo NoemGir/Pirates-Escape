@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingWorker;
 import javax.swing.Timer;
 
 /**
@@ -21,8 +22,8 @@ public class SlidingPawn {
     private Dialog dialog;
     
     private PiratePawn pawn;
-    private Timer timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
-    private Timer timerX = new Timer(10, (ActionEvent e) -> {moveX(e);});
+    private Timer timerY ;
+    private Timer timerX ;
     private Point location;
     private Point destination;
     
@@ -34,6 +35,18 @@ public class SlidingPawn {
         location.translate(pawn.getSize().width/2 - pawn.getOffset(), pawn.getSize().height/2 - pawn.getOffset());
         System.out.println("loc = " + location);
         this.destination = GraphicsUtils.computeLocationPawnInCase(casePanel);
+        SwingWorker<Void,Void> timer=new SwingWorker<Void,Void>(){
+            protected Void doInBackground() throws Exception{
+                startTimers();
+                return null;
+            }
+        };
+        timer.execute();
+    }
+    
+    private void startTimers(){
+        timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
+        timerX= new Timer(10, (ActionEvent e) -> {moveX(e);});
         timerX.start();
         timerY.start();
     }
