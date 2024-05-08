@@ -1,5 +1,7 @@
 package control;
 
+import boundary.graphics.FunctionnalKernelAdapter;
+import java.util.List;
 import model.entities.Case;
 import model.entities.Pirate;
 
@@ -10,8 +12,9 @@ import model.entities.Pirate;
  * 
  * */
 public class ActivateBoxControl {
-	
-	public void activateBox(Pirate pirate, Case box) {
-		
+	private FunctionnalKernelAdapter functionnalKernelAdapateur = new FunctionnalKernelAdapter();
+	public void activateBox(List<Pirate> listePirate,Pirate pirate, Case box) {
+		box.effect().accept(listePirate, pirate);
+                   functionnalKernelAdapateur.movePirateAuto(pirate.getName(),pirate.getIdPirate(), box.getName(), box.getNumber());
 	}
 }

@@ -39,4 +39,6 @@ public interface IPirates {
         public void changeHeart(int idPirate, int hp);
         
         public void movePirate(int idPirate, int box);
+        
+        public void movePirateAuto(int idNewPirate, int box);
 }

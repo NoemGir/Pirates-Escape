@@ -23,7 +23,8 @@ public class PirateGameControl {
 	public final int HEALTH_MAX = 6;
 
 	private Board board;
-        
+        private Pirate activPirate;
+
 	private IBoundary boundary;
         private MoveControl moveControl;
         private VerifyEndGameControl verifyEndControl;
@@ -50,8 +51,8 @@ public class PirateGameControl {
                 System.out.println("jeux bien terminé !");
                 return;
             }
-            Pirate newPirate = changePlayer();
-            moveControl.throwDiceMovement(newPirate);     
+            activPirate = changePlayer();
+            moveControl.throwDiceMovement();     
         }
         
         private Pirate changePlayer(){
@@ -87,6 +88,10 @@ public class PirateGameControl {
 
     public List<String> getPirateNames() {
         return pirateNames;
+    }
+
+    public Pirate getActivPirate() {
+        return activPirate;
     }
 
 

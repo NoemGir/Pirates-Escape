@@ -17,7 +17,7 @@ public class CliffCase extends Case {
 	@Override
 	public BiConsumer<List<Pirate>, Pirate> effect(){
 		return (List<Pirate> pirates, Pirate pirate) -> {
-			pirate.ajustPosition( (Integer hp) -> hp - 5);			
+			pirate.ajustPosition( (Integer hp) -> hp + 5);			
 			pirate.ajustHp( (Integer hp) -> hp - 3 );
 			super.effect().accept(pirates, pirate);
 		};

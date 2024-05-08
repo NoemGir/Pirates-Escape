@@ -20,12 +20,11 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	private ActivateBoxControl activateBoxControl;
         private PirateGameControl pirateGameControl;
         
-        private Pirate actualPirate;
-        
+
+        private Case box;
         private Dice dice1;
         private Dice dice2;
 
-	private boolean playAgain = false;
 
 	public MoveControl(IBoundary boundary, ActivateBoxControl activateBoxControl, Board board) {
 		this.boundary = boundary;
@@ -37,13 +36,11 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
 	@Override
 	public void move(Pirate pirate, int value) {
-            Case box = board.move(pirate.getName(), value);
+            box = board.move(pirate.getName(), value);
             boundary.movePirate(pirate.getName(), pirate.getIdPirate(), box.getName(), box.getNumber());
-            activateBoxControl.activateBox(pirate, box);
 	}
         
-        public void throwDiceMovement(Pirate pirate){
-            actualPirate = pirate;
+        public void throwDiceMovement(){
             dice1.throwDice();
             dice2.throwDice();
             
@@ -53,17 +50,19 @@ public class MoveControl implements IMovePirate, IThrowDice {
         @Override
         public void doubleDicesFinished() {
             int distance = dice1.getDisplayValue() + dice2.getDisplayValue();
-            move(actualPirate, distance);
+            move(pirateGameControl.getActivPirate(), distance);
         }
     
         @Override
         public void moveFinished() {
+            activateBoxControl.activateBox(board.getListPirate(),pirateGameControl.getActivPirate(),box);
             if(dice1.getDisplayValue() == dice2.getDisplayValue()){
-               throwDiceMovement(actualPirate);
+               throwDiceMovement();
             }
             else{
-                pirateGameControl.newPlayerTurn(actualPirate);
+                pirateGameControl.newPlayerTurn(pirateGameControl.getActivPirate());
             }
+            
         }
 
 

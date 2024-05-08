@@ -100,6 +100,11 @@ public class Dialog implements IPirates {
         rightDestination.putGreenBorder();
     }
     
+    @Override
+    public void movePirateAuto(int idNewPirate, int box){
+        slidingPawn.slidePawnToBox(listPiratePawn.get(idNewPirate), gridModel.getGridPanel().getComponent(box));
+        listPiratePawn.get(idNewPirate).setBox(gridModel.getGridPanel().getComponent(box));
+    }
     public void verifyCaseMove(){
         Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
         movablePawn.setBox(arrivedCase);
@@ -176,6 +181,11 @@ public class Dialog implements IPirates {
     
     public void addPirateHealth(HealthBar healthBar){
         listPirateHealth.add(healthBar);
+    }
+
+    @Override
+    public String toString() {
+        return "Dialog{" + "adapter=" + adapter + ", listPirateFace=" + listPirateFace + ", listPiratePawn=" + listPiratePawn + ", listPirateHealth=" + listPirateHealth + ", diceCouple=" + diceCouple + ", gridModel=" + gridModel + ", mainFrame=" + mainFrame + ", idPirate=" + idPirate + ", slidingPawn=" + slidingPawn + ", movablePawn=" + movablePawn + ", rightDestination=" + rightDestination + ", nbDiceRunning=" + nbDiceRunning + '}';
     }
 
 }

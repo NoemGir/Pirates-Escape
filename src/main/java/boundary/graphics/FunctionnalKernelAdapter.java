@@ -111,6 +111,15 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public void setMovePirate(IMovePirate movePirate) {
         this.movePirate = movePirate;
     }
+    @Override
+    public void movePirateAuto(String pirateName, int idPirate, String box, int boxNumber){
+        System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : FRAMBOIISE");
+        if(this.dialog==null){
+            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : Le dialogue est null");
+        }
+        this.dialog.movePirateAuto( idPirate, boxNumber);
+    }
     
     
 }

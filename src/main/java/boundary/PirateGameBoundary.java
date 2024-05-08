@@ -51,4 +51,8 @@ public class PirateGameBoundary implements IBoundary{
 		public void changePlayer(String pirateName, int idPirate) {
 			System.out.println("\nC'est au tour de " + pirateName + " de se bouger les fesses !" );
 		}
+                @Override
+                public void movePirateAuto(String pirateName, int idPirate, String box, int boxNumber){
+                    System.out.println("Le pirate " + pirateName + " bouge automatiquement sur la case : " + box);
+                }
 }

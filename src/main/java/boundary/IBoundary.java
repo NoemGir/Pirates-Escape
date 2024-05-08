@@ -37,4 +37,6 @@ public interface IBoundary {
 	public void changePlayer(String name, int idPirate);
 
 	void movePirate(String pirateName, int idPirate, String box, int boxNumber);
+        
+        void movePirateAuto(String pirateName, int idPirate, String box, int boxNumber);
 }
