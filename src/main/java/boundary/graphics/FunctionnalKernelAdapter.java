@@ -9,7 +9,7 @@ import control.PirateGameControl;
  * Fait le lien entre les controleurs et le dialog IHM grace à son implémentation de IBoundary
  * Il appellera les methodes de IPirates pour demander des services aux Dialog,
  * et le Dialog passera par lui pour communiquer avec les controleurs grace à son implentation de IFunctionnalKernel
- * 
+ *
  * @author Noémie GIREAUD
  */
 public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
@@ -18,13 +18,13 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     private IMovePirate movePirate;
     private PirateGameControl pirateGameControl;
     private IThrowDice throwDice;
-    
-    
+
+
     @Override
     public void startGame() {
         dialog.startGame();
     }
-    
+
     @Override
     public int getNumberOnDice(int idDice) {
         if(idDice == 0){
@@ -83,15 +83,15 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public String getPirateName(int idPirate) {
         return pirateGameControl.getPirateName(idPirate);
     }
-    
+
     @Override
     public String getCaseName(int idCase) {
         return pirateGameControl.getCaseName(idCase);
     }
-    
+
     public void setDialog(IPirates dialog) {
         this.dialog = dialog;
-    } 
+    }
 
     public void setThrowDice(IThrowDice throwDice) {
         this.throwDice = throwDice;
@@ -100,9 +100,16 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public void setMovePirate(IMovePirate movePirate) {
         this.movePirate = movePirate;
     }
-
-    public void setPirateGameControl(PirateGameControl pirateGameControl) {
-        this.pirateGameControl = pirateGameControl;
-    }
     
+    @Override
+    public void movePirateAuto(String pirateName, int idPirate, String box, int boxNumber){
+        System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : FRAMBOIISE");
+        if(this.dialog==null){
+            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : Le dialogue est null");
+        }
+        this.dialog.movePirateAuto( idPirate, boxNumber);
+    }
+
+
 }

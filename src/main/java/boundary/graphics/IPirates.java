@@ -4,14 +4,14 @@ package boundary.graphics;
 
 
 /**
- * 
+ *
  * Rassemble toutes les méthodes implémentées par le dialogue appelées depuis le noyau fonctionnel.
- * 
+ *
  * @author Noémie GIREAUD
- * 
+ *
  * */
 public interface IPirates {
-	
+
     /**
     * Commence la présentation du jeu
     */
@@ -25,7 +25,7 @@ public interface IPirates {
 
     /**
     * Demande a l'utilisateur le nom qu'il souhaite donner a son pirate
-    * 
+    *
     * @param idPirate l'identifiant du pirate qui recevra le nom
     * @return le nom de pirate donné par l'utilisateur
     */
@@ -33,7 +33,7 @@ public interface IPirates {
 
     /**
     * Indique le joueur auquel c'est le tour de jouer
-    * 
+    *
     * @param idPirate l'identifiant du joueur qui doit jouer
     */
     public void changePirate(int idPirate);
@@ -50,22 +50,22 @@ public interface IPirates {
 
     /**
     * Ajoute le message dans le display du jeu
-    * 
+    *
     * @param message Le message à ajouter
     */
     public void display(String message);
 
     /**
     * Affiche la vie restante du Pirate identifié
-    * 
+    *
     * @param idPirate l'identifiant du pirate
     * @param hp le nombre de coeur restant au pirate
     */
     public void changeHeart(int idPirate, int hp);
 
     /**
-    * Rend le déplacement du pirate possible 
-    * 
+    * Rend le déplacement du pirate possible
+    *
     * @param idPirate l'identifiant du joueur qui doit jouer
     * @param box le numero de la case sur laquelle il doit attérir
     */

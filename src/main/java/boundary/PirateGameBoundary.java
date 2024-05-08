@@ -8,11 +8,11 @@ import java.util.Scanner;
 /*
  * Boundary connectée aux Contols présents dans le package
  * "control"
- * 
+ *
  * Boundary qui servira de sortie console
  */
 public class PirateGameBoundary implements IBoundary{
-    
+
     private PirateGameControl pirateGameControl;
     private IMovePirate movePirate;
     private IThrowDice throwDIce;
@@ -29,8 +29,15 @@ public class PirateGameBoundary implements IBoundary{
         System.out.println("Le pirate " + pirateName + " bouge sur la case : " + box);
         movePirate.moveFinished();
     }
-    
-    
+
+    @Override
+    public void movePirateAuto(int idPirate, int boxNumber){
+        String pirateName = pirateGameControl.getPirateName(idPirate);
+        String box = pirateGameControl.getCaseName(idPirate);
+        System.out.println("Le pirate " + pirateName + " bouge automatiquement sur la case : " + box);
+    }
+
+
     @Override
     public void displayPV(int idPirate, int health) {
         String pirateName = pirateGameControl.getPirateName(idPirate);
@@ -52,7 +59,7 @@ public class PirateGameBoundary implements IBoundary{
         System.out.println("Donnez le nom de votre pirate :");
         return scan.next();
     }
-    
+
     @Override
     public void endGame(int idPirate, String reason) {
         if(idPirate != -1) {
@@ -63,8 +70,8 @@ public class PirateGameBoundary implements IBoundary{
             System.out.println(reason);
         }
     }
-    
-    
+
+
     @Override
     public void changePlayer(int idPirate) {
         String pirateName = pirateGameControl.getPirateName(idPirate);
@@ -82,4 +89,6 @@ public class PirateGameBoundary implements IBoundary{
     public void setThrowDIce(IThrowDice throwDIce) {
         this.throwDIce = throwDIce;
     }
+
+  }
 }

@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * @author Louis TENAILLEAU
  */
 public class GridModel extends javax.swing.JPanel {
-    
+
     private Dialog dialog;
     /**
      * Creates new form GridModel
@@ -27,28 +27,27 @@ public class GridModel extends javax.swing.JPanel {
         initComponents();
         manualInit();
     }
-    
+
     public void setDialog(Dialog dialog) {
         this.dialog = dialog;
         dialog.addPiratePawn(piratePawn1);
         dialog.addPiratePawn(piratePawn2);
     }
-    
+
     private void manualInit(){
         for(int i = 0; i < 30; i++) {
             CasePanel myCase = new CasePanel();
             myCase.setText("" + i);
-            gridPanel.add(myCase);   
+            gridPanel.add(myCase);
         }
-        
+
         piratePawn2.setOffset(6);
-        piratePawn2.setColor(Color.yellow);
+        piratePawn2.setColor(Color.blue);
     }
 
     public JLayeredPane getjLayeredPane1() {
         return jLayeredPane1;
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,11 +140,11 @@ public class GridModel extends javax.swing.JPanel {
     public JPanel getGridPanel() {
         return gridPanel;
     }
-    
+
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         dialog.eventMousePressedGrid(evt.getPoint());
     }//GEN-LAST:event_formMousePressed
-    
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

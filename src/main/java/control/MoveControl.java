@@ -10,7 +10,7 @@ import model.entities.Pirate;
 
 /**
  * Controleur servant à générer les déplacements du joueur actuelle sur le plateau
- * 
+ *
  *  @author Robin MOUNIÉ
  *  @author Noémie GIREAUD
 */
@@ -20,18 +20,18 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	private IBoundary boundary;
 	private ActivateBoxControl activateBoxControl;
         private PirateGameControl pirateGameControl;
-        
-        private Pirate actualPirate;
-        
+
+
+        private Case box;
         private Dice dice1;
         private Dice dice2;
 
         /**
          * Crée une nouvelle instance de MoveControl
-         * 
+         *
          * @param boundary
          * @param activateBoxControl
-         * @param board 
+         * @param board
          */
 	public MoveControl(IBoundary boundary, ActivateBoxControl activateBoxControl, Board board) {
 		this.boundary = boundary;
@@ -43,39 +43,34 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
 	@Override
 	public void move(Pirate pirate, int value) {
-            Case box = board.move(pirate.getName(), value);
-            boundary.movePirate(pirate.getIdPirate(), box.getNumber());
-            activateBoxControl.activateBox(pirate, box);
+            box = board.move(pirate.getName(), value);
+            boundary.movePirate(pirate.getName(), pirate.getIdPirate(), box.getName(), box.getNumber());
 	}
-        
-        /**
-         * Le pirate donné lance les dés 
-         * 
-         * @param pirate pirate qui lance les dés
-         */
-        public void throwDiceMovement(Pirate pirate){
-            actualPirate = pirate;
+
+        public void throwDiceMovement(){
             dice1.throwDice();
             dice2.throwDice();
-            
+
             boundary.throwDoubleDice();
         }
-        
+
         @Override
         public void doubleDicesFinished() {
             int distance = dice1.getDisplayValue() + dice2.getDisplayValue();
-            move(actualPirate, distance);
+            move(pirateGameControl.getActivPirate(), distance);
         }
-    
+
         @Override
         public void moveFinished() {
+            activateBoxControl.activateBox(board.getListPirate(),pirateGameControl.getActivPirate(),box);
             if(dice1.getDisplayValue() == dice2.getDisplayValue()){
                pirateGameControl.verifyEndGameManagement(actualPirate);
                throwDiceMovement(actualPirate);
             }
             else{
-                pirateGameControl.newPlayerTurn(actualPirate);
+                pirateGameControl.newPlayerTurn(pirateGameControl.getActivPirate());
             }
+
         }
 
 
@@ -83,7 +78,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	public int getFirstDiceDisplay() {
             return dice1.getDisplayValue();
 	}
-        
+
 	@Override
 	public int getSecondDiceDisplay() {
             return dice2.getDisplayValue();
@@ -91,5 +86,5 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
     public void setPirateGameControl(PirateGameControl pirateGameControl) {
         this.pirateGameControl = pirateGameControl;
-    }  
+    }
 }

@@ -25,8 +25,24 @@ public class GUIScenario {
 		
         for(int i = 0; i < NB_CASES; i++) {
             switch(i){
-                case 1:
+                case 0:
                    board.addCase(new Case(i));
+                   break;
+                case 26:
+                   board.addCase(new Case(i));
+                   break;
+                case 25:
+                   board.addCase(new Case(i));
+                   break;
+                case 27:
+                   board.addCase(new Case(i));
+                   break;
+                case 28:
+                   board.addCase(new Case(i));
+                   break;
+                case 29:
+                   board.addCase(new Case(i));
+                   break;
                 default:
                    board.addCase(new CliffCase(i));
 

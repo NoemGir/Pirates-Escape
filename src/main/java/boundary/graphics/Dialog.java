@@ -17,46 +17,46 @@ import javax.swing.JLayeredPane;
 
 /**
 * Le Dialog s'occupe de gérer les liens entre les différentes composants graphiques, et le Noyau fonctionnel
-* 
+*
 * @author Noémie GIREAUD
 * @author Robin MOUNIER
 */
 public class Dialog implements IPirates {
-    
-    private IFunctionnalKernel adapter;     
-    
+
+    private IFunctionnalKernel adapter;
+
     private List<PirateFace> listPirateFace = new ArrayList<>();
     private List<PiratePawn> listPiratePawn = new ArrayList<>();
     private List<HealthBar> listPirateHealth = new ArrayList<>();
     private DiceCouple diceCouple;
     private GridModel gridModel;
     private MainFrame mainFrame;
-    
+
     private int idPirate;
-    
+
     private SlidingPawn slidingPawn = new SlidingPawn();
     private PiratePawn movablePawn;
     private CasePanel rightDestination;
-    
+
     private int nbDiceRunning = 0;
 
     public Dialog(FunctionnalKernelAdapter adapter) {
         this.adapter = adapter;
         slidingPawn.setDialog(this);
     }
-    
+
     @Override
     public void startGame() {
         rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(0);
-        
+
         for(PiratePawn pawn : listPiratePawn){
             pawn.setBox(rightDestination);
             pawn.moveTo(GraphicsUtils.computeLocationPawnInCase(rightDestination));
-        }    
+        }
         diceCouple.setEnabled(false);
         mainFrame.showMainFrame();
     }
-    
+
     @Override
     public void endGame() {
         mainFrame.dispose();
@@ -76,29 +76,29 @@ public class Dialog implements IPirates {
             return null;
         }
     }
-    
+
     @Override
     public void changePirate(int idNewPirate) {
         for(PirateFace p : listPirateFace)
             p.ChangeImage();
-        
+
         JLayeredPane layeredPaneGrid = gridModel.getjLayeredPane1();
         layeredPaneGrid.setLayer(listPiratePawn.get(idPirate), javax.swing.JLayeredPane.PALETTE_LAYER);
         layeredPaneGrid.setLayer(listPiratePawn.get(idPirate), javax.swing.JLayeredPane.MODAL_LAYER);
         diceCouple.setDicesPlayer();
         idPirate = idNewPirate;
     }
-    
+
     @Override
     public void movePirate(int idNewPirate, int box){
         movablePawn = listPiratePawn.get(idNewPirate);
-        
+
         rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(box);
         rightDestination.putGreenBorder();
     }
-    
+
     /**
-     * Une fois un pion arrivé sur une case, vérifie si c'est la case de destination voulu
+     * Une fois un pion arrivé sur une case, vérifie si la case d'arrivée correspond bien la case de destination voulu
      */
     public void verifyCaseMove(){
         Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
@@ -113,11 +113,11 @@ public class Dialog implements IPirates {
             System.out.println("mauvaise destination");
         }
     }
-    
+
     /**
-    * EventHandler qui s'active lorsque la souris est appuyée sur la grille. 
+    * EventHandler qui s'active lorsque la souris est appuyée sur la grille.
     * Si un pion peut bouger, celui-ci va glisser jusqu'à la case sur lequel le joueur a cliqué
-    * 
+    *
     * @param point Les coordonnées sur lesquelles la souris a cliqué
     */
     public void eventMousePressedGrid(Point point) {
@@ -136,17 +136,17 @@ public class Dialog implements IPirates {
     public void desactivateThrowDice() {
             diceCouple.setEnabled(false);
     }
-    
+
     /**
     * Récupère le nombre inscrit sur le dé identifié
-    * 
-    * @param idDice l'identificateur du dé 
+    *
+    * @param idDice l'identificateur du dé
     * @return le nombre inscrit sur le dés identifié
     */
     public int getDiceResult(int idDice){
         return adapter.getNumberOnDice(idDice);
     }
-    
+
     /**
     * Indique a l'adaptateur Fonctionnel quand les deux dés on terminés de tourner
     */
@@ -168,7 +168,7 @@ public class Dialog implements IPirates {
     public void changeHeart(int idNewPirate, int hp) {
         listPirateHealth.get(idNewPirate).repaintHearts(hp);
     }
-    
+
     public void setDiceCouple(DiceCouple diceCouple) {
         this.diceCouple = diceCouple;
     }
@@ -180,17 +180,22 @@ public class Dialog implements IPirates {
     public void setGameFrame(MainFrame gameFrame) {
         this.mainFrame = gameFrame;
     }
-    
+
     public void addPirateFace(PirateFace pirateFace){
         listPirateFace.add(pirateFace);
     }
-    
+
     public void addPiratePawn(PiratePawn piratePawn){
         listPiratePawn.add(piratePawn);
-    } 
-    
+    }
+
     public void addPirateHealth(HealthBar healthBar){
         listPirateHealth.add(healthBar);
+    }
+
+    @Override
+    public String toString() {
+        return "Dialog{" + "adapter=" + adapter + ", listPirateFace=" + listPirateFace + ", listPiratePawn=" + listPiratePawn + ", listPirateHealth=" + listPirateHealth + ", diceCouple=" + diceCouple + ", gridModel=" + gridModel + ", mainFrame=" + mainFrame + ", idPirate=" + idPirate + ", slidingPawn=" + slidingPawn + ", movablePawn=" + movablePawn + ", rightDestination=" + rightDestination + ", nbDiceRunning=" + nbDiceRunning + '}';
     }
 
 }
