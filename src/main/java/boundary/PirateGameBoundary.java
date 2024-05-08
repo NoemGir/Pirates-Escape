@@ -1,5 +1,7 @@
 package boundary;
 
+import control.IMovePirate;
+import control.IThrowDice;
 import control.PirateGameControl;
 import java.util.Scanner;
 
@@ -12,6 +14,8 @@ import java.util.Scanner;
 public class PirateGameBoundary implements IBoundary{
     
     private PirateGameControl pirateGameControl;
+    private IMovePirate movePirate;
+    private IThrowDice throwDIce;
 
     @Override
     public void startGame() {
@@ -23,7 +27,7 @@ public class PirateGameBoundary implements IBoundary{
         String pirateName = pirateGameControl.getPirateName(idPirate);
         String box = pirateGameControl.getCaseName(idPirate);
         System.out.println("Le pirate " + pirateName + " bouge sur la case : " + box);
-
+        movePirate.moveFinished();
     }
     
     
@@ -37,6 +41,9 @@ public class PirateGameBoundary implements IBoundary{
     @Override
     public void throwDoubleDice() {
         System.out.println("Lancement de dés ! ");
+        System.out.println("Le dé 1 tombe sur " + throwDIce.getFirstDiceDisplay());
+        System.out.println("Le dé 2 tombe sur " + throwDIce.getSecondDiceDisplay());
+        throwDIce.doubleDicesFinished();
     }
 
     @Override
@@ -67,6 +74,12 @@ public class PirateGameBoundary implements IBoundary{
     public void setPirateGameControl(PirateGameControl pirateGameControl) {
         this.pirateGameControl = pirateGameControl;
     }
-                
-    
+
+    public void setMovePirate(IMovePirate movePirate) {
+        this.movePirate = movePirate;
+    }
+
+    public void setThrowDIce(IThrowDice throwDIce) {
+        this.throwDIce = throwDIce;
+    }
 }

@@ -5,7 +5,6 @@ control\IMovePirate.class
 boundary\graphics\Dialog.class
 boundary\graphics\IPirates.class
 control\ActivateSpecialBoxControl.class
-control\ActivateBombControl.class
 control\PirateGameControl.class
 scenario\GUIScenario.class
 boundary\graphics\SlidingPawn.class

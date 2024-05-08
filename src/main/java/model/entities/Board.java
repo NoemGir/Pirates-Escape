@@ -16,7 +16,6 @@ public class Board{
 
 	public Case move(String pirate, int distance) {
                 int position = getPlayer(pirate).getPosition();
-                System.out.println("players " + pirate +" : position = " + position + " desination = " + (position + distance));
                 int destination = position + distance;
                 if(destination < this.nbCase){
                     getPlayer(pirate).setPosition(destination);

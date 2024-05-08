@@ -31,7 +31,12 @@ public class ConsoleScenario {
         VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(pirateGameBoundary);
         PirateGameControl pirateGameControl = new PirateGameControl(board, pirateGameBoundary,moveControl, verifyEndGameControl);
 
+        pirateGameBoundary.setMovePirate(moveControl);
+        pirateGameBoundary.setThrowDIce(moveControl);
         pirateGameBoundary.setPirateGameControl(pirateGameControl);
+        
+        moveControl.setPirateGameControl(pirateGameControl);
+        
         pirateGameControl.startGame();
     }
 }
