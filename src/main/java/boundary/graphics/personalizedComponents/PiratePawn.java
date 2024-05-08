@@ -21,7 +21,7 @@ public class PiratePawn extends javax.swing.JPanel {
     
     private boolean activated;
     private int offset = 0;
-    private Color color = new Color(109, 7, 26);
+    private Color color = new Color(255, 0, 0);
     private Component box;
     /**
      * Creates new form PiratePawn

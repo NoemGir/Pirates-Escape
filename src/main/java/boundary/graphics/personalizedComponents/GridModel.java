@@ -41,7 +41,7 @@ public class GridModel extends javax.swing.JPanel {
         }
         
         piratePawn2.setOffset(6);
-        piratePawn2.setColor(Color.yellow);
+        piratePawn2.setColor(Color.blue);
     }
 
     public JLayeredPane getjLayeredPane1() {

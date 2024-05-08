@@ -21,7 +21,7 @@ public class Board{
                 if(destination < this.nbCase){
                     getPlayer(pirate).setPosition(destination);
                 }else{
-                    getPlayer(pirate).setPosition(this.nbCase-(destination-this.nbCase)-2);
+                    getPlayer(pirate).setPosition(this.nbCase-((destination-this.nbCase)));
                 }
                 return cases.get(getPlayer(pirate).getPosition());
 	}
