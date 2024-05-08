@@ -26,7 +26,7 @@ public class ConsoleScenario {
 
         PirateGameBoundary pirateGameBoundary = new PirateGameBoundary();
 
-        ActivateBoxControl activateBoxControl = new ActivateBoxControl();
+        ActivateBoxControl activateBoxControl = new ActivateBoxControl(pirateGameBoundary);
         MoveControl moveControl = new MoveControl(pirateGameBoundary,activateBoxControl, board);
         VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(pirateGameBoundary);
         PirateGameControl pirateGameControl = new PirateGameControl(board, pirateGameBoundary,moveControl, verifyEndGameControl);

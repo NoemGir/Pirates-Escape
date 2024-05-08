@@ -108,15 +108,17 @@ public class Dialog implements IPirates {
      * Une fois un pion arrivé sur une case, vérifie si la case d'arrivée correspond bien la case de destination voulu
      */
     public void verifyCaseMove(){
-        Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
-        movablePawn.setBox(arrivedCase);
-        if(arrivedCase.equals(rightDestination)){
-            movablePawn = null;
-            rightDestination.putBlackBorder();
-            adapter.moveFinished();
-        }
-        else{
-            System.out.println("mauvaise destination");
+        if(movablePawn != null){
+            Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
+            movablePawn.setBox(arrivedCase);
+            if(arrivedCase.equals(rightDestination)){
+                movablePawn = null;
+                rightDestination.putBlackBorder();
+                adapter.moveFinished();
+            }
+            else{
+                System.out.println("mauvaise destination");
+            }
         }
     }
 

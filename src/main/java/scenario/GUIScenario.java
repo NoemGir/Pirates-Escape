@@ -51,7 +51,7 @@ public class GUIScenario {
 
         FunctionnalKernelAdapter functionnalKernelAdapter = new FunctionnalKernelAdapter();
         Dialog dialog = new Dialog(functionnalKernelAdapter);
-        ActivateBoxControl activateBoxControl = new ActivateBoxControl();
+        ActivateBoxControl activateBoxControl = new ActivateBoxControl(functionnalKernelAdapter);
         MoveControl moveControl = new MoveControl(functionnalKernelAdapter,activateBoxControl, board);
         VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(functionnalKernelAdapter);
         PirateGameControl pirateGameControl = new PirateGameControl(board, functionnalKernelAdapter,moveControl, verifyEndGameControl);

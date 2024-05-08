@@ -1,5 +1,6 @@
 package control;
 
+import boundary.IBoundary;
 import boundary.graphics.FunctionnalKernelAdapter;
 import java.util.List;
 import model.entities.Case;
@@ -12,9 +13,15 @@ import model.entities.Pirate;
  * 
  * */
 public class ActivateBoxControl {
-	private FunctionnalKernelAdapter functionnalKernelAdapateur = new FunctionnalKernelAdapter();
-	public void activateBox(List<Pirate> listePirate,Pirate pirate, Case box) {
-		box.effect().accept(listePirate, pirate);
-                   functionnalKernelAdapateur.movePirateAuto(pirate.getName(),pirate.getIdPirate(), box.getName(), box.getNumber());
-	}
+    
+    private IBoundary boundary;
+
+    public ActivateBoxControl(IBoundary boundary) {
+        this.boundary = boundary;
+    }
+        
+    public void activateBox(List<Pirate> listePirate,Pirate pirate, Case box) {
+        box.effect().accept(listePirate, pirate);
+        boundary.movePirateAuto(pirate.getIdPirate(), box.getNumber());
+    }
 }

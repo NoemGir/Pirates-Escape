@@ -39,20 +39,12 @@ public class PirateGameBoundary implements IBoundary{
         */
         movePirate.moveFinished();
     }
-    
-    @Override
-    public void movePirateAuto(int idPirate, int boxNumber) {
-        String pirateName = pirateGameControl.getPirateName(idPirate);
-        String box = pirateGameControl.getCaseName(idPirate);
-        System.out.println("Le pirate " + pirateName + " bouge automatiquement sur la case " + boxNumber + " : " + box);
-        movePirate.moveFinished();
-    }
 
     @Override
     public void movePirateAuto(int idPirate, int boxNumber){
         String pirateName = pirateGameControl.getPirateName(idPirate);
         String box = pirateGameControl.getCaseName(idPirate);
-        System.out.println("Le pirate " + pirateName + " bouge automatiquement sur la case : " + box);
+        System.out.println("Le pirate " + pirateName + " bouge automatiquement sur la case " + boxNumber + " : " + box);
     }
 
 
@@ -113,6 +105,4 @@ public class PirateGameBoundary implements IBoundary{
     public void setThrowDIce(IThrowDice throwDIce) {
         this.throwDIce = throwDIce;
     }
-
-  }
 }

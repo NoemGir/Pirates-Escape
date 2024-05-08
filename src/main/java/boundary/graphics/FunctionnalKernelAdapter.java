@@ -93,12 +93,18 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
         dialog.display("Le pirate " + pirateName + " doit bouger sur la case " + boxNumber + " : " + box);
     }
 
+    
     @Override
-    public void movePirateAuto(int idPirate, int boxNumber) {
+    public void movePirateAuto(int idPirate, int boxNumber){
         String pirateName = pirateGameControl.getPirateName(idPirate);
         String box = pirateGameControl.getCaseName(boxNumber);
-        dialog.movePirateAuto( idPirate, boxNumber);
-        dialog.display("Le pirate " + pirateName + "bouge sur la case " + boxNumber + " : " + box);
+        System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : FRAMBOIISE");
+        if(this.dialog==null){
+            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : Le dialogue est null");
+        }
+        this.dialog.movePirateAuto( idPirate, boxNumber);
+        dialog.display("Le pirate " + pirateName + "glisse sur la case " + boxNumber + " : " + box);
     }
 
     @Override
@@ -127,16 +133,6 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
     public void setMovePirate(IMovePirate movePirate) {
         this.movePirate = movePirate;
-    }
-
-    @Override
-    public void movePirateAuto(String pirateName, int idPirate, String box, int boxNumber){
-        System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : FRAMBOIISE");
-        if(this.dialog==null){
-            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : Le dialogue est null");
-        }
-        this.dialog.movePirateAuto( idPirate, boxNumber);
     }
 
     public void setPirateGameControl(PirateGameControl pirateGameControl) {

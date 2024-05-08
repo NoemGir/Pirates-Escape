@@ -20,7 +20,7 @@ public class Board{
                 if(destination < this.nbCase){
                     getPlayer(pirate).setPosition(destination);
                 }else{
-                    getPlayer(pirate).setPosition(this.nbCase-((destination-this.nbCase)));
+                    getPlayer(pirate).setPosition(2*(this.nbCase-1)-distance-position);
                 }
                 return cases.get(getPlayer(pirate).getPosition());
 	}

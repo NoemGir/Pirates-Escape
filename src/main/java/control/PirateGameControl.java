@@ -57,7 +57,7 @@ public class PirateGameControl{
     public void newPlayerTurn(Pirate pirate){
         if (!verifyEndGameManagement(pirate)){
             activPirate = changePlayer();
-            moveControl.throwDiceMovement(newPirate);
+            moveControl.throwDiceMovement();
         }
     }
 

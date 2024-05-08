@@ -44,7 +44,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	@Override
 	public void move(Pirate pirate, int value) {
             box = board.move(pirate.getName(), value);
-            boundary.movePirate(pirate.getName(), pirate.getIdPirate(), box.getName(), box.getNumber());
+            boundary.movePirate(pirate.getIdPirate(), box.getNumber());
 	}
 
         public void throwDiceMovement(){
@@ -64,8 +64,8 @@ public class MoveControl implements IMovePirate, IThrowDice {
         public void moveFinished() {
             activateBoxControl.activateBox(board.getListPirate(),pirateGameControl.getActivPirate(),box);
             if(dice1.getDisplayValue() == dice2.getDisplayValue()){
-               if (!pirateGameControl.verifyEndGameManagement(actualPirate)){
-                   throwDiceMovement(actualPirate);
+               if (!pirateGameControl.verifyEndGameManagement(pirateGameControl.getActivPirate())){
+                   throwDiceMovement();
                }
             }
             else{
