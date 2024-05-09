@@ -6,7 +6,7 @@ import java.util.function.*;
 public class LuckyLukeShadowCase extends Case {
 
 	public LuckyLukeShadowCase(int number) {
-		super(number);
+		super(number,"/LuckyLuck.png");
                 setName("Lucky Luke Shadow");
 	}
 	

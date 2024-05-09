@@ -6,7 +6,7 @@ import java.util.function.*;
 public class NurseCase extends Case {
 
 	public NurseCase(int number) {
-		super(number);
+		super(number,"/Joelle.png");
                 setName("Nurse");
 	}
 	

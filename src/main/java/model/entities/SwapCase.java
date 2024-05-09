@@ -6,7 +6,7 @@ import java.util.function.*;
 public class SwapCase extends Case {
 
 	public SwapCase(int number) {
-		super(number);
+		super(number,"UNO-Reverse.png");
                 setName("Swap");
 	}
 	

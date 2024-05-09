@@ -4,6 +4,7 @@ import boundary.IBoundary;
 import control.IMovePirate;
 import control.IThrowDice;
 import control.PirateGameControl;
+import java.util.LinkedList;
 
 /**
  * Fait le lien entre les controleurs et le dialog IHM grace à son implémentation de IBoundary
@@ -118,7 +119,14 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public String getCaseName(int idCase) {
         return pirateGameControl.getCaseName(idCase);
     }
-
+    @Override
+    public LinkedList<String> getCaseImageLinks(int idCase) {
+        LinkedList<String> linkList = new LinkedList<>();
+        for(int i=0;i<30;i++){
+            linkList.add(pirateGameControl.getBoxLink(i));
+        }
+        return linkList;
+    }
     public void setDialog(IPirates dialog) {
         this.dialog = dialog;
     }

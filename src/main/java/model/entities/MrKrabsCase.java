@@ -6,7 +6,7 @@ import java.util.function.*;
 public class MrKrabsCase extends Case {
 
 	public MrKrabsCase(int number) {
-		super(number);
+		super(number,"/Krabs.png");
                 setName("MrKrabs");
 	}
 	

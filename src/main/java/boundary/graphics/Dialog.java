@@ -11,6 +11,7 @@ import boundary.graphics.personalizedComponents.PiratePawn;
 import java.awt.Component;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.JLayeredPane;
@@ -19,7 +20,7 @@ import javax.swing.JLayeredPane;
 * Le Dialog s'occupe de gérer les liens entre les différentes composants graphiques, et le Noyau fonctionnel
 *
 * @author Noémie GIREAUD
-* @author Robin MOUNIER
+* @author Robin MOUNIE
 */
 public class Dialog implements IPirates {
 
@@ -48,7 +49,7 @@ public class Dialog implements IPirates {
     @Override
     public void startGame() {
         rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(0);
-
+        displayGridImage();
         for(PiratePawn pawn : listPiratePawn){
             pawn.setBox(rightDestination);
             pawn.moveTo(GraphicsUtils.computeLocationPawnInCase(rightDestination));
@@ -103,7 +104,14 @@ public class Dialog implements IPirates {
         slidingPawn.slidePawnToBox(listPiratePawn.get(idNewPirate), gridModel.getGridPanel().getComponent(box));
         listPiratePawn.get(idNewPirate).setBox(gridModel.getGridPanel().getComponent(box));
     }
-    
+    public void displayGridImage(){
+        LinkedList<String> list = adapter.getCaseImageLinks(idPirate);
+        for(int i =0 ;i<30;i++)
+        {
+           CasePanel box= (CasePanel) this.gridModel.getGridPanel().getComponent(i);
+           box.setBoxImage(list.get(i));
+                
+        }}
     /**
      * Une fois un pion arrivé sur une case, vérifie si la case d'arrivée correspond bien la case de destination voulu
      */
