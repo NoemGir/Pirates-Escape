@@ -14,10 +14,7 @@ import model.entities.GargamelleCase;
 import model.entities.LuckyLukeShadowCase;
 import model.entities.MrKrabsCase;
 import model.entities.NurseCase;
-import model.entities.SwapCase;
 import static scenario.ConsoleScenario.NB_CASES;
-import static scenario.ConsoleScenario.NB_PLAYERS;
-
 
 
 /*
@@ -34,7 +31,7 @@ public class GUIScenario {
                     board.addCase(new Case(i));
                     break;
                 case 26:
-                    board.addCase(new CliffCase(i));
+                    board.addCase(new PortalCase(i));
                     break;
                 case 25:
                     board.addCase(new GargamelleCase(i));

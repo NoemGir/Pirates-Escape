@@ -21,13 +21,13 @@ model\entities\LuckyLukeShadowCase.class
 model\entities\MrKrabsCase.class
 boundary\graphics\personalizedComponents\Dice$1.class
 boundary\graphics\IFunctionnalKernel.class
+model\entities\PortalCase.class
 model\entities\Board.class
 boundary\graphics\personalizedComponents\CasePanel.class
 boundary\graphics\FunctionnalKernelAdapter.class
 boundary\graphics\personalizedComponents\PiratePawn.class
 boundary\PirateGameBoundary.class
 boundary\graphics\personalizedComponents\HealthBar.class
-model\entities\CliffCase.class
 boundary\graphics\personalizedComponents\PirateFace.class
 boundary\graphics\personalizedComponents\GridModel.class
 boundary\graphics\personalizedComponents\HeartPanel.class
