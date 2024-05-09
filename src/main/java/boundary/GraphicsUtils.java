@@ -113,8 +113,10 @@ public class GraphicsUtils {
     * @author Noémie GIREAUD
     * 
     * @param soundName le nom du fichier de son à jouer
+    * @param decibelChange le nombre de décibel a augmenter ou retirer du son
+    * @param loop le nombre de répétition du don
     */
-    public static void playSound(String soundName, float decibelChange ){
+    public static void playSound(String soundName, float decibelChange, int loop ){
         try {
             URL audioFileURL = new GraphicsUtils().getClass().getResource(soundName);
             if(audioFileURL != null){
@@ -123,7 +125,7 @@ public class GraphicsUtils {
                 clip.open(audioInputStream);
                 FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
                 gainControl.setValue(decibelChange); 
-                clip.loop(Clip.LOOP_CONTINUOUSLY);
+                clip.loop(loop);
                 }
             
         } catch (Exception ex) {

@@ -21,12 +21,16 @@ public class ActivateBoxControl {
     }
         
     public void activateBox(List<Pirate> listePirate,Pirate pirate, Case box) {
+        
         LinkedList<Integer> positionInitialPirate = new LinkedList<>();
+        
         for(Pirate p : listePirate){
             positionInitialPirate.add(p.getPosition());
         }
+        
         box.effect().accept(listePirate, pirate);
-        for(int i = 0;i<listePirate.size();i++){
+        
+        for(int i = 0; i<listePirate.size(); i++){
             if(! listePirate.get(i).getPosition().equals(positionInitialPirate.get(i))){
                 boundary.movePirateAuto(listePirate.get(i).getIdPirate(), listePirate.get(i).getPosition());
             }
