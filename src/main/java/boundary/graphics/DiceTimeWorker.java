@@ -36,9 +36,15 @@ public class DiceTimeWorker extends SwingWorker<Void,Void>{
 
         @Override
         protected Void doInBackground() throws Exception {
+            System.out.println("boundary.graphics.DiceTimeWorker.doInBackground()");
             timer.start();
             return null;
         }  
+        
+        @Override
+        protected void done(){
+            System.out.println("Dice Done !");
+        }
 
         private void timerEventHandler(java.awt.event.ActionEvent e){
             if(nbAnimation < 30 + random.nextInt()%15){
@@ -50,6 +56,7 @@ public class DiceTimeWorker extends SwingWorker<Void,Void>{
                 timer.stop();
                 dice.display(value);
                 dialog.diceFinished();
+                System.out.println("terminé dice");
                 this.cancel(true);
             }
         }

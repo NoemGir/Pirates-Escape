@@ -9,7 +9,6 @@ import control.PirateGameControl;
 import control.VerifyEndGameControl;
 import model.entities.Board;
 import model.entities.Case;
-import model.entities.CliffCase;
 import model.entities.NurseCase;
 import model.entities.SwapCase;
 import static scenario.ConsoleScenario.NB_CASES;
@@ -46,9 +45,8 @@ public class GUIScenario {
                    board.addCase(new Case(i));
                    break;
                 default:
-                   board.addCase(new NurseCase(i));
+                   board.addCase(new SwapCase(i));
             }
-
         }
 
         FunctionnalKernelAdapter functionnalKernelAdapter = new FunctionnalKernelAdapter();

@@ -62,14 +62,16 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
         @Override
         public void moveFinished() {
+            Pirate activePirate = pirateGameControl.getActivPirate();
             activateBoxControl.activateBox(board.getListPirate(),pirateGameControl.getActivPirate(),box);
             if(dice1.getDisplayValue() == dice2.getDisplayValue()){
                if (!pirateGameControl.verifyEndGameManagement(pirateGameControl.getActivPirate())){
+                   boundary.playAgain(activePirate.getIdPirate());
                    throwDiceMovement();
                }
             }
             else{
-                pirateGameControl.newPlayerTurn(pirateGameControl.getActivPirate());
+                pirateGameControl.newPlayerTurn(activePirate);
             }
 
         }

@@ -42,7 +42,6 @@ public class Dialog implements IPirates {
 
     public Dialog(FunctionnalKernelAdapter adapter) {
         this.adapter = adapter;
-        slidingPawnWorker.setDialog(this);
     }
 
     @Override
@@ -55,7 +54,7 @@ public class Dialog implements IPirates {
         }
         diceCouple.setEnabled(false);
         mainFrame.showMainFrame();
-        GraphicsUtils.playSound("/main_sound.wav", -15.0f, -1);
+        GraphicsUtils.playSound("/main_sound.wav", -18.0f, -1);
     }
 
     @Override
@@ -93,15 +92,15 @@ public class Dialog implements IPirates {
     @Override
     public void movePirate(int idNewPirate, int box){
         movablePawn = listPiratePawn.get(idNewPirate);
-
         rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(box);
         rightDestination.putGreenBorder();
     }
 
     @Override
     public void movePirateAuto(int idNewPirate, int box){
-        slidingPawnWorker.slidePawnToBox(listPiratePawn.get(idNewPirate), gridModel.getGridPanel().getComponent(box));
-        listPiratePawn.get(idNewPirate).setBox(gridModel.getGridPanel().getComponent(box));
+        PiratePawn pawn = listPiratePawn.get(idNewPirate);
+        slidingPawnWorker = new SlidingPawnWorker(this, pawn, gridModel.getGridPanel().getComponent(box));
+        slidingPawnWorker.execute();
     }
     
     /**
@@ -110,7 +109,6 @@ public class Dialog implements IPirates {
     public void verifyCaseMove(){
         if(movablePawn != null){
             Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
-            movablePawn.setBox(arrivedCase);
             if(arrivedCase.equals(rightDestination)){
                 movablePawn = null;
                 rightDestination.putBlackBorder();
@@ -217,5 +215,4 @@ public class Dialog implements IPirates {
     public String toString() {
         return "Dialog{" + "adapter=" + adapter + ", listPirateFace=" + listPirateFace + ", listPiratePawn=" + listPiratePawn + ", listPirateHealth=" + listPirateHealth + ", diceCouple=" + diceCouple + ", gridModel=" + gridModel + ", mainFrame=" + mainFrame + ", idPirate=" + idPirate + ", slidingPawn=" + slidingPawnWorker + ", movablePawn=" + movablePawn + ", rightDestination=" + rightDestination + ", nbDiceRunning=" + nbDiceRunning + '}';
     }
-
 }

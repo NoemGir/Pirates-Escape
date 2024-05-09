@@ -22,49 +22,39 @@ public class SlidingPawnWorker extends SwingWorker<Void,Void>{
     private Dialog dialog;
     
     private PiratePawn pawn;
-    private Timer timerY ;
-    private Timer timerX ;
+    private Timer timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
+    private Timer timerX = new Timer(10, (ActionEvent e) -> {moveX(e);});
     private Point location;
     private Point destination;
+    
+    private Component casePanel;
 
     public SlidingPawnWorker(Dialog dialog, PiratePawn pawn, Component casePanel) {
+        this.dialog = dialog;
         this.pawn = pawn;
         this.location = pawn.getLocation();
+        this.casePanel = casePanel;
         location.translate(pawn.getSize().width/2 - pawn.getOffset(), pawn.getSize().height/2 - pawn.getOffset());
         this.destination = GraphicsUtils.computeLocationPawnInCase(casePanel);
     }
     
-    
-    
-    
-    /**
-    * Classe créer pour genrer le déplacement en glissade des pions
-    * 
-    * @author Noémie GIREAUD
-    * 
-    * @param pawn Le pion a faire glisser
-    * @param casePanel la case vers laquelle faire glisser le pion
-    */
-    public void slidePawnToBox(PiratePawn pawn, Component casePanel){
-        
-
-        @Override
-        protected Void doInBackground() throws Exception{
-            startTimers();
-            return null;
-        }
-       
-    }
-    
-    private void startTimers(){
-        timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
-        timerX = new Timer(10, (ActionEvent e) -> {moveX(e);});
+    @Override
+    protected Void doInBackground() throws Exception{
+        System.out.println("boundary.graphics.SlidingPawnWorker.doInBackground()");
         timerX.start();
         timerY.start();
+        return null;
     }
-
+    
+    @Override
+    protected void done(){
+        System.out.println("Done !");
+        pawn.setBox(casePanel);
+        dialog.verifyCaseMove();
+    }
+    
     /**
-    * method appelée par le TimerX, chargée de bouger le pion de 1 pixel horizontalement dans la direction de la destination
+    * methode appelée par le TimerX, chargée de bouger le pion de 1 pixel horizontalement dans la direction de la destination
     * 
     * @author Noémie GIREAUD
     * 
@@ -81,7 +71,8 @@ public class SlidingPawnWorker extends SwingWorker<Void,Void>{
         if(location.x == destination.x){
             timerX.stop();
             if(!timerY.isRunning()){
-                dialog.verifyCaseMove();
+                System.out.println("Move -- X");
+                this.cancel(true);
             }
         }
     }
@@ -104,7 +95,8 @@ public class SlidingPawnWorker extends SwingWorker<Void,Void>{
         if(location.y == destination.y){
             timerY.stop();
             if(!timerX.isRunning()){
-                dialog.verifyCaseMove();
+                System.out.println("Move -- Y");
+                this.cancel(true);
             }
         }
     }
