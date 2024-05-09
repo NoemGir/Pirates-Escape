@@ -26,7 +26,5 @@ public class Dice {
     public int getDisplayValue() {
         return displayValue;
     }
-    
-    
-    
+
 }

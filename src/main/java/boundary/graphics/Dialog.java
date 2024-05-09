@@ -98,6 +98,7 @@ public class Dialog implements IPirates {
 
     @Override
     public void movePirateAuto(int idNewPirate, int box){
+        gridModel.setResetPawnEnabled(false);
         PiratePawn pawn = listPiratePawn.get(idNewPirate);
         slidingPawnWorker = new SlidingPawnWorker(this, pawn, gridModel.getGridPanel().getComponent(box));
         slidingPawnWorker.execute();
@@ -107,6 +108,7 @@ public class Dialog implements IPirates {
      * Une fois un pion arrivé sur une case, vérifie si la case d'arrivée correspond bien la case de destination voulu
      */
     public void verifyCaseMove(){
+        gridModel.setResetPawnEnabled(true);
         if(movablePawn != null){
             Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
             if(arrivedCase.equals(rightDestination)){
@@ -118,6 +120,9 @@ public class Dialog implements IPirates {
                 System.out.println("mauvaise destination");
             }
         }
+        else{
+            adapter.moveEffectFinished();
+        }
     }
 
     /**
@@ -128,6 +133,7 @@ public class Dialog implements IPirates {
     */
     public void eventMousePressedGrid(Point point) {
         if(movablePawn != null){
+            gridModel.setResetPawnEnabled(false);
             movablePawn.setBox(null);
             slidingPawnWorker = new SlidingPawnWorker(this, movablePawn, gridModel.getGridPanel().getComponentAt(point));
             slidingPawnWorker.execute();
@@ -138,11 +144,6 @@ public class Dialog implements IPirates {
     public void activateThrowDice() {
         diceCouple.getButton().setEnabled(true);
         nbDiceRunning = 2;
-    }
-
-    @Override
-    public void desactivateThrowDice() {
-            diceCouple.setEnabled(false);
     }
 
     /**

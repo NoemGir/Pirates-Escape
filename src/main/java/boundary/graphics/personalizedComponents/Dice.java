@@ -55,6 +55,7 @@ public class Dice extends javax.swing.JPanel {
 
     public void setJoueur(int Joueur) {
         this.Joueur = Joueur;
+        repaint();
     }
 
     public void display(int value){

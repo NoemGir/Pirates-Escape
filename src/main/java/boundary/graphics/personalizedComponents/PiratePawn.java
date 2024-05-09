@@ -66,6 +66,7 @@ public class PiratePawn extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(40, 40));
         setMinimumSize(new java.awt.Dimension(40, 40));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(40, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -83,6 +84,8 @@ public class PiratePawn extends javax.swing.JPanel {
 
     @Override
     public void paintComponent(Graphics g){
+        System.out.println("Paint component de " + color);
+        super.paintComponent(g);
         g.setColor(color);
         int[] xPoints = {getHeight()/2, getHeight(), getHeight()/2, 0};
         int[] yPoints = {0,getWidth()/2 , getWidth(), getWidth()/2};

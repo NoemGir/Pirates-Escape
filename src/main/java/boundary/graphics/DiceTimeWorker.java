@@ -38,6 +38,7 @@ public class DiceTimeWorker extends SwingWorker<Void,Void>{
         protected Void doInBackground() throws Exception {
             System.out.println("boundary.graphics.DiceTimeWorker.doInBackground()");
             timer.start();
+            Thread.sleep(1000000000);
             return null;
         }  
         

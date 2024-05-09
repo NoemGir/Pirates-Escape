@@ -43,6 +43,7 @@ public class SlidingPawnWorker extends SwingWorker<Void,Void>{
         System.out.println("boundary.graphics.SlidingPawnWorker.doInBackground()");
         timerX.start();
         timerY.start();
+        Thread.sleep(1000000000);
         return null;
     }
     

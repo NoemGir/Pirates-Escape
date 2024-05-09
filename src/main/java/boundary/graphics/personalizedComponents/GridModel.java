@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 public class GridModel extends javax.swing.JPanel {
 
     private Dialog dialog;
+    private boolean resetPawnEnabled = true;
+    
     /**
      * Creates new form GridModel
      */
@@ -143,11 +145,18 @@ public class GridModel extends javax.swing.JPanel {
         dialog.eventMousePressedGrid(evt.getPoint());
     }//GEN-LAST:event_formMousePressed
 
+    public void setResetPawnEnabled(boolean resetPawnEnabled) {
+        this.resetPawnEnabled = resetPawnEnabled;
+    }
+            
     @Override
     public void paintComponent(Graphics g){
+        System.out.println("Paint component grille -> reset");
         super.paintComponent(g);
-        piratePawn1.resetLocation();
-        piratePawn2.resetLocation();
+        if(resetPawnEnabled){
+            piratePawn1.resetLocation();
+            piratePawn2.resetLocation();
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;

@@ -16,6 +16,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
     private IPirates dialog;
     private IMovePirate movePirate;
+    private IMovePirate movePirateEffect;
     private PirateGameControl pirateGameControl;
     private IThrowDice throwDice;
 
@@ -38,13 +39,17 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
 
     @Override
     public void diceFinished() {
-        dialog.desactivateThrowDice();
         throwDice.doubleDicesFinished();
     }
 
     @Override
     public void moveFinished() {
         movePirate.moveFinished();
+    }
+    
+    @Override
+    public void moveEffectFinished() {
+        movePirateEffect.moveFinished();    
     }
 
     @Override
@@ -134,5 +139,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
         this.pirateGameControl = pirateGameControl;
     }
 
-
+    public void setMovePirateEffect(IMovePirate movePirateEffect) {
+        this.movePirateEffect = movePirateEffect;
+    }
 }

@@ -1,7 +1,5 @@
 package control;
 
-import java.util.Random;
-
 import boundary.IBoundary;
 import model.entities.Dice;
 import model.entities.Board;
@@ -30,18 +28,15 @@ public class MoveControl implements IMovePirate, IThrowDice {
          * Crée une nouvelle instance de MoveControl
          *
          * @param boundary
-         * @param activateBoxControl
          * @param board
          */
-	public MoveControl(IBoundary boundary, ActivateBoxControl activateBoxControl, Board board) {
+	public MoveControl(IBoundary boundary, Board board) {
 		this.boundary = boundary;
-		this.activateBoxControl = activateBoxControl;
 		this.board = board;
                 this.dice1 = new Dice();
                 this.dice2 = new Dice();
 	}
 
-	@Override
 	public void move(Pirate pirate, int value) {
             box = board.move(pirate.getName(), value);
             boundary.movePirate(pirate.getIdPirate(), box.getNumber());
@@ -62,18 +57,12 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
         @Override
         public void moveFinished() {
-            Pirate activePirate = pirateGameControl.getActivPirate();
-            activateBoxControl.activateBox(board.getListPirate(),pirateGameControl.getActivPirate(),box);
-            if(dice1.getDisplayValue() == dice2.getDisplayValue()){
-               if (!pirateGameControl.verifyEndGameManagement(pirateGameControl.getActivPirate())){
-                   boundary.playAgain(activePirate.getIdPirate());
-                   throwDiceMovement();
-               }
-            }
-            else{
-                pirateGameControl.newPlayerTurn(activePirate);
-            }
-
+            pirateGameControl.moveFinished(box);
+        }
+    
+        
+        public boolean playAgain(){
+            return dice1.getDisplayValue() == dice2.getDisplayValue();
         }
 
 

@@ -27,6 +27,12 @@ public interface IFunctionnalKernel {
     public void moveFinished();
 
     /** 
+    * Indique au controleur que le mouvement du pion résultant de l'effet d'une case à 
+    * bien été réalisé
+    */
+    public void moveEffectFinished();
+    
+    /** 
     * Récupère le nom du pirate identifié
     * 
     * @param idPirate l'identifiant du pirate
