@@ -17,7 +17,7 @@ import javax.swing.Timer;
  * 
  * @author Noémie GIREAUD
  */
-public class SlidingPawn {
+public class SlidingPawnWorker extends SwingWorker<Void,Void>{
     
     private Dialog dialog;
     
@@ -26,6 +26,15 @@ public class SlidingPawn {
     private Timer timerX ;
     private Point location;
     private Point destination;
+
+    public SlidingPawnWorker(Dialog dialog, PiratePawn pawn, Component casePanel) {
+        this.pawn = pawn;
+        this.location = pawn.getLocation();
+        location.translate(pawn.getSize().width/2 - pawn.getOffset(), pawn.getSize().height/2 - pawn.getOffset());
+        this.destination = GraphicsUtils.computeLocationPawnInCase(casePanel);
+    }
+    
+    
     
     
     /**
@@ -37,30 +46,25 @@ public class SlidingPawn {
     * @param casePanel la case vers laquelle faire glisser le pion
     */
     public void slidePawnToBox(PiratePawn pawn, Component casePanel){
-        this.pawn = pawn;
-        pawn.setBox(null);
-        this.location = pawn.getLocation();
-        location.translate(pawn.getSize().width/2 - pawn.getOffset(), pawn.getSize().height/2 - pawn.getOffset());
-        System.out.println("loc = " + location);
-        this.destination = GraphicsUtils.computeLocationPawnInCase(casePanel);
-        SwingWorker<Void,Void> timer=new SwingWorker<Void,Void>(){
-            protected Void doInBackground() throws Exception{
-                startTimers();
-                return null;
-            }
-        };
-        timer.execute();
+        
+
+        @Override
+        protected Void doInBackground() throws Exception{
+            startTimers();
+            return null;
+        }
+       
     }
     
     private void startTimers(){
         timerY = new Timer(10, (ActionEvent e) -> {moveY(e);});
-        timerX= new Timer(10, (ActionEvent e) -> {moveX(e);});
+        timerX = new Timer(10, (ActionEvent e) -> {moveX(e);});
         timerX.start();
         timerY.start();
     }
 
     /**
-    * Classe appelée par le TimerX, chargée de bouger le pion de 1 pixel horizontalement dans la direction de la destination
+    * method appelée par le TimerX, chargée de bouger le pion de 1 pixel horizontalement dans la direction de la destination
     * 
     * @author Noémie GIREAUD
     * 
@@ -83,7 +87,7 @@ public class SlidingPawn {
     }
 
     /**
-    * Classe appelée par le TimerY, chargée de bouger le pion de 1 pixel verticallement dans la direction de la destination
+    * methode appelée par le TimerY, chargée de bouger le pion de 1 pixel verticallement dans la direction de la destination
     * 
     * @author Noémie GIREAUD
     * 

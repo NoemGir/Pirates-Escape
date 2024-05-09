@@ -7,6 +7,7 @@ boundary\graphics\Dialog.class
 boundary\graphics\IPirates.class
 control\ActivateSpecialBoxControl.class
 control\PirateGameControl.class
+boundary\graphics\DiceTimeWorker.class
 scenario\GUIScenario.class
 boundary\graphics\SlidingPawn.class
 model\entities\Dice.class
@@ -19,7 +20,6 @@ control\VerifyEndGameControl.class
 model\entities\Case.class
 model\entities\LuckyLukeShadowCase.class
 model\entities\MrKrabsCase.class
-boundary\graphics\personalizedComponents\Dice$1.class
 boundary\graphics\IFunctionnalKernel.class
 model\entities\Board.class
 boundary\graphics\personalizedComponents\CasePanel.class

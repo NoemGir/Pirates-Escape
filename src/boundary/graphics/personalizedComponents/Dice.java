@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.LinkedList;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.SwingWorker;
@@ -20,20 +21,12 @@ import javax.swing.Timer;
  */
 public class Dice extends javax.swing.JPanel {
     
-    Dialog dialog;
-    
+    private int Joueur = 0;
     private int value = 1;
-    private int nbAnimation = 0;
-    private int storedValue = 0;
-    BufferedImage image1;
-    BufferedImage image2;
-    BufferedImage image3;
-    BufferedImage image4;
-    BufferedImage image5;
-    BufferedImage image6;
-    BufferedImage image7;
-    Timer timer ;
-    private Random random = new Random();
+    private LinkedList<BufferedImage> listeImages = new LinkedList<>();
+
+    private DiceTimeWorker diceTimeWorker;
+
     
     /**
      * Creates new form Dice
@@ -41,92 +34,55 @@ public class Dice extends javax.swing.JPanel {
     public Dice() {
         initComponents();
         try{
-            image1 = ImageIO.read(new File(getClass().getResource("/1.png").toURI()));
-            image2 = ImageIO.read(new File(getClass().getResource("/2.png").toURI()));
-            image3 = ImageIO.read(new File(getClass().getResource("/3.png").toURI()));
-            image4 = ImageIO.read(new File(getClass().getResource("/4.png").toURI()));
-            image5 = ImageIO.read(new File(getClass().getResource("/5.png").toURI()));
-            image6 = ImageIO.read(new File(getClass().getResource("/6.png").toURI()));
-            image7 = ImageIO.read(new File(getClass().getResource("/7.png").toURI()));
-         
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/1.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/2.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/3.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/4.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/5.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/6.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/7.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/1b.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/2b.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/3b.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/4b.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/5b.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/6b.png").toURI())));
+            listeImages.add(ImageIO.read(new File(getClass().getResource("/7b.png").toURI())));
+
     }catch(Exception e){
         System.out.println(e);
     }
-        
         repaint();
-        
+    }
+
+    public void setJoueur(int Joueur) {
+        this.Joueur = Joueur;
+    }
+
+    public void display(int value){
+        this.value = value;
+        repaint();
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        switch(value){
-            case 1:
-                g.drawImage(image1, 0, 0, 100, 100, this);
-                break;
-            case 2:
-                g.drawImage(image2, 0, 0, 100, 100, this);
-                break;
-            case 3:
-                g.drawImage(image3, 0, 0, 100, 100, this);
-                break;
-            case 4:
-                g.drawImage(image4, 0, 0, 100, 100, this);
-                break;
-            case 5:
-                g.drawImage(image5, 0, 0, 100, 100, this);
-                break;
-            case 6:
-                g.drawImage(image6, 0, 0, 100, 100, this);
-                break;
-            default:
-                g.drawImage(image7, 0, 0, 100, 100, this);
+        if(this.value<0){
+            this.value *= (-1);
         }
-    
+        g.drawImage(listeImages.get(value+7*Joueur), 0, 0, 100, 100, this);
+
     }
+
     public void  setDiceValue(int v){
-        DiceTimeWorker timer=new DiceTimeWorker(v);
-        timer.execute();
+        DiceTimeWorker timer = new DiceTimeWorker(v);
+        diceTimeWorker.setValue(v);
+        diceTimeWorker.execute();
+    }    
+    
+    public DiceTimeWorker getDiceTimeWorker(){
+        return this.diceTimeWorker;
     }
-    
-    
-
-    public void setDialog(Dialog dialog) {
-        this.dialog = dialog;
-    }
-    
-    private class DiceTimeWorker extends SwingWorker<Void,Void>{
-        private int targetValue;
-        public DiceTimeWorker(int targetValue){
-            this.targetValue=targetValue;
-        }
-
-        @Override
-        protected Void doInBackground() throws Exception {
-            timer = new Timer(50, new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                timerEventHandler(e);
-            }
-        });
-            timer.start();
-            return null;
-        }  
-    
-    private void timerEventHandler(java.awt.event.ActionEvent e){
-        if(nbAnimation < 30 + random.nextInt()%15){
-            value = (random.nextInt()%7);
-            nbAnimation++;
-            repaint();
-        }else{
-            value = targetValue;
-            timer.stop();
-            repaint();
-            dialog.diceFinished();
-        }
-    }
-    }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
