@@ -1,14 +1,12 @@
-boundary\graphics\SlidingPawn$1.class
 boundary\graphics\personalizedComponents\DiceCouple.class
 control\ActivateBoxControl.class
 model\entities\SwapCase.class
 control\IMovePirate.class
 boundary\graphics\Dialog.class
 boundary\graphics\IPirates.class
-control\ActivateSpecialBoxControl.class
 control\PirateGameControl.class
+boundary\graphics\DiceTimeWorker.class
 scenario\GUIScenario.class
-boundary\graphics\SlidingPawn.class
 model\entities\Dice.class
 boundary\graphics\personalizedComponents\GridModel$1.class
 model\entities\Pirate.class
@@ -19,7 +17,6 @@ control\VerifyEndGameControl.class
 model\entities\Case.class
 model\entities\LuckyLukeShadowCase.class
 model\entities\MrKrabsCase.class
-boundary\graphics\personalizedComponents\Dice$1.class
 boundary\graphics\IFunctionnalKernel.class
 model\entities\PortalCase.class
 model\entities\Board.class
@@ -35,6 +32,7 @@ boundary\graphics\personalizedComponents\MainFrame$1.class
 control\MoveControl.class
 boundary\GraphicsUtils.class
 control\IThrowDice.class
+boundary\graphics\SlidingPawnWorker.class
 boundary\IBoundary.class
 scenario\ConsoleScenario.class
 boundary\graphics\personalizedComponents\DiceCouple$1.class

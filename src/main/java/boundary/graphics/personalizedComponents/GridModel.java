@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 public class GridModel extends javax.swing.JPanel {
 
     private Dialog dialog;
+    private boolean resetPawnEnabled = true;
     private BufferedImage background;
     /**
      * Creates new form GridModel
@@ -43,7 +44,7 @@ public class GridModel extends javax.swing.JPanel {
         }catch(Exception e){
             System.out.println("boundary.graphics.personalizedComponents.GridModel.manualInit() : Erreur de charcgement du fond d'écrant ");
         }
-        
+
         for(int i = 0; i < 30; i++) {
             CasePanel myCase = new CasePanel();
             myCase.setText("" + i);
@@ -156,14 +157,18 @@ public class GridModel extends javax.swing.JPanel {
         dialog.eventMousePressedGrid(evt.getPoint());
     }//GEN-LAST:event_formMousePressed
 
+    public void setResetPawnEnabled(boolean resetPawnEnabled) {
+        this.resetPawnEnabled = resetPawnEnabled;
+    }
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        System.out.println("boundary.graphics.personalizedComponents.GridModel.paintComponent() : Width "+ getWidth());
-        System.out.println("boundary.graphics.personalizedComponents.GridModel.paintComponent() : Height "+ getHeight());
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-        piratePawn1.resetLocation();
-        piratePawn2.resetLocation();
+        if(resetPawnEnabled){
+            piratePawn1.resetLocation();
+            piratePawn2.resetLocation();
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;

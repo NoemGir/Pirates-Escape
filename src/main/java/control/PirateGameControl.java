@@ -3,6 +3,7 @@ package control;
 import boundary.IBoundary;
 import java.util.ListIterator;
 import model.entities.Board;
+import model.entities.Case;
 import model.entities.Pirate;
 
 /**
@@ -21,8 +22,9 @@ public class PirateGameControl{
     private IBoundary boundary;
     private MoveControl moveControl;
     private VerifyEndGameControl verifyEndControl;
+    private ActivateBoxControl activateBoxControl;
 
-    private Pirate activPirate;
+    private Pirate activPirate = null;
     private ListIterator<Pirate> itPirate;
 
     /**
@@ -33,11 +35,12 @@ public class PirateGameControl{
      * @param moveControl le controleur de movement
      * @param verifyEndControl le controleur de vérification de fin de jeu
      */
-    public PirateGameControl(Board board, IBoundary boundary, MoveControl moveControl, VerifyEndGameControl verifyEndControl) {
+    public PirateGameControl(Board board, IBoundary boundary, MoveControl moveControl, VerifyEndGameControl verifyEndControl, ActivateBoxControl activateBoxControl) {
         this.board = board;
         this.boundary = boundary;
         this.moveControl = moveControl;
         this.verifyEndControl = verifyEndControl;
+        this.activateBoxControl = activateBoxControl;
     }
 
     /**
@@ -46,7 +49,7 @@ public class PirateGameControl{
     public void startGame() {
         boundary.startGame();
         initGame();
-        newPlayerTurn(null);
+        newPlayerTurn();
     }
 
     /**
@@ -54,10 +57,31 @@ public class PirateGameControl{
      *
      * @param pirate le nouveau joueur
      */
-    public void newPlayerTurn(Pirate pirate){
-        if (!verifyEndGameManagement(pirate)){
+    public void newPlayerTurn(){
+        if (!verifyEndGameManagement()){
             activPirate = changePlayer();
             moveControl.throwDiceMovement();
+        }
+    }
+    
+    public void moveFinished(Case box){
+        
+        activateBoxControl.activateBox(board.getListPirate(), activPirate, box);
+        
+        if(! activateBoxControl.mustWait()){
+            verifyPlayAgain();
+        }
+    }
+    
+    public void verifyPlayAgain(){
+        if(moveControl.playAgain()){
+            if (!verifyEndGameManagement()){
+                boundary.playAgain(activPirate.getIdPirate());
+                moveControl.throwDiceMovement();
+            }
+        }
+        else{
+            newPlayerTurn();
         }
     }
 
@@ -101,8 +125,8 @@ public class PirateGameControl{
      * @param pirate le pirate qui vient de jouer
      * @return True si le jeu est terminé, false sinon
      */
-    public boolean verifyEndGameManagement(Pirate pirate){
-        if(verifyEndControl.gameEnded(board.getListPirate(), pirate )){
+    public boolean verifyEndGameManagement(){
+        if(verifyEndControl.gameEnded(board.getListPirate(), activPirate )){
             System.out.println("jeux bien terminé !");
             return true;
         }

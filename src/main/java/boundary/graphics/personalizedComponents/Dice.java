@@ -5,14 +5,12 @@
 package boundary.graphics.personalizedComponents;
 
 import boundary.graphics.Dialog;
+import boundary.graphics.DiceTimeWorker;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.LinkedList;
-import java.util.Random;
 import javax.imageio.ImageIO;
-import javax.swing.Timer;
 
 /**
  * Panel Personnalisé représentant un dé
@@ -21,20 +19,12 @@ import javax.swing.Timer;
  */
 public class Dice extends javax.swing.JPanel {
 
-    Dialog dialog;
+    private Dialog dialog;
     private int Joueur = 0;
     private int value = 1;
-    private int nbAnimation = 0;
-    private int storedValue = 0;
     private LinkedList<BufferedImage> listeImages = new LinkedList<>();
 
-    Timer timer = new Timer(50, new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                timerEventHandler(e);
-            }
-        });
-    private Random random = new Random();
+    private DiceTimeWorker diceTimeWorker;
 
     /**
      * Creates new form Dice
@@ -68,39 +58,29 @@ public class Dice extends javax.swing.JPanel {
         repaint();
     }
 
+    public void display(int value){
+        this.value = value;
+        repaint();
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if(this.value<0){
-            this.value*=(-1);
+            this.value *= (-1);
         }
-                g.drawImage(listeImages.get(value+7*Joueur), 0, 0, 100, 100, this);
+        g.drawImage(listeImages.get(value+7*Joueur), 0, 0, 100, 100, this);
 
     }
-    public void  setDiceValue(int v){
-        value = v;
-        storedValue = v-1;
-        nbAnimation = 0;
-        this.timer.start();
-    }
 
-    private void timerEventHandler(java.awt.event.ActionEvent e){
-        if(nbAnimation < 30 + random.nextInt()%15){
-            this.value = (random.nextInt()%7);
-            nbAnimation++;
-            repaint();
-        }else{
-            this.value = storedValue;
-            timer.stop();
-            repaint();
-            dialog.diceFinished();
-        }
+    public void  rollDice(int v){
+        diceTimeWorker = new DiceTimeWorker(dialog, this, v);
+        diceTimeWorker.execute();
     }
 
     public void setDialog(Dialog dialog) {
         this.dialog = dialog;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.

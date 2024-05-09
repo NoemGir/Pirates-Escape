@@ -5,7 +5,6 @@ package control;
  *  
  * @author Noémie
 */
-import model.entities.Pirate;
 
 public interface IMovePirate {
         
@@ -14,11 +13,4 @@ public interface IMovePirate {
      */   
     public void moveFinished();
     
-    /**
-     * Avance le pirate donné de la distance indiqué
-     * 
-     * @param pirate le pirate à bouger
-     * @param distance la distance de déplacement ( en nombre de case )
-     */
-    public void move(Pirate pirate, int distance);
 }

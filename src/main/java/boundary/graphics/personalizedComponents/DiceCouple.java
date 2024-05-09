@@ -24,8 +24,8 @@ public class DiceCouple extends javax.swing.JPanel {
     }
     
     public void displayDices(int val1,int val2){
-        dice1.setDiceValue(val1);
-        dice2.setDiceValue(val2);
+        dice1.rollDice(val1);
+        dice2.rollDice(val2);
     }
     public void setDicesPlayer(){
         dice1.setJoueur(player);

@@ -35,7 +35,7 @@ public class Dialog implements IPirates {
 
     private int idPirate;
 
-    private SlidingPawn slidingPawn = new SlidingPawn();
+    private SlidingPawnWorker slidingPawnWorker;
     private PiratePawn movablePawn;
     private CasePanel rightDestination;
 
@@ -43,7 +43,6 @@ public class Dialog implements IPirates {
 
     public Dialog(FunctionnalKernelAdapter adapter) {
         this.adapter = adapter;
-        slidingPawn.setDialog(this);
     }
 
     @Override
@@ -56,7 +55,7 @@ public class Dialog implements IPirates {
         }
         diceCouple.setEnabled(false);
         mainFrame.showMainFrame();
-        GraphicsUtils.playSound("/main_sound.wav", -15.0f, -1);
+        GraphicsUtils.playSound("/main_sound.wav", -18.0f, -1);
     }
 
     @Override
@@ -94,15 +93,16 @@ public class Dialog implements IPirates {
     @Override
     public void movePirate(int idNewPirate, int box){
         movablePawn = listPiratePawn.get(idNewPirate);
-
         rightDestination = (CasePanel) gridModel.getGridPanel().getComponent(box);
         rightDestination.putGreenBorder();
     }
 
     @Override
     public void movePirateAuto(int idNewPirate, int box){
-        slidingPawn.slidePawnToBox(listPiratePawn.get(idNewPirate), gridModel.getGridPanel().getComponent(box));
-        listPiratePawn.get(idNewPirate).setBox(gridModel.getGridPanel().getComponent(box));
+        gridModel.setResetPawnEnabled(false);
+        PiratePawn pawn = listPiratePawn.get(idNewPirate);
+        slidingPawnWorker = new SlidingPawnWorker(this, pawn, gridModel.getGridPanel().getComponent(box));
+        slidingPawnWorker.execute();
     }
     public void displayGridImage(){
         LinkedList<String> list = adapter.getCaseImageLinks(idPirate);
@@ -116,9 +116,9 @@ public class Dialog implements IPirates {
      * Une fois un pion arrivé sur une case, vérifie si la case d'arrivée correspond bien la case de destination voulu
      */
     public void verifyCaseMove(){
+        gridModel.setResetPawnEnabled(true);
         if(movablePawn != null){
             Component arrivedCase = gridModel.getGridPanel().getComponentAt(movablePawn.getLocation());
-            movablePawn.setBox(arrivedCase);
             if(arrivedCase.equals(rightDestination)){
                 movablePawn = null;
                 rightDestination.putBlackBorder();
@@ -127,6 +127,9 @@ public class Dialog implements IPirates {
             else{
                 System.out.println("mauvaise destination");
             }
+        }
+        else{
+            adapter.moveEffectFinished();
         }
     }
 
@@ -138,7 +141,10 @@ public class Dialog implements IPirates {
     */
     public void eventMousePressedGrid(Point point) {
         if(movablePawn != null){
-            slidingPawn.slidePawnToBox(movablePawn, gridModel.getGridPanel().getComponentAt(point));
+            gridModel.setResetPawnEnabled(false);
+            movablePawn.setBox(null);
+            slidingPawnWorker = new SlidingPawnWorker(this, movablePawn, gridModel.getGridPanel().getComponentAt(point));
+            slidingPawnWorker.execute();
         }
     }
 
@@ -146,11 +152,6 @@ public class Dialog implements IPirates {
     public void activateThrowDice() {
         diceCouple.getButton().setEnabled(true);
         nbDiceRunning = 2;
-    }
-
-    @Override
-    public void desactivateThrowDice() {
-            diceCouple.setEnabled(false);
     }
 
     /**
@@ -185,11 +186,11 @@ public class Dialog implements IPirates {
         HealthBar bar = listPirateHealth.get(idNewPirate);
         if(bar.getHearts() > hp){
             GraphicsUtils.playSound(bar.getSoundDamage(), 5.0f, 1);
-            display("Aïe ! Le pirate " + adapter.getPirateName(idPirate) + " perd " + (bar.getHearts() - hp) + " PV...");
+            display("Aïe ! Le pirate " + adapter.getPirateName(idNewPirate) + " perd " + (bar.getHearts() - hp) + " PV...");
         }
         else{
             if(bar.getHearts() < hp){
-                display("Un miracle se produit ! le pirate " + adapter.getPirateName(idPirate) + " gagne " + (hp - bar.getHearts()) + " PV !!" );
+                display("Un miracle se produit ! le pirate " + adapter.getPirateName(idNewPirate) + " gagne " + (hp - bar.getHearts()) + " PV !!" );
             }
         }
         bar.repaintHearts(hp);
@@ -221,7 +222,6 @@ public class Dialog implements IPirates {
 
     @Override
     public String toString() {
-        return "Dialog{" + "adapter=" + adapter + ", listPirateFace=" + listPirateFace + ", listPiratePawn=" + listPiratePawn + ", listPirateHealth=" + listPirateHealth + ", diceCouple=" + diceCouple + ", gridModel=" + gridModel + ", mainFrame=" + mainFrame + ", idPirate=" + idPirate + ", slidingPawn=" + slidingPawn + ", movablePawn=" + movablePawn + ", rightDestination=" + rightDestination + ", nbDiceRunning=" + nbDiceRunning + '}';
+        return "Dialog{" + "adapter=" + adapter + ", listPirateFace=" + listPirateFace + ", listPiratePawn=" + listPiratePawn + ", listPirateHealth=" + listPirateHealth + ", diceCouple=" + diceCouple + ", gridModel=" + gridModel + ", mainFrame=" + mainFrame + ", idPirate=" + idPirate + ", slidingPawn=" + slidingPawnWorker + ", movablePawn=" + movablePawn + ", rightDestination=" + rightDestination + ", nbDiceRunning=" + nbDiceRunning + '}';
     }
-
 }

@@ -46,23 +46,24 @@ public class GUIScenario {
                    board.addCase(new LuckyLukeShadowCase(i));
                    break;
                 default:
-                   board.addCase(new Case(i));
+                   board.addCase(new SwapCase(i));
             }
-
         }
 
         FunctionnalKernelAdapter functionnalKernelAdapter = new FunctionnalKernelAdapter();
         Dialog dialog = new Dialog(functionnalKernelAdapter);
         ActivateBoxControl activateBoxControl = new ActivateBoxControl(functionnalKernelAdapter);
-        MoveControl moveControl = new MoveControl(functionnalKernelAdapter,activateBoxControl, board);
+        MoveControl moveControl = new MoveControl(functionnalKernelAdapter, board);
         VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(functionnalKernelAdapter);
-        PirateGameControl pirateGameControl = new PirateGameControl(board, functionnalKernelAdapter,moveControl, verifyEndGameControl);
+        PirateGameControl pirateGameControl = new PirateGameControl(board, functionnalKernelAdapter,moveControl, verifyEndGameControl, activateBoxControl);
 
         functionnalKernelAdapter.setThrowDice(moveControl);
         functionnalKernelAdapter.setDialog(dialog);
         functionnalKernelAdapter.setMovePirate(moveControl);
         functionnalKernelAdapter.setPirateGameControl(pirateGameControl);
+        functionnalKernelAdapter.setMovePirateEffect(activateBoxControl);
         moveControl.setPirateGameControl(pirateGameControl);
+        activateBoxControl.setPirateGameControl(pirateGameControl);
 
         MainFrame mainFrame = new MainFrame();
         mainFrame.setDialog(dialog);

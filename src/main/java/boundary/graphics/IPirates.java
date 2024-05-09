@@ -43,11 +43,6 @@ public interface IPirates {
     public void activateThrowDice();
 
     /**
-    * Sésactive la possibilité de jeter les dés
-    */
-    public void desactivateThrowDice();
-
-    /**
     * Ajoute le message dans le display du jeu
     *
     * @param message Le message à ajouter

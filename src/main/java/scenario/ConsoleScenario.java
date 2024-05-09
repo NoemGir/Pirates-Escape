@@ -27,13 +27,14 @@ public class ConsoleScenario {
         PirateGameBoundary pirateGameBoundary = new PirateGameBoundary();
 
         ActivateBoxControl activateBoxControl = new ActivateBoxControl(pirateGameBoundary);
-        MoveControl moveControl = new MoveControl(pirateGameBoundary,activateBoxControl, board);
+        MoveControl moveControl = new MoveControl(pirateGameBoundary, board);
         VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(pirateGameBoundary);
-        PirateGameControl pirateGameControl = new PirateGameControl(board, pirateGameBoundary,moveControl, verifyEndGameControl);
+        PirateGameControl pirateGameControl = new PirateGameControl(board, pirateGameBoundary,moveControl, verifyEndGameControl, activateBoxControl);
 
         pirateGameBoundary.setMovePirate(moveControl);
         pirateGameBoundary.setThrowDIce(moveControl);
         pirateGameBoundary.setPirateGameControl(pirateGameControl);
+        activateBoxControl.setPirateGameControl(pirateGameControl);
         
         moveControl.setPirateGameControl(pirateGameControl);
         
