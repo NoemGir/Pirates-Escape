@@ -55,7 +55,7 @@ public class Dialog implements IPirates {
         }
         diceCouple.setEnabled(false);
         mainFrame.showMainFrame();
-        GraphicsUtils.playSound("/main_sound.wav");
+        GraphicsUtils.playSound("/main_sound.wav", -15.0f);
     }
 
     @Override
@@ -176,7 +176,7 @@ public class Dialog implements IPirates {
     public void changeHeart(int idNewPirate, int hp) {
         HealthBar bar = listPirateHealth.get(idNewPirate);
         if(bar.getHearts() > hp){
-            GraphicsUtils.playSound(bar.getSoundDamage());
+            GraphicsUtils.playSound(bar.getSoundDamage(), 10.0f);
             display("Aïe ! Le pirate " + adapter.getPirateName(idPirate) + "perd " + (bar.getHearts() - hp) + " PV...");
         }
         else{

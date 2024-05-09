@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 /**
  * Cette classe regroupe des méthodes pouvant être utiles aux classes présentes dans le boundary 
@@ -113,14 +114,16 @@ public class GraphicsUtils {
     * 
     * @param soundName le nom du fichier de son à jouer
     */
-    public static void playSound(String soundName){
+    public static void playSound(String soundName, float decibelChange ){
         try {
             URL audioFileURL = new GraphicsUtils().getClass().getResource(soundName);
             if(audioFileURL != null){
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(audioFileURL.toURI()));
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
-                clip.start();
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(decibelChange); 
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
                 }
             
         } catch (Exception ex) {
