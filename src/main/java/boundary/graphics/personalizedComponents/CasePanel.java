@@ -4,6 +4,11 @@
  */
 package boundary.graphics.personalizedComponents;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+
 /**
  * Panel personnalisé correspondant à une case du plateau
  *
@@ -14,9 +19,27 @@ public class CasePanel extends javax.swing.JPanel {
     /**
      * Creates new form CasePanel
      */
+    private BufferedImage boxImage;
     public CasePanel() {
         initComponents();
     }
+
+    public void setBoxImage(String boxImage) {
+        try{
+            this.boxImage =ImageIO.read(new File(getClass().getResource(boxImage).toURI()));
+        }catch(Exception e){
+            //System.out.println("boundary.graphics.personalizedComponents.CasePanel.setBoxImage() : Error loading image box");
+        }
+        repaint();
+    }
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+                g.drawImage(this.boxImage, 0, 0, getWidth(), getHeight(), this);
+
+    }
+    
     
     /**
     * Indique le texte à écrire sur la case 
@@ -54,6 +77,7 @@ public class CasePanel extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(1000, 1000));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(70, 70));
 
         jLabel1.setText("jLabel1");

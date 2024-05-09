@@ -10,7 +10,7 @@ public class CliffCase extends Case {
 	* @param destination
 	*/
 	public CliffCase(int number) {
-		super(number);
+		super(number,"/portal.png");
                 setName("Falaise");
 	}
 	

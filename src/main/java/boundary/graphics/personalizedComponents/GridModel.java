@@ -7,6 +7,9 @@ package boundary.graphics.personalizedComponents;
 import boundary.graphics.Dialog;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
@@ -18,6 +21,7 @@ import javax.swing.JPanel;
 public class GridModel extends javax.swing.JPanel {
 
     private Dialog dialog;
+    private BufferedImage background;
     /**
      * Creates new form GridModel
      */
@@ -33,6 +37,13 @@ public class GridModel extends javax.swing.JPanel {
     }
 
     private void manualInit(){
+        try{
+            background = ImageIO.read(new File(getClass().getResource("/BackGround.jpg").toURI()));
+            System.out.println("boundary.graphics.personalizedComponents.GridModel.manualInit() : Chargement de l'image");
+        }catch(Exception e){
+            System.out.println("boundary.graphics.personalizedComponents.GridModel.manualInit() : Erreur de charcgement du fond d'écrant ");
+        }
+        
         for(int i = 0; i < 30; i++) {
             CasePanel myCase = new CasePanel();
             myCase.setText("" + i);
@@ -41,6 +52,7 @@ public class GridModel extends javax.swing.JPanel {
 
         piratePawn2.setOffset(6);
         piratePawn2.setColor(Color.blue);
+        repaint();
     }
 
     public JLayeredPane getjLayeredPane1() {
@@ -89,6 +101,7 @@ public class GridModel extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
+        gridPanel.setOpaque(false);
         gridPanel.setLayout(new java.awt.GridLayout(6, 5));
 
         jLayeredPane1.setLayer(piratePawn1, javax.swing.JLayeredPane.MODAL_LAYER);
@@ -146,6 +159,9 @@ public class GridModel extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        System.out.println("boundary.graphics.personalizedComponents.GridModel.paintComponent() : Width "+ getWidth());
+        System.out.println("boundary.graphics.personalizedComponents.GridModel.paintComponent() : Height "+ getHeight());
+        g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
         piratePawn1.resetLocation();
         piratePawn2.resetLocation();
     }

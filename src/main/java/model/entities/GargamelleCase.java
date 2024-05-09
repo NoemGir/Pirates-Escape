@@ -6,7 +6,7 @@ import java.util.function.*;
 public class GargamelleCase extends Case {
 
 	public GargamelleCase(int number) {
-		super(number);
+		super(number,"/Gargamel.png");
                 setName("Gargamelle");
 	}
 

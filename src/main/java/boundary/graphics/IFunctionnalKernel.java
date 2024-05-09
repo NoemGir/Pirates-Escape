@@ -1,5 +1,7 @@
 package boundary.graphics;
 
+import java.util.LinkedList;
+
 /** 
  * Rassemble toutes les méthodes 
  * implémentées par le noyau fonctionnel appelées depuis le dialogue.
@@ -41,4 +43,11 @@ public interface IFunctionnalKernel {
     * @return le nom de la case
     */
     public String getCaseName(int idCase);
+    /** 
+    * Récupère le lien de l'image de la case identifié
+    * 
+    * @param idCase l'identifiant de la case
+    * @return le nom de la case
+    */
+    public LinkedList<String> getCaseImageLinks(int idCase);
 }

@@ -6,9 +6,15 @@ import java.util.*;
 public class Case {
 	private String name = "Case Normale";
 	private int number;
+        private String imageLink;
 	
-	public Case(int number) {
+        public Case(int number) {
 		this.number = number;
+                this.imageLink = "";
+	}
+	public Case(int number,String imageLink) {
+		this.number = number;
+                this.imageLink = imageLink;
 	}
 
 	public BiConsumer<List<Pirate>, Pirate> effect(){
@@ -25,6 +31,9 @@ public class Case {
 	
 	public String getName() {
 		return name;
+	}
+        public String getImageLink() {
+		return imageLink;
 	}
 
     public void setName(String name) {

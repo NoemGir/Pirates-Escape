@@ -120,6 +120,10 @@ public class PirateGameControl{
     public Pirate getActivPirate() {
         return activPirate;
     }
+    
+    public String getBoxLink(int idBox){
+        return board.getCases().get(idBox).getImageLink();
+    }
 
 
 }
