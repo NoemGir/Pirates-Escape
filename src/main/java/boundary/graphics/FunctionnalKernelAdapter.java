@@ -98,11 +98,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public void movePirateAuto(int idPirate, int boxNumber){
         String pirateName = pirateGameControl.getPirateName(idPirate);
         String box = pirateGameControl.getCaseName(boxNumber);
-        System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : FRAMBOIISE");
-        if(this.dialog==null){
-            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : Le dialogue est null");
-        }
+        System.out.println("boundary.graphics.FunctionnalKernelAdapter.movePirateAuto() : FRMB "+boxNumber);
         this.dialog.movePirateAuto( idPirate, boxNumber);
         dialog.display("Le pirate " + pirateName + "glisse sur la case " + boxNumber + " : " + box);
     }

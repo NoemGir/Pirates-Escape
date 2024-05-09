@@ -14,7 +14,7 @@ import model.entities.Pirate;
 public class PirateGameControl{
 
     public final int NB_PLAYER = 2;
-    public final int HEALTH_MAX = 6;
+    public final int HEALTH_MAX = 5;
 
     private Board board;
 

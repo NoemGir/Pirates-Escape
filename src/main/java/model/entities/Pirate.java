@@ -29,6 +29,12 @@ public class Pirate {
 
 	public void ajustHp(Function<Integer, Integer> f) {
 		this.hp = f.apply(this.hp);
+                if(this.hp>5){
+                    this.hp = 5;
+                }
+                if(this.hp<0){
+                    this.hp = 0;
+                }
 	}
 	public void ajustPosition(Function<Integer, Integer> f) {
 		this.position = f.apply(this.position);

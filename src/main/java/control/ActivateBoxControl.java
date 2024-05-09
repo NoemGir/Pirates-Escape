@@ -1,7 +1,7 @@
 package control;
 
 import boundary.IBoundary;
-import boundary.graphics.FunctionnalKernelAdapter;
+import java.util.LinkedList;
 import java.util.List;
 import model.entities.Case;
 import model.entities.Pirate;
@@ -21,7 +21,17 @@ public class ActivateBoxControl {
     }
         
     public void activateBox(List<Pirate> listePirate,Pirate pirate, Case box) {
+        LinkedList<Integer> positionInitialPirate = new LinkedList<>();
+        for(Pirate p : listePirate){
+            positionInitialPirate.add(p.getPosition());
+        }
         box.effect().accept(listePirate, pirate);
-        boundary.movePirateAuto(pirate.getIdPirate(), box.getNumber());
+        for(int i = 0;i<listePirate.size();i++){
+            if(! listePirate.get(i).getPosition().equals(positionInitialPirate.get(i))){
+                boundary.movePirateAuto(listePirate.get(i).getIdPirate(), listePirate.get(i).getPosition());
+            }
+            boundary.displayPV(listePirate.get(i).getIdPirate(), listePirate.get(i).getHp());
+        }
+        
     }
 }
