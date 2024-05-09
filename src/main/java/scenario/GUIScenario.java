@@ -9,7 +9,7 @@ import control.PirateGameControl;
 import control.VerifyEndGameControl;
 import model.entities.Board;
 import model.entities.Case;
-import model.entities.CliffCase;
+import model.entities.PortalCase;
 import model.entities.GargamelleCase;
 import model.entities.LuckyLukeShadowCase;
 import model.entities.MrKrabsCase;
