@@ -16,8 +16,8 @@ public class PortalCase extends Case {
     * @param number le numéro de la case dans le plateau.
     */
     public PortalCase(int number) {
-        super(number);
-        setName("Falaise");
+        super(number, "/portal.png");
+        setName("Trou noir");
     }
     
     /**

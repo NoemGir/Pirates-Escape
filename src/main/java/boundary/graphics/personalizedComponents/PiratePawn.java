@@ -84,7 +84,6 @@ public class PiratePawn extends javax.swing.JPanel {
 
     @Override
     public void paintComponent(Graphics g){
-        System.out.println("Paint component de " + color);
         super.paintComponent(g);
         g.setColor(color);
         int[] xPoints = {getHeight()/2, getHeight(), getHeight()/2, 0};

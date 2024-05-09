@@ -16,7 +16,7 @@ public class SwapCase extends Case {
     * @param number Le numéro de la case sur le plateau.
     */
     public SwapCase(int number) {
-  		super(number,"UNO-Reverse.png");
+  		super(number,"/UNO-Reverse.png");
       setName("Swap");
   	}
 

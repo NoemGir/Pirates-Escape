@@ -16,9 +16,9 @@ public class NurseCase extends Case {
     * @param number Le numéro de la case sur le plateau.
     */
     public NurseCase(int number) {
-  		super(number,"/Joelle.png");
-      setName("Nurse");
-  	}
+  	super(number,"/Joelle.png");
+        setName("Nurse");
+    }
 
     /**
     * Redéfinition de la méthode effect de la classe mère Case.

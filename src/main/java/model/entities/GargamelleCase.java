@@ -15,10 +15,10 @@ public class GargamelleCase extends Case {
     *
     * @param number Le numéro de la case sur le plateau.
     */
-		public GargamelleCase(int number) {
-				super(number,"/Gargamel.png");
-	    	setName("Gargamelle");
-		}
+    public GargamelleCase(int number) {
+        super(number,"/Gargamel.png");
+        setName("Gargamelle");
+    }
 
     /**
     * Redéfinition de la méthode effect de la classe mère Case.

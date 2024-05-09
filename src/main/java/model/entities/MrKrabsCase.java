@@ -16,9 +16,9 @@ public class MrKrabsCase extends Case {
     * @param number Le numéro de la case sur le plateau.
     */
     public MrKrabsCase(int number) {
-  		super(number,"/Krabs.png");
-      setName("MrKrabs");
-  	}
+  	super(number,"/Krabs.png");
+        setName("MrKrabs");
+    }
 
     /**
     * Redéfinition de la méthode effect de la classe mère Case.
