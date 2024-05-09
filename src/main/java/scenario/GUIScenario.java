@@ -10,6 +10,8 @@ import control.VerifyEndGameControl;
 import model.entities.Board;
 import model.entities.Case;
 import model.entities.CliffCase;
+import model.entities.NurseCase;
+import model.entities.SwapCase;
 import static scenario.ConsoleScenario.NB_CASES;
 import static scenario.ConsoleScenario.NB_PLAYERS;
 
@@ -44,7 +46,7 @@ public class GUIScenario {
                    board.addCase(new Case(i));
                    break;
                 default:
-                   board.addCase(new CliffCase(i));
+                   board.addCase(new NurseCase(i));
             }
 
         }
