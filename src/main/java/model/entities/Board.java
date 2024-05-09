@@ -9,7 +9,7 @@ public class Board{
 	private LinkedList<Pirate> listPirate = new LinkedList<>();
 	private List<Case> cases = new LinkedList<>();
 	
-	public Board(int nbCase, int nbPlayer) {
+	public Board(int nbCase) {
 		this.nbCase = nbCase;
 	}
 	

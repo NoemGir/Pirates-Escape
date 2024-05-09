@@ -26,7 +26,7 @@ import static scenario.ConsoleScenario.NB_PLAYERS;
 public class GUIScenario {
 
     public static void main(String[] args) {
-        Board board = new Board(NB_CASES, NB_PLAYERS);
+        Board board = new Board(NB_CASES);
 
         for(int i = 0; i < NB_CASES; i++) {
             switch(i){
