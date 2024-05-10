@@ -1,6 +1,7 @@
 
 package boundary.graphics.personalizedComponents;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -20,6 +21,7 @@ public class PirateFace extends javax.swing.JPanel {
     private Image color;
     private Image grey;
     private String imageName = "/jackSparrow";
+    private Color liner = Color.red;
     /**
      * Creates new form ImagePanel
      */
@@ -59,11 +61,19 @@ public class PirateFace extends javax.swing.JPanel {
         return imageName;
     }
 
+    public void setLiner(Color liner) {
+        this.liner = liner;
+    }
+    
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
+        g.setColor(liner);
+        g.fillRect(0, 0, 120, 120);
         if(scaledImage != null){
-            g.drawImage(scaledImage,0,0,120, 120, this);
+            g.drawImage(scaledImage,10,10,100, 100, this);
+
+            
         }
     }
 
