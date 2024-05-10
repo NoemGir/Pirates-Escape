@@ -39,7 +39,6 @@ public class GridModel extends javax.swing.JPanel {
     private void manualInit(){
         try{
             background = ImageIO.read(new File(getClass().getResource("/BackGround.jpg").toURI()));
-            System.out.println("boundary.graphics.personalizedComponents.GridModel.manualInit() : Chargement de l'image");
         }catch(Exception e){
             System.out.println("boundary.graphics.personalizedComponents.GridModel.manualInit() : Erreur de charcgement du fond d'écrant ");
         }
@@ -159,8 +158,6 @@ public class GridModel extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        System.out.println("boundary.graphics.personalizedComponents.GridModel.paintComponent() : Width "+ getWidth());
-        System.out.println("boundary.graphics.personalizedComponents.GridModel.paintComponent() : Height "+ getHeight());
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
         piratePawn1.resetLocation();
         piratePawn2.resetLocation();

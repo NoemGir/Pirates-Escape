@@ -28,9 +28,11 @@ F:\gitProjet\Pirates-Escape\src\main\java\model\entities\SwapCase.java
 F:\gitProjet\Pirates-Escape\src\main\java\control\MoveControl.java
 F:\gitProjet\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\HeartPanel.java
 F:\gitProjet\Pirates-Escape\src\main\java\model\entities\Pirate.java
+F:\gitProjet\Pirates-Escape\src\main\java\model\entities\FinishLine.java
 F:\gitProjet\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\DiceCouple.java
 F:\gitProjet\Pirates-Escape\src\main\java\control\IThrowDice.java
 F:\gitProjet\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\PirateFace.java
 F:\gitProjet\Pirates-Escape\src\main\java\model\entities\MrKrabsCase.java
 F:\gitProjet\Pirates-Escape\src\main\java\scenario\ConsoleScenario.java
 F:\gitProjet\Pirates-Escape\src\main\java\boundary\graphics\SlidingPawn.java
+F:\gitProjet\Pirates-Escape\src\main\java\model\entities\StartCase.java
