@@ -80,8 +80,11 @@ public class Dialog implements IPirates {
 
     @Override
     public void changePirate(int idNewPirate) {
-        for(PirateFace p : listPirateFace)
-            p.ChangeImage();
+        listPirateFace.forEach( p -> p.ChangeImage() );
+        
+        // Ancienne version du forEach pour montrer qu'on sait faire
+        //for(PirateFace p : listPirateFace)
+        //    p.ChangeImage();
 
         JLayeredPane layeredPaneGrid = gridModel.getjLayeredPane1();
         layeredPaneGrid.setLayer(listPiratePawn.get(idPirate), javax.swing.JLayeredPane.PALETTE_LAYER);
