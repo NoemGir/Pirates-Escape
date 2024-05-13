@@ -40,7 +40,6 @@ public class GridModel extends javax.swing.JPanel {
     private void manualInit(){
         try{
             background = ImageIO.read(new File(getClass().getResource("/BackGround.jpg").toURI()));
-            System.out.println("boundary.graphics.personalizedComponents.GridModel.manualInit() : Chargement de l'image");
         }catch(Exception e){
             System.out.println("boundary.graphics.personalizedComponents.GridModel.manualInit() : Erreur de charcgement du fond d'écrant ");
         }

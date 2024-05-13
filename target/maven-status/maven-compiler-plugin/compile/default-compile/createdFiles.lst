@@ -10,6 +10,7 @@ scenario\GUIScenario.class
 model\entities\Dice.class
 boundary\graphics\personalizedComponents\GridModel$1.class
 model\entities\Pirate.class
+model\entities\StartCase.class
 boundary\graphics\personalizedComponents\MainFrame.class
 model\entities\NurseCase.class
 boundary\graphics\personalizedComponents\Dice.class
@@ -29,6 +30,7 @@ boundary\graphics\personalizedComponents\PirateFace.class
 boundary\graphics\personalizedComponents\GridModel.class
 boundary\graphics\personalizedComponents\HeartPanel.class
 boundary\graphics\personalizedComponents\MainFrame$1.class
+model\entities\FinishLine.class
 control\MoveControl.class
 boundary\GraphicsUtils.class
 control\IThrowDice.class

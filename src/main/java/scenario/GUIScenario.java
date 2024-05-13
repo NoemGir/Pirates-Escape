@@ -10,10 +10,12 @@ import control.VerifyEndGameControl;
 import model.entities.Board;
 import model.entities.Case;
 import model.entities.PortalCase;
+import model.entities.FinishLine;
 import model.entities.GargamelleCase;
 import model.entities.LuckyLukeShadowCase;
 import model.entities.MrKrabsCase;
 import model.entities.NurseCase;
+import model.entities.StartCase;
 import model.entities.SwapCase;
 import static scenario.ConsoleScenario.NB_CASES;
 
@@ -29,22 +31,25 @@ public class GUIScenario {
         for(int i = 0; i < NB_CASES; i++) {
             switch(i){
                 case 0:
-                    board.addCase(new Case(i));
+                    board.addCase(new StartCase(i));
                     break;
-                case 26:
-                    board.addCase(new NurseCase(i));
+                case 6:
+                    board.addCase(new PortalCase(i));
                     break;
-                case 25:
+                case 15:
+                    board.addCase(new GargamelleCase(i));
+                    break;
+                case 23:
+                    board.addCase(new MrKrabsCase(i));
+                    break;
+                case 7:
                     board.addCase(new NurseCase(i));
                     break;
                 case 27:
-                    board.addCase(new MrKrabsCase(i));
-                    break;
-                case 28:
-                    board.addCase(new NurseCase(i));
+                    board.addCase(new LuckyLukeShadowCase(i));
                     break;
                 case 29:
-                   board.addCase(new LuckyLukeShadowCase(i));
+                   board.addCase(new FinishLine(i));
                    break;
                 default:
                    board.addCase(new GargamelleCase(i));
