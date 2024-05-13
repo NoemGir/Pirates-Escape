@@ -16,7 +16,6 @@ public class MoveControl implements IMovePirate, IThrowDice {
 
 	private Board board;
 	private IBoundary boundary;
-	private ActivateBoxControl activateBoxControl;
         private PirateGameControl pirateGameControl;
 
 
@@ -37,8 +36,8 @@ public class MoveControl implements IMovePirate, IThrowDice {
                 this.dice2 = new Dice();
 	}
 
-	public void move(Pirate pirate, int value) {
-            box = board.move(pirate.getName(), value);
+	public void move(Pirate pirate, int distance) {
+            box = board.move(pirate.getName(), distance);
             boundary.movePirate(pirate.getIdPirate(), box.getNumber());
 	}
 
@@ -52,7 +51,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
         @Override
         public void doubleDicesFinished() {
             int distance = dice1.getDisplayValue() + dice2.getDisplayValue();
-            move(pirateGameControl.getActivPirate(), distance);
+            move(pirateGameControl.getActivePirate(), distance);
         }
 
         @Override

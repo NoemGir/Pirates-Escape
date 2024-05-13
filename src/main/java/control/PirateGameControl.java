@@ -14,8 +14,8 @@ import model.entities.Pirate;
  */
 public class PirateGameControl{
 
-    public final int NB_PLAYER = 2;
-    public final int HEALTH_MAX = 5;
+    public static final int NB_PLAYER = 2;
+    public static final int HEALTH_MAX = 5;
 
     private Board board;
 
@@ -24,7 +24,7 @@ public class PirateGameControl{
     private VerifyEndGameControl verifyEndControl;
     private ActivateBoxControl activateBoxControl;
 
-    private Pirate activPirate = null;
+    private Pirate activePirate = null;
     private ListIterator<Pirate> itPirate;
 
     /**
@@ -54,19 +54,17 @@ public class PirateGameControl{
 
     /**
      * Vérifie fin de jeu et lance un tour pour un nouveau joueur
-     *
-     * @param pirate le nouveau joueur
      */
     public void newPlayerTurn(){
         if (!verifyEndGameManagement()){
-            activPirate = changePlayer();
+            activePirate = changePlayer();
             moveControl.throwDiceMovement();
         }
     }
     
     public void moveFinished(Case box){
         
-        activateBoxControl.activateBox(board.getListPirate(), activPirate, box);
+        activateBoxControl.activateBox(board.getListPirate(), activePirate, box);
         
         if(! activateBoxControl.mustWait()){
             verifyPlayAgain();
@@ -76,7 +74,7 @@ public class PirateGameControl{
     public void verifyPlayAgain(){
         if(moveControl.playAgain()){
             if (!verifyEndGameManagement()){
-                boundary.playAgain(activPirate.getIdPirate());
+                boundary.playAgain(activePirate.getIdPirate());
                 moveControl.throwDiceMovement();
             }
         }
@@ -122,11 +120,10 @@ public class PirateGameControl{
     /**
      * Vérifie si le jeu et terminé et continue en conséquence
      *
-     * @param pirate le pirate qui vient de jouer
      * @return True si le jeu est terminé, false sinon
      */
     public boolean verifyEndGameManagement(){
-        if(verifyEndControl.gameEnded(board.getListPirate(), activPirate )){
+        if(verifyEndControl.gameEnded(board.getListPirate(), activePirate )){
             System.out.println("jeux bien terminé !");
             return true;
         }
@@ -141,8 +138,8 @@ public class PirateGameControl{
         return board.getCases().get(idBox).getName();
     }
 
-    public Pirate getActivPirate() {
-        return activPirate;
+    public Pirate getActivePirate() {
+        return activePirate;
     }
     
     public String getBoxLink(int idBox){

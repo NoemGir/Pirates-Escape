@@ -104,8 +104,9 @@ public class Dialog implements IPirates {
         slidingPawnWorker = new SlidingPawnWorker(this, pawn, gridModel.getGridPanel().getComponent(box));
         slidingPawnWorker.execute();
     }
+    
     public void displayGridImage(){
-        LinkedList<String> list = adapter.getCaseImageLinks(idPirate);
+        LinkedList<String> list = adapter.getCaseImageLinks();
         for(int i =0 ;i<30;i++)
         {
            CasePanel box= (CasePanel) this.gridModel.getGridPanel().getComponent(i);

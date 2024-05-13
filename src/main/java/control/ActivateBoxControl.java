@@ -16,7 +16,7 @@ public class ActivateBoxControl implements IMovePirate{
     
     private IBoundary boundary;
     private PirateGameControl pirateGameControl;
-    private int pirateMoved;
+    private int nbPirateMoved;
 
     public ActivateBoxControl(IBoundary boundary ) {
         this.boundary = boundary;
@@ -25,27 +25,26 @@ public class ActivateBoxControl implements IMovePirate{
     /**
      *  Active l'effet de la case donnée
      * 
-     * @param listePirate la liste des joeurs
+     * @param listPirate la liste des joeurs
      * @param pirate le pirate qui est tombé sur la case
      * @param box la casé dont l'effet est activé
      */
-    public void activateBox(List<Pirate> listePirate, Pirate pirate, Case box) {
+    public void activateBox(List<Pirate> listPirate, Pirate pirate, Case box) {
         
-        pirateMoved = 0;
+        nbPirateMoved = 0;
         LinkedList<Integer> positionInitialPirate = new LinkedList<>();
      
-        for(Pirate p : listePirate){
+        for(Pirate p : listPirate){
             positionInitialPirate.add(p.getPosition());
         }
         
-        box.effect().accept(listePirate, pirate);
+        box.effect().accept(listPirate, pirate);
         
-        for(int i = 0; i<listePirate.size(); i++){
-            Pirate curPirate = listePirate.get(i);
+        for(int i = 0; i<listPirate.size(); i++){
+            Pirate curPirate = listPirate.get(i);
             
             if(! curPirate.getPosition().equals(positionInitialPirate.get(i))){
-                pirateMoved +=1;
-                System.out.println("MOVE THE PIRATE FROM CONTROL");
+                nbPirateMoved +=1;
                 boundary.movePirateAuto(curPirate.getIdPirate(), curPirate.getPosition());
             }
             boundary.displayPV(curPirate.getIdPirate(), curPirate.getHp());
@@ -53,15 +52,15 @@ public class ActivateBoxControl implements IMovePirate{
     }
 
     public boolean mustWait() {
-        return pirateMoved != 0;
+        return nbPirateMoved != 0;
     }
     
 
     @Override
     public void moveFinished() {
-        pirateMoved--;
-        if(pirateMoved == 0){
-            pirateMoved--;
+        nbPirateMoved--;
+        if(nbPirateMoved == 0){
+            nbPirateMoved--;
             pirateGameControl.verifyPlayAgain();
         }
     }

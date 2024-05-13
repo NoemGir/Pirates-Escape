@@ -52,8 +52,7 @@ public interface IFunctionnalKernel {
     /** 
     * Récupère le lien de l'image de la case identifié
     * 
-    * @param idCase l'identifiant de la case
     * @return le nom de la case
     */
-    public LinkedList<String> getCaseImageLinks(int idCase);
+    public LinkedList<String> getCaseImageLinks();
 }
