@@ -9,30 +9,35 @@ import model.entities.Board;
 import model.entities.Case;
 
 /*
- *  Ici, on poura lancer l'application en mode console
- * 
+ *  Classe permettant de lancer le jeu en mode console
  */
 public class ConsoleScenario {
 	
-	public static final int NB_CASES = 30;
-	public static final int NB_PLAYERS = 2;
-	
-	public static void main(String[] args) {
-		
-		Board board = new Board(NB_CASES, NB_PLAYERS);
-		
-		for(int i = 0; i < NB_CASES; i++) {
-			board.addCase(new Case("Case " + (i+1)));
-		}
-		
-		PirateGameBoundary pirateGameBoundary = new PirateGameBoundary();
-		
-		ActivateBoxControl activateBoxControl = new ActivateBoxControl();
-		VerifyEndGameControl VerifyEndGameControl = new VerifyEndGameControl(pirateGameBoundary, board);
-		MoveControl moveControl = new MoveControl(pirateGameBoundary, activateBoxControl, board);
-		PirateGameControl pirateGameControl = new PirateGameControl(board, pirateGameBoundary, moveControl, VerifyEndGameControl);
-		
-		
-		pirateGameControl.startGame();
-	}
+    public static final int NB_CASES = 30;
+    public static final int NB_PLAYERS = 2;
+
+    public static void main(String[] args) {
+
+        Board board = new Board(NB_CASES);
+
+        for(int i = 0; i < NB_CASES; i++) {
+                board.addCase(new Case(i));
+        }
+
+        PirateGameBoundary pirateGameBoundary = new PirateGameBoundary();
+
+        ActivateBoxControl activateBoxControl = new ActivateBoxControl(pirateGameBoundary);
+        MoveControl moveControl = new MoveControl(pirateGameBoundary, board);
+        VerifyEndGameControl verifyEndGameControl = new VerifyEndGameControl(pirateGameBoundary);
+        PirateGameControl pirateGameControl = new PirateGameControl(board, pirateGameBoundary,moveControl, verifyEndGameControl, activateBoxControl);
+
+        pirateGameBoundary.setMovePirate(moveControl);
+        pirateGameBoundary.setThrowDIce(moveControl);
+        pirateGameBoundary.setPirateGameControl(pirateGameControl);
+        activateBoxControl.setPirateGameControl(pirateGameControl);
+        
+        moveControl.setPirateGameControl(pirateGameControl);
+        
+        pirateGameControl.startGame();
+    }
 }

@@ -3,21 +3,27 @@ package control;
 
 
 
-/*
- * Afin de pouvoir synchroniser le jeu il faut avoir des interfaces permettant 
- * de gérer les demandes du dialogue par exemple ILancerDe. * 
- * 
- * ILancerDe contient toutes les actions que le noyau fonctionnel peut appeler.
- *  Les contrôleurs recevant ses requêtes doivent implémenter cette interface,
- *   par exemple : 
- *   - de transmettre les résultats que doivent afficher les dés,
- *   - informer que le lancer de dés est terminé afin que le contrôleur
- *   puisse poursuivre son travail.
+/** 
+ * Les controleurs s'inscrivant à cette interface auront la possibilité de lancer les dés
  *  
+ * @author Noémie
 */
-
-/* tous les controleurs qui ont besoin de lancer des dés, ils s'inscrivent en ILancéDé */
 public interface IThrowDice {
-	
-	public int throwDice(String player);
+    
+    /**
+     * Obtiens le résultat du premier dé
+     * @return le résultat affiché sur le premier dé
+     */
+    public int getFirstDiceDisplay();
+
+    /**
+     * Obtiens le résultat du second dé
+     * @return le résultat affiché sur le second dé
+     */
+    public int getSecondDiceDisplay();
+
+    /**
+     * Indique au controleur que le lancement de dés est terminé
+     */
+    public void doubleDicesFinished();
 }

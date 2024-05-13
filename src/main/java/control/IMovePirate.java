@@ -1,15 +1,16 @@
 package control;
 
-import model.entities.Pirate;
+/** 
+ * Les controleurs s'inscrivant à cette interface auront la possibilité de bouger un joueur
+ *  
+ * @author Noémie
+*/
 
-/*
- * Afin de pouvoir synchroniser le jeu il faut avoir des interfaces permettant 
- * de gérer les demandes du dialogue
- * 
- * IMovePirate contient toutes les actions que le noyau fonctionnel 
- * peut appeler. Les controleurs recevant ses requettes doivent 
- * implementer cette interface.
- */
 public interface IMovePirate {
-	public void move(Pirate pirate, int value);
+        
+    /**
+     * Indique au controleur que le mouvement s'est terminé
+     */   
+    public void moveFinished();
+    
 }

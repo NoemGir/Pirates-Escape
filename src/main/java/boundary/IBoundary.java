@@ -1,43 +1,75 @@
 package boundary;
 
-
-
-
-/*
- * Afin de pouvoir passer de la sortie textuelle à la sortie graphique nous 
- * utiliserons une interface IBoundary.
- * 
- * IBoundary contient toutes les actions que doit implémenter l’interface du noyau 
- * fonctionnel ou le boundary du jeu des pirates comme : 
- * - lancer les dés,
- * - avancer le pirate,
- * - …, 
- * 
- * 
- * 
- * difficulté : retour au backend ( void) -> faire un autre appel a methode qui va après avoir fait le boundary de retourne au back
- * 
- * 
- * tous les services qu'ont doit donner a l'utilisateur, peut importe la sortie
- * */
+/**
+ * Afin de pouvoir passer de la sortie textuelle à la sortie graphique nous
+ * utiliserons une interface IBoundary. Elle sera accessible par les controleurs.
+ *
+ * @author Noémie GIREAUD
+ *
+ */
 public interface IBoundary {
-	/* affichage du lançage de dé, on lui donne le resultat*/
-	/* lance les dés, puis demande au controleur via ILancerDe pour obtenir le résultat
-	*/
-	
-	public void throwDice1(int display);
-	public void throwDice2(int display);
-	
-	/* seul le jeton qui corrrspond a au pirate actel peut etre déplacé, et il doit etre glissé*/
-	/* en console : le pirate tant bouge jusqu'a la case tant  */
-	
-	public void displayPV(String pirateName, int health);
-	
-	public String askPirateName();
-	
-	public void endGame(boolean won, String pirateName, String reason);
 
-	public void changeTurn(String name);
+    /**
+    * Commence la présentation du jeu
+    */
+    public void startGame();
 
-	void movePirate(String pirateName, String box);
+    /**
+    * Lance le visuel des deux dés
+    */
+    public void throwDoubleDice();
+
+    /**
+    * Affiche la vie restante du Pirate identifié
+    *
+    * @param idPirate l'identifiant du pirate
+    * @param health le nombre de coeur restant au pirate
+    */
+    public void displayPV(int idPirate, int health);
+
+    /**
+    * Demande a l'utilisateur le nom qu'il souhaite donner a son pirate
+    *
+    * @param idPirate l'identifiant du pirate qui recevra le nom
+    * @return le nom de pirate donné par l'utilisateur
+    */
+    public String askPirateName(int idPirate);
+
+    /**
+    * Montre l'affichage de fin de partie
+    *
+    * @param idPirate l'identifiant du pirate qui a gagné
+    * @param reason la raison de la victoire / défaite des pirates
+    */
+    public void endGame(int idPirate, String reason);
+
+    /**
+    * Indique le joueur auquel c'est le tour de jouer
+    *
+    * @param idPirate l'identifiant du joueur qui doit jouer
+    */
+    public void changePlayer(int idPirate);
+
+    /**
+    * Active l'étape de déplacement du pirate -> l'utilisateur devra bouger le pion lui même
+    *
+    * @param idPirate l'identifiant du joueur qui doit jouer
+    * @param boxNumber le numero de la case sur laquelle il doit attérir
+    */
+    public void movePirate(int idPirate, int boxNumber);
+
+   /**
+    * Active l'étape de déplacement du pirate -> il se déplacera automatiquement
+    *
+    * @param idPirate l'identifiant du joueur qui doit jouer
+    * @param boxNumber le numero de la case sur laquelle il doit attérir
+    */
+    public void movePirateAuto(int idPirate, int boxNumber);
+
+    /**
+    * Indique que le joueur peut jouer encore un tour
+    *
+    * @param idPirate l'identifiant du joueur
+    */
+    public void playAgain(int idPirate);
 }
