@@ -5,6 +5,7 @@
 package boundary.graphics.personalizedComponents;
 
 import boundary.graphics.Dialog;
+import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -24,6 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         pirateFace2.setPirateImage("/harlock");
         pirateFace1.ChangeImage();
+        pirateFace2.setLiner(Color.blue);
     }
 
     public void setDialog(Dialog dialog) {
