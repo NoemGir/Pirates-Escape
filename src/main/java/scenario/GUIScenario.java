@@ -52,7 +52,7 @@ public class GUIScenario {
                    board.addCase(new FinishLine(i));
                    break;
                 default:
-                   board.addCase(new Case(i));
+                   board.addCase(new SwapCase(i));
             }
         }
 

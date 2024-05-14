@@ -21,6 +21,8 @@ public class DiceCouple extends javax.swing.JPanel {
      */
     public DiceCouple() {
         initComponents();
+        dice1.setIdDice(1);
+        dice2.setIdDice(2);
     }
     
     /**

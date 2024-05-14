@@ -51,6 +51,7 @@ public class PiratePawn extends javax.swing.JPanel {
     }
     
     public void slide(Component casePanel){
+        this.box = null;
         slidePawn.slidePawnToComponent(casePanel);
     }
 

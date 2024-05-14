@@ -192,10 +192,10 @@ public class GridModel extends javax.swing.JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-        if(resetPawnEnabled){
+       // if(resetPawnEnabled){
             piratePawn1.resetLocation();
             piratePawn2.resetLocation();
-        }
+       // }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;

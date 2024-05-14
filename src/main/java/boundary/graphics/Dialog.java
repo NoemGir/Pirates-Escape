@@ -178,7 +178,6 @@ public class Dialog implements IPirates {
         if(movablePawn != null){
             gridModel.setResetPawnEnabled(false);
             mainPanel.enableRestart(false);
-            movablePawn.setBox(null);
             movablePawn.slide(gridModel.getGridPanel().getComponentAt(point));
         }
     }
