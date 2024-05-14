@@ -35,12 +35,21 @@ public class MoveControl implements IMovePirate, IThrowDice {
                 this.dice1 = new Dice();
                 this.dice2 = new Dice();
 	}
-
+        
+        /**
+         * lance le mouvement du pirate
+         * 
+         * @param pirate le pirate à bouger
+         * @param distance la distance surlaquelle doit avancer le pirate
+         */
 	public void move(Pirate pirate, int distance) {
             box = board.move(pirate.getName(), distance);
             boundary.movePirate(pirate.getIdPirate(), box.getNumber());
 	}
 
+        /**
+         * Lance le tirage des dés liées au mouvement
+         */
         public void throwDiceMovement(){
             dice1.throwDice();
             dice2.throwDice();
@@ -59,7 +68,11 @@ public class MoveControl implements IMovePirate, IThrowDice {
             pirateGameControl.moveFinished(box);
         }
     
-        
+        /**
+         * Indique si le pirate actuelle peut rejouer ( si il a fait un double dé )
+         * 
+         * @return un boolean indiquant si le pirate rejoue
+         */
         public boolean playAgain(){
             return dice1.getDisplayValue() == dice2.getDisplayValue();
         }
@@ -74,7 +87,11 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	public int getSecondDiceDisplay() {
             return dice2.getDisplayValue();
 	}
-
+        
+    /**
+     * défini le pirateGameControl
+     * @param pirateGameControl 
+     */
     public void setPirateGameControl(PirateGameControl pirateGameControl) {
         this.pirateGameControl = pirateGameControl;
     }

@@ -47,13 +47,15 @@ public class PirateGameControl{
      *  Initie et commence le jeu
      */
     public void startGame() {
+        activePirate = null;
+        activateBoxControl.reset();
         boundary.startGame();
         initGame();
         newPlayerTurn();
     }
 
     /**
-     * Vérifie fin de jeu et lance un tour pour un nouveau joueur
+     * Vérifie si fin de jeu et lance un tour pour un nouveau joueur
      */
     public void newPlayerTurn(){
         if (!verifyEndGameManagement()){
@@ -71,6 +73,9 @@ public class PirateGameControl{
         }
     }
     
+    /**
+     * Vérifie si le joueur actuelle doit rejouer ou non
+     */
     public void verifyPlayAgain(){
         if(moveControl.playAgain()){
             if (!verifyEndGameManagement()){
@@ -108,6 +113,7 @@ public class PirateGameControl{
      * Initie les joueurs présents dans le jeu
      */
     private void initGame() {
+        board.initBoard();
         for(int i = 0; i < NB_PLAYER; i++) {
             String newName = boundary.askPirateName(i);
 
@@ -129,19 +135,42 @@ public class PirateGameControl{
         }
         return false;
     }
-
+    
+    /**
+     * Récupère le nom du pirate associé à l'identifiant
+     * 
+     * @param idPirate l'identifiant du pirate
+     * @return le nom du pirate
+     */
     public String getPirateName(int idPirate){
         return board.getListPirate().get(idPirate).getName();
     }
 
+    /**
+     * Récupère le nom de la case associé à l'identifiant
+     * 
+     * @param idBox l'identifiant de la case
+     * @return le nom de la case
+     */
     public String getCaseName(int idBox){
         return board.getCases().get(idBox).getName();
     }
 
+    /**
+     * Récupère le pirate qui joue actuellement
+     * 
+     * @return le pirate entrain de faire son tour
+     */
     public Pirate getActivePirate() {
         return activePirate;
     }
     
+    /**
+     * Récupère le nom de l'image associé à l'identifiant de la case
+     * 
+     * @param idBox l'identifiant de la case 
+     * @return le nom de l'image associé à la case
+     */
     public String getBoxLink(int idBox){
         return board.getCases().get(idBox).getImageLink();
     }

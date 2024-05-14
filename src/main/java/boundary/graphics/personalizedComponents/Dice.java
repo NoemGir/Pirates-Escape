@@ -5,7 +5,7 @@
 package boundary.graphics.personalizedComponents;
 
 import boundary.graphics.Dialog;
-import boundary.graphics.DiceTimeWorker;
+import boundary.graphics.DiceRoll;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -19,12 +19,13 @@ import javax.imageio.ImageIO;
  */
 public class Dice extends javax.swing.JPanel {
 
-    private Dialog dialog;
-    private int Joueur = 0;
+    private int joueur = 0;
     private int value = 1;
+    private int idDice;
+    
     private LinkedList<BufferedImage> listeImages = new LinkedList<>();
 
-    private DiceTimeWorker diceTimeWorker;
+    private DiceRoll diceRoll;
 
     /**
      * Creates new form Dice
@@ -53,11 +54,20 @@ public class Dice extends javax.swing.JPanel {
         repaint();
     }
 
-    public void setJoueur(int Joueur) {
-        this.Joueur = Joueur;
+    /**
+     * Défini le joueur
+     * @param joueur le numéro du joueur actuelle
+     */
+    public void setJoueur(int joueur) {
+        this.joueur = joueur;
         repaint();
     }
 
+    /**
+     * affiche la valeur donnée sur le dé
+     * 
+     * @param value la valeur à afficher
+     */
     public void display(int value){
         this.value = value;
         repaint();
@@ -69,19 +79,46 @@ public class Dice extends javax.swing.JPanel {
         if(this.value<0){
             this.value *= (-1);
         }
-        g.drawImage(listeImages.get(value+7*Joueur), 0, 0, 100, 100, this);
+        g.drawImage(listeImages.get(value+7*joueur), 0, 0, 100, 100, this);
 
     }
-
+    
+    /**
+     * Lance le roulement du dé
+     * 
+     * @param v la valeur sur laquelle le dé va tomber
+     */
     public void  rollDice(int v){
-        diceTimeWorker = new DiceTimeWorker(dialog, this, v);
-        diceTimeWorker.execute();
+        diceRoll.startDiceRoll(v);
     }
 
+    /**
+     * Défini le dialog
+     * 
+     * @param dialog le dialog
+     */
     public void setDialog(Dialog dialog) {
-        this.dialog = dialog;
+        diceRoll = new DiceRoll(dialog, this);
+    }
+    /**
+     * Défini l'identifiant du dé
+     * 
+     * @param idDice identifiant
+     */
+    public void setIdDice(int idDice) {
+        this.idDice = idDice;
+    }
+    
+    /**
+     * Récupère l'identifiant du dé
+     * 
+     * @return l'identifiant
+     */
+    public int getIdDice() {
+        return idDice;
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,6 +127,8 @@ public class Dice extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setOpaque(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -102,7 +141,6 @@ public class Dice extends javax.swing.JPanel {
             .addGap(0, 1542, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

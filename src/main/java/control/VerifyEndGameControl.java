@@ -8,7 +8,7 @@ import model.entities.Board;
 import model.entities.Pirate;
 
 /**
- * Controleur chargé de vérifier la fin de jeu
+ * Controleur chargé de vérifier la fin de jeu et de réagir en fonction
  * 
  * @author Noémie GIREAUD
  */

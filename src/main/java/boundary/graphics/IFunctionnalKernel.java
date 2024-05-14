@@ -55,4 +55,10 @@ public interface IFunctionnalKernel {
     * @return le nom de la case
     */
     public LinkedList<String> getCaseImageLinks();
+    
+    /**
+     * Permet de recommencer une partie
+     */
+    public void playAgain();
+
 }

@@ -6,20 +6,31 @@ import java.util.List;
 import model.entities.Case;
 import model.entities.Pirate;
 
-/* 
- *  Control lors de l'activation d'une case
+/**
+ * Control de l'activation de l'effet d'une case
  * 
- * 
- * 
- * */
+ * @author Robin MOUNIE
+ */
 public class ActivateBoxControl implements IMovePirate{
     
     private IBoundary boundary;
     private PirateGameControl pirateGameControl;
     private int nbPirateMoved;
 
+    /**
+     * Créer une instance de la classe ActivateBoxControl
+     * @param boundary le boundary
+     */
     public ActivateBoxControl(IBoundary boundary ) {
         this.boundary = boundary;
+        reset();
+    }
+    
+    /**
+     * Réinitialise le controleur
+     */
+    public void reset(){
+        nbPirateMoved = 0;
     }
         
     /**
@@ -50,21 +61,29 @@ public class ActivateBoxControl implements IMovePirate{
             boundary.displayPV(curPirate.getIdPirate(), curPirate.getHp());
         }
     }
-
+    
+    /**
+     * Indique si il faut encore attendre la fin d'un évènement ou non
+     * 
+     * @return 
+     */
     public boolean mustWait() {
         return nbPirateMoved != 0;
     }
-    
 
     @Override
     public void moveFinished() {
         nbPirateMoved--;
         if(nbPirateMoved == 0){
-            nbPirateMoved--;
             pirateGameControl.verifyPlayAgain();
         }
     }
-
+    
+    /**
+     * Défini le pirateGameControl 
+     * 
+     * @param pirateGameControl 
+     */
     public void setPirateGameControl(PirateGameControl pirateGameControl) {
         this.pirateGameControl = pirateGameControl;
     }

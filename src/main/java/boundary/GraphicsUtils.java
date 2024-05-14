@@ -30,6 +30,7 @@ import javax.sound.sampled.FloatControl;
  */
 public class GraphicsUtils {
 
+    private static Clip mainSound;
     /**
     * Convertis une image colorée en une image noir et blanc
     * 
@@ -125,13 +126,19 @@ public class GraphicsUtils {
                 clip.open(audioInputStream);
                 FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
                 gainControl.setValue(decibelChange); 
-                clip.loop(loop);
+                
+                if(loop == -1){
+                    if(mainSound != null){
+                        mainSound.stop();
+                    }
+                    mainSound = clip;
                 }
+                clip.loop(loop);
+            }
             
         } catch (Exception ex) {
             System.out.println("Erreur lors de la lecture du son " + soundName);
             ex.printStackTrace();
         }
-    }
-    
+    }    
 }

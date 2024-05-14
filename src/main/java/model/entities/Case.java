@@ -23,16 +23,16 @@ public class Case {
         this.number = number;
     }
 
-		/**
-		* Constructeur de la classe Case.
-		*
-		* @param number le numéro de la case dans le plateau.
-		* @param imageLink le lien de l'image associée a la case
-		*/
-		public Case(int number,String imageLink) {
-				this.number = number;
-				this.imageLink = imageLink;
-		}
+    /**
+    * Constructeur de la classe Case.
+    *
+    * @param number le numéro de la case dans le plateau.
+    * @param imageLink le lien de l'image associée a la case
+    */
+    public Case(int number,String imageLink) {
+                    this.number = number;
+                    this.imageLink = imageLink;
+    }
 
     /**
     * Retourne un BiConsumer étant la fonction de l'effet de la case sur la liste des joueurs et le joueur courant, en utilisant des lambdas.
@@ -63,15 +63,15 @@ public class Case {
     }
 
 
-		/**
-		* Getter du name de la case.
-		*
-		* @return le nom de la case.
-		*
-		*/
-		public String getImageLink() {
-				return imageLink;
-		}
+    /**
+    * Getter du name de la case.
+    *
+    * @return le nom de la case.
+    *
+    */
+    public String getImageLink() {
+                    return imageLink;
+    }
 
     /**
     * Setter du name de la case.

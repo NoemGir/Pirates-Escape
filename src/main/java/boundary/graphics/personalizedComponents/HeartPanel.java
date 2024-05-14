@@ -31,6 +31,10 @@ public class HeartPanel extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * redéssine le coeur selon s'il est plein ou vide
+     * @param plein boolean qui indique si le coeur sera plein ou vide
+     */
     public void repaintHeart(boolean plein){
         this.plein = plein;
         repaint();
@@ -56,6 +60,7 @@ public class HeartPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(80, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

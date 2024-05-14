@@ -1,8 +1,5 @@
 package control;
 
-
-
-
 /** 
  * Les controleurs s'inscrivant à cette interface auront la possibilité de lancer les dés
  *  

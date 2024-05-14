@@ -80,7 +80,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
             String pirateName = pirateGameControl.getPirateName(idPirate);
             dialog.display(pirateName + " a gagné !! " + reason);
         }
-        dialog.endGame();
+        dialog.endGame(idPirate);
     }
 
     @Override
@@ -131,6 +131,12 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
         }
         return linkList;
     }
+    
+    @Override
+    public void playAgain(){
+        pirateGameControl.startGame();
+    }
+    
     public void setDialog(IPirates dialog) {
         this.dialog = dialog;
     }

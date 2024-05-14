@@ -22,6 +22,7 @@ public class PirateFace extends javax.swing.JPanel {
     private Image grey;
     private String imageName = "/jackSparrow";
     private Color liner = Color.red;
+    
     /**
      * Creates new form ImagePanel
      */
@@ -30,7 +31,9 @@ public class PirateFace extends javax.swing.JPanel {
         loadImage();
     }
 
-
+    /**
+     * Charge les images colorées et noir et blanc 
+     */
     private void loadImage(){
         try{
            BufferedImage image = ImageIO.read(new File(getClass().getResource(imageName+".jpg").toURI()));
@@ -42,7 +45,10 @@ public class PirateFace extends javax.swing.JPanel {
         }
     }
 
-    public void ChangeImage(){
+    /**
+     * change la couleur de l'image
+     */
+    public void changeImageColor(){
         if(scaledImage.equals(color)){
             scaledImage=grey;
         }else {
@@ -51,20 +57,42 @@ public class PirateFace extends javax.swing.JPanel {
         repaint();
     }
 
+    /**
+     * Défini l'image de la photo du pirate
+     * @param pathName 
+     */
     public void setPirateImage(String pathName) {
         this.imageName = pathName;
         loadImage();
         repaint();
     }
 
+    /**
+     * Récupère le nom de l'image
+     * @return 
+     */
     public String getImageName() {
         return imageName;
     }
 
+    /**
+     * 
+     * Défini la couleur de contour de l'image
+     * 
+     * @author Robin MOUNIE
+     * 
+     * @param liner la couleur de contour
+     */
     public void setLiner(Color liner) {
         this.liner = liner;
     }
     
+    /**
+     * 
+     * @author Fabien
+     * @author Robin
+     * @param g 
+     */
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -80,6 +108,8 @@ public class PirateFace extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setOpaque(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

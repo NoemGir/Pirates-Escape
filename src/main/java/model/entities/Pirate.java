@@ -127,7 +127,9 @@ public class Pirate {
     public int getIdPirate() {
         return idPirate;
     }
-        
-        
 
+    @Override
+    public String toString() {
+        return "Pirate{" + "idPirate=" + idPirate + ", position=" + position + ", name=" + name + ", hp=" + hp + '}';
+    }
 }

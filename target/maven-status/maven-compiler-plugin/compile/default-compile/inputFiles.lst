@@ -4,16 +4,16 @@ C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\GraphicsUtils.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\IPirates.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\CasePanel.java
-C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\MainFrame.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\entities\Dice.java
+C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\GameFrame.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\HealthBar.java
-C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\SlidingPawnWorker.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\VerifyEndGameControl.java
-C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\DiceTimeWorker.java
+C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\MainPanel.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\PirateFace.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\IThrowDice.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\entities\FinishLine.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\PiratePawn.java
+C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\DiceRoll.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\MoveControl.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\IFunctionnalKernel.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\personalizedComponents\DiceCouple.java
@@ -26,6 +26,7 @@ C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\scenar
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\FunctionnalKernelAdapter.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\entities\SwapCase.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\entities\MrKrabsCase.java
+C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\boundary\graphics\SlidePawn.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\entities\Board.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\control\PirateGameControl.java
 C:\Users\noemi\OneDrive\Documents\L3\S6\ILU4\Pirates-Escape\src\main\java\model\entities\NurseCase.java

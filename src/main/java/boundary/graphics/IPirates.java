@@ -19,8 +19,9 @@ public interface IPirates {
 
     /**
     * Montre l'affichage de fin de partie
+    * @param idPirate le numéro du pirate ayant gagné
     */
-    public void endGame();
+    public void endGame(int idPirate);
 
     /**
     * Demande a l'utilisateur le nom qu'il souhaite donner a son pirate
