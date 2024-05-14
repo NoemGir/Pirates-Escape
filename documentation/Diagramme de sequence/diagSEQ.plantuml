@@ -1,0 +1,60 @@
+@startuml
+hide footbox
+title Diagramme de séquence - Méthode activateBox()
+
+participant ActivateBox as "ActivateBoxControl"
+participant Case as "Case"
+participant Pirate as "Pirate"
+participant IBoundary as "IBoundary"
+
+
+-> ActivateBox : activateBox(listePirate, pirate, box)
+activate ActivateBox
+ActivateBox -> ActivateBox : LinkedList<Integer> positionInitialPirate = new LinkedList<>();
+loop Pirate p : listePirate
+    ActivateBox -> Pirate : getPosition()
+    activate Pirate
+    Pirate --> ActivateBox : position
+    deactivate Pirate
+    ActivateBox -> ActivateBox : positionInitialPirate.add(position)
+end
+
+ActivateBox -> Case : effect(listePirate, pirate)
+activate Case
+    loop Pirate p : listePirates
+        alt !(p.equals(pirate)) && (p.getPosition().equals(pirate.getPosition()))
+            Case -> Pirate : ajustHP((Integer hp) -> hp-1)
+            Pirate --> Case            
+        end
+    end
+deactivate Case
+
+Case --> ActivateBox
+
+loop Pirate p : listePirates
+    ActivateBox -> Pirate : getPosition()
+    activate Pirate
+    Pirate --> ActivateBox : position
+    deactivate Pirate
+    ActivateBox -> Pirate : getIdPirate()
+    activate Pirate
+    Pirate --> ActivateBox : id
+    deactivate Pirate
+    ActivateBox -> Pirate : getHp()
+    activate Pirate
+    Pirate --> ActivateBox : hp
+    deactivate Pirate
+    alt ! position.equals(positionInitialPirate.get(i))
+        ActivateBox -> ActivateBox : pirateMoved +=1;
+        ActivateBox -> IBoundary : movePirateAuto(id, position)
+    end
+    
+    ActivateBox -> IBoundary : displayPV(id, hp)
+    activate IBoundary
+    IBoundary --> ActivateBox
+    deactivate IBoundary
+end
+
+ActivateBox -->]
+deactivate ActivateBox
+@enduml
