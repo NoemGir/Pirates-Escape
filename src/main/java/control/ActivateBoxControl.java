@@ -45,7 +45,6 @@ public class ActivateBoxControl implements IMovePirate{
             
             if(! curPirate.getPosition().equals(positionInitialPirate.get(i))){
                 pirateMoved +=1;
-                System.out.println("MOVE THE PIRATE FROM CONTROL");
                 boundary.movePirateAuto(curPirate.getIdPirate(), curPirate.getPosition());
             }
             boundary.displayPV(curPirate.getIdPirate(), curPirate.getHp());
