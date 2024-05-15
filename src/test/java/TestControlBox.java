@@ -25,6 +25,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import BoundaryForTestingPurpose.TestPirateGameBoundary;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static scenario.ConsoleScenario.NB_CASES;
 
@@ -38,8 +41,7 @@ import java.util.List;
 public class TestControlBox {
      private Board board ;
      LinkedList<Pirate> listPirate ;
-     private FunctionnalKernelAdapter functionnalKernelAdapter;
-     private Dialog dialog;
+     private TestPirateGameBoundary functionnalKernelAdapter;
      private ActivateBoxControl activateBoxControl ;
      private MoveControl moveControl;
      private VerifyEndGameControl verifyEndGameControl ;
@@ -88,19 +90,12 @@ public class TestControlBox {
                    board.addCase(new Case(i));
             }
          }
-        functionnalKernelAdapter = new FunctionnalKernelAdapter();
-        dialog = new Dialog(functionnalKernelAdapter);
+        functionnalKernelAdapter = new TestPirateGameBoundary();
         activateBoxControl = new ActivateBoxControl(functionnalKernelAdapter);
         moveControl = new MoveControl(functionnalKernelAdapter, board);
         verifyEndGameControl = new VerifyEndGameControl(functionnalKernelAdapter);
         pirateGameControl = new PirateGameControl(board, functionnalKernelAdapter,moveControl, verifyEndGameControl, activateBoxControl);
-        
-        functionnalKernelAdapter.setThrowDice(moveControl);
-        functionnalKernelAdapter.setDialog(dialog);
-        functionnalKernelAdapter.setMovePirate(moveControl);
-        functionnalKernelAdapter.setPirateGameControl(pirateGameControl);
-        functionnalKernelAdapter.setMovePirateEffect(activateBoxControl);
-        moveControl.setPirateGameControl(pirateGameControl);
+       
         activateBoxControl.setPirateGameControl(pirateGameControl);
         listPirate = new LinkedList<>();
         listPirate.add(new Pirate(0, "Toto", 5));
@@ -116,10 +111,35 @@ public class TestControlBox {
     }
     @Test
     void testActivateBoxAvecCaseNormaleQuandLePirateEstSeulSurSaCAse(){
+    	this.listPirate.get(0).setPosition(2);
     	int positionInitial = this.listPirate.get(0).getPosition();
+    	this.listPirate.get(1).setPosition(1);
+    	int positionInitial2 = this.listPirate.get(1).getPosition();
     	activateBoxControl.activateBox( this.board.getListPirate(), this.board.getListPirate().get(0), board.getCases().get(0));
-        assertTrue(this.listPirate.get(0).getHp()==5 && this.listPirate.get(0).getPosition()==positionInitial);
+        assertTrue(this.listPirate.get(0).getHp()==5 
+        		&& 
+        		this.listPirate.get(0).getPosition()==positionInitial 
+        		&& 
+        		this.listPirate.get(1).getHp()==5 
+        		&& 
+        		this.listPirate.get(1).getPosition()==positionInitial2);
     }
+    @Test
+    void testActivateBoxAvecCaseNormaleQuandLesPiratesSontsDeuxSurLaCases(){
+    	this.listPirate.get(0).setPosition(2);
+    	int positionInitial = this.listPirate.get(0).getPosition();
+    	this.listPirate.get(1).setPosition(2);
+    	int positionInitial2 = this.listPirate.get(1).getPosition();
+    	activateBoxControl.activateBox( this.board.getListPirate(), this.board.getListPirate().get(0), board.getCases().get(0));
+        assertTrue(this.listPirate.get(0).getHp()==4 
+        		&& 
+        		this.listPirate.get(0).getPosition()==positionInitial 
+        		&& 
+        		this.listPirate.get(1).getHp()==4 
+        		&& 
+        		this.listPirate.get(1).getPosition()==positionInitial2);
+    }
+    
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
