@@ -27,9 +27,9 @@ import javax.swing.JPanel;
 public class Dialog implements IPirates {
 
     private IFunctionnalKernel adapter;
-    
+
     /**
-     * Des listes sont utilisées pour contenir l'ensembles des têtes / pions et bar de vies des pirates pour 
+     * Des listes sont utilisées pour contenir l'ensembles des têtes / pions et bar de vies des pirates pour
      * permettre la possibilités d'avoir plus de 2 joueurs dans une partie
      */
     private List<PirateFace> listPirateFace = new ArrayList<>();
@@ -46,10 +46,10 @@ public class Dialog implements IPirates {
     private CasePanel rightDestination;
 
     private int nbDiceRunning;
-    
-    
+
+
     /** Créer une nouvelle instance de la classe Dialog
-     * 
+     *
      * @param adapter l'adaptateur fonctionnel
      */
     public Dialog(FunctionnalKernelAdapter adapter) {
@@ -82,10 +82,10 @@ public class Dialog implements IPirates {
     @Override
     public void endGame(int idPirate) {
         if(idPirate < 0){
-            GraphicsUtils.playSound("/genocide_end.wav", -25.0f, -1);
+            GraphicsUtils.playSound("/genocide_end.wav", -5.0f, -1);
         }
         else{
-            GraphicsUtils.playSound("/winner_end.wav", -25.0f, -1);
+            GraphicsUtils.playSound("/winner_end.wav", -15.0f, -1);
         }
         display("Voulez-vous rejouer ?");
     }
@@ -107,8 +107,11 @@ public class Dialog implements IPirates {
 
     @Override
     public void changePirate(int idNewPirate) {
-        for(PirateFace p : listPirateFace)
-            p.changeImageColor();
+        listPirateFace.forEach( p -> p.changeImageColor() );
+        
+        // Ancienne version du forEach pour montrer qu'on sait faire
+        //for(PirateFace p : listPirateFace)
+        //    p.ChangeImage();
 
         JLayeredPane layeredPaneGrid = gridModel.getjLayeredPane1();
         layeredPaneGrid.setLayer(listPiratePawn.get(idPirate), javax.swing.JLayeredPane.PALETTE_LAYER);
@@ -131,7 +134,7 @@ public class Dialog implements IPirates {
         PiratePawn pawn = listPiratePawn.get(idNewPirate);
         pawn.slide(gridModel.getGridPanel().getComponent(box));
     }
-    
+
     /**
      * Affiche sur chaque case de la grille son image associée
      */
@@ -141,10 +144,10 @@ public class Dialog implements IPirates {
         {
            CasePanel box = (CasePanel) this.gridModel.getGridPanel().getComponent(i);
            box.setBoxImage(list.get(i));
-                
+
         }
     }
-    
+
     /**
      * Une fois un pion arrivé sur une case, vérifie si la case d'arrivée correspond bien la case de destination voulu
      */
@@ -205,7 +208,7 @@ public class Dialog implements IPirates {
             nbDiceRunning -= 1;
             if(nbDiceRunning == 0){
                 adapter.diceFinished();
-            } 
+            }
         }
     }
 
@@ -231,17 +234,17 @@ public class Dialog implements IPirates {
         }
         bar.repaintHearts(hp);
     }
-    
+
     /**
      * Permet de relancer une partie
      */
     public void playAgain(){
         adapter.playAgain();
     }
-    
+
     /**
      * Arrète le jeu
-     * 
+     *
      */
     public void stop(){
         System.exit(0);
@@ -249,16 +252,16 @@ public class Dialog implements IPirates {
 
     /**
      * Définie le couple de dés
-     * 
-     * @param diceCouple 
+     *
+     * @param diceCouple
      */
     public void setDiceCouple(DiceCouple diceCouple) {
         this.diceCouple = diceCouple;
     }
 
     /**
-     * Défini la grille 
-     * @param gridModel 
+     * Défini la grille
+     * @param gridModel
      */
     public void setGridModel(GridModel gridModel) {
         this.gridModel = gridModel;
@@ -266,16 +269,16 @@ public class Dialog implements IPirates {
 
     /**
      * Défini la Frame principale
-     * 
-     * @param gameFrame 
+     *
+     * @param gameFrame
      */
     public void setGameFrame(GameFrame gameFrame) {
         this.gameFrame = gameFrame;
     }
-    
+
     /**
      * Défini mainPanel
-     * 
+     *
      * @param mainPanel
      */
     public void setMainPanel(MainPanel mainPanel) {
@@ -284,8 +287,8 @@ public class Dialog implements IPirates {
 
     /**
      * ajoute une tête de pirate au dialog
-     * 
-     * @param pirateFace 
+     *
+     * @param pirateFace
      */
     public void addPirateFace(PirateFace pirateFace){
         listPirateFace.add(pirateFace);
@@ -293,8 +296,8 @@ public class Dialog implements IPirates {
 
     /**
      *  ajoute un pion de pirate au dialog
-     * 
-     * @param piratePawn 
+     *
+     * @param piratePawn
      */
     public void addPiratePawn(PiratePawn piratePawn){
         listPiratePawn.add(piratePawn);
@@ -303,8 +306,8 @@ public class Dialog implements IPirates {
 
     /**
      * ajoute une bar de vie de pirate au dialog
-     * 
-     * @param healthBar 
+     *
+     * @param healthBar
      */
     public void addPirateHealth(HealthBar healthBar){
         listPirateHealth.add(healthBar);

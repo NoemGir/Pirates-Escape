@@ -43,5 +43,16 @@ public class Dice {
     public int getDisplayValue() {
         return displayValue;
     }
+    
+    /**
+    * Méthode crée pour les test, qui définie la valeure sur le dé
+    * 
+    * @author Noémie GIREAUD
+    * 
+    * @param la valeur sur le dé
+    */
+    public void setDisplayValue(int value) {
+    	displayValue = value;
+    }
 
 }

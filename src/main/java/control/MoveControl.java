@@ -87,6 +87,24 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	public int getSecondDiceDisplay() {
             return dice2.getDisplayValue();
 	}
+	
+	/**
+	 * méthode utilisée dans les tests
+	 * 
+	 * @param value la valeur qui sera inscrite sur le dé 1
+	 */
+	public void setFirstDiceDisplay(int value) {
+        dice1.setDisplayValue(value);
+	}
+	
+	/**
+	 * méthode utilisée dans les tests
+	 * 
+	 * @param value la valeur qui sera inscrite sur le dé 2
+	 */
+	public void setSecondDiceDisplay(int value) {
+	        dice2.setDisplayValue(value);
+	}
         
     /**
      * défini le pirateGameControl
