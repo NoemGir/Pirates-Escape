@@ -1,0 +1,10 @@
+@startuml
+
+:Joueur:
+
+Joueur --> (**UC1**\nRespecter le déroulement d'une partie)
+Joueur --> (**UC2**\nVérifier la fin d'une partie)
+Joueur --> (**UC3**\nActiver une case spéciale)
+Joueur --> (**UC4**\nBouger)
+
+@enduml
