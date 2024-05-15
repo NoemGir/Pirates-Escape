@@ -28,7 +28,7 @@ class testMoveControl {
 	
 	 private int NB_CASES = 30;
      private Board board ;
-     LinkedList<Pirate> listPirate ;
+     private LinkedList<Pirate> listPirate ;
      private TestPirateGameBoundary boundary;
      private ActivateBoxControl activateBoxControl ;
      private MoveControl moveControl;
@@ -92,7 +92,6 @@ class testMoveControl {
         for(Pirate p : listPirate) {
         	board.addPlayer(p);
         }
-        
     }
     
     

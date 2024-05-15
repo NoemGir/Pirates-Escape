@@ -82,10 +82,10 @@ public class Dialog implements IPirates {
     @Override
     public void endGame(int idPirate) {
         if(idPirate < 0){
-            GraphicsUtils.playSound("/genocide_end.wav", -25.0f, -1);
+            GraphicsUtils.playSound("/genocide_end.wav", -5.0f, -1);
         }
         else{
-            GraphicsUtils.playSound("/winner_end.wav", -25.0f, -1);
+            GraphicsUtils.playSound("/winner_end.wav", -15.0f, -1);
         }
         display("Voulez-vous rejouer ?");
     }

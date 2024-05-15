@@ -27,7 +27,7 @@ public class MainPanel extends javax.swing.JPanel {
     public MainPanel() {
         initComponents();
         pirateFace2.setPirateImage("/harlock");
-        pirateFace1.changeImageColor();
+        pirateFace2.changeImageColor();
         pirateFace2.setLiner(Color.blue);
         
         try{

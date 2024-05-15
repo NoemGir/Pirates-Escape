@@ -17,6 +17,7 @@ import model.entities.MrKrabsCase;
 import model.entities.NurseCase;
 import model.entities.PortalCase;
 import model.entities.StartCase;
+import model.entities.SwapCase;
 
 /*
  *  Classe permettant de lancer le jeu en mode console
@@ -30,28 +31,46 @@ public class ConsoleScenario {
         Board board = new Board(NB_CASES);
         
         for(int i = 0; i < NB_CASES; i++) {
-            switch(i){
-                case 0:
-                    board.addCase(new StartCase(i));
-                    break;
-                case 6:
-                    board.addCase(new PortalCase(i));
-                    break;
-                case 15:
-                    board.addCase(new GargamelleCase(i));
-                    break;
-                case 23:
-                    board.addCase(new MrKrabsCase(i));
-                    break;
-                case 7:
-                    board.addCase(new NurseCase(i));
-                    break;
-                case 27:
-                    board.addCase(new LuckyLukeShadowCase(i));
-                    break;
-                case 29:
-                   board.addCase(new FinishLine(i));
-                   break;
+        	switch(i){
+            case 0:
+                board.addCase(new StartCase(i));
+                break;
+            case 8:
+                board.addCase(new PortalCase(i));
+                break;
+            case 4:
+                board.addCase(new LuckyLukeShadowCase(i));
+                break;
+            case 15:
+                board.addCase(new GargamelleCase(i));
+                break;
+            case 18:
+                board.addCase(new NurseCase(i));
+                break;
+            case 21:
+                board.addCase(new PortalCase(i));
+                break;
+            case 22:
+                board.addCase(new MrKrabsCase(i));
+                break;
+            case 25:
+                board.addCase(new MrKrabsCase(i));
+                break;
+            case 24:
+                board.addCase(new GargamelleCase(i));
+                break;
+            case 6:
+                board.addCase(new GargamelleCase(i));
+                break;
+            case 27:
+                board.addCase(new LuckyLukeShadowCase(i));
+                break;
+            case 28:
+                board.addCase(new SwapCase(i));
+                break;
+            case 29:
+               board.addCase(new FinishLine(i));
+               break;
                 default:
                    board.addCase(new Case(i));
             }

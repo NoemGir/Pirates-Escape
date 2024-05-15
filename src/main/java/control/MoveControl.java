@@ -91,7 +91,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	/**
 	 * méthode utilisée dans les tests
 	 * 
-	 * @param la valeur qui sera inscrite sur le dé 1
+	 * @param value la valeur qui sera inscrite sur le dé 1
 	 */
 	public void setFirstDiceDisplay(int value) {
         dice1.setDisplayValue(value);
@@ -99,9 +99,8 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	
 	/**
 	 * méthode utilisée dans les tests
-	 * @param value 
 	 * 
-	 * @param la valeur qui sera inscrite sur le dé 2
+	 * @param value la valeur qui sera inscrite sur le dé 2
 	 */
 	public void setSecondDiceDisplay(int value) {
 	        dice2.setDisplayValue(value);

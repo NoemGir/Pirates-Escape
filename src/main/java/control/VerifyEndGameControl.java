@@ -15,7 +15,6 @@ import model.entities.Pirate;
 public class VerifyEndGameControl {
 
     private IBoundary boundary;
-    private Board board;
 
 
     /**
