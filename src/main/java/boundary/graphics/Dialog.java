@@ -67,7 +67,6 @@ public class Dialog implements IPirates {
         rightDestination = (CasePanel) gridPanel.getComponent(0);
         displayGridImage();
         for(PiratePawn pawn : listPiratePawn){
-            System.out.println("PAWN");
             pawn.setBox(rightDestination);
             pawn.moveTo(GraphicsUtils.computeLocationPawnInCase(rightDestination));
         }

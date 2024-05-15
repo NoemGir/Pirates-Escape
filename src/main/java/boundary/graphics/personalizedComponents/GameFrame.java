@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author noemi
+ * @author Fabien
  */
 public class GameFrame extends javax.swing.JFrame {
 

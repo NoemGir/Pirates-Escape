@@ -13,7 +13,8 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author noemi
+ * @author Fabien
+ * @author Noémie GIREAUD
  */
 public class MainPanel extends javax.swing.JPanel {
 
@@ -30,7 +31,7 @@ public class MainPanel extends javax.swing.JPanel {
         pirateFace2.setLiner(Color.blue);
         
         try{
-            background = ImageIO.read(new File(getClass().getResource("/wall.jpg").toURI()));
+            background = ImageIO.read(new File(getClass().getResource("/wall.jpeg").toURI()));
         }catch(Exception e){
             System.out.println("MainPanel : Erreur de charcgement du fond d'écrant ");
         }
@@ -77,6 +78,7 @@ public class MainPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         pirateFace1 = new boundary.graphics.personalizedComponents.PirateFace();
         diceCouple1 = new boundary.graphics.personalizedComponents.DiceCouple();
+        pirateFace2 = new boundary.graphics.personalizedComponents.PirateFace();
         jPanel2 = new javax.swing.JPanel();
         gridModel1 = new boundary.graphics.personalizedComponents.GridModel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -87,7 +89,6 @@ public class MainPanel extends javax.swing.JPanel {
         healthBar1 = new boundary.graphics.personalizedComponents.HealthBar();
         jPanel4 = new javax.swing.JPanel();
         healthBar2 = new boundary.graphics.personalizedComponents.HealthBar();
-        pirateFace2 = new boundary.graphics.personalizedComponents.PirateFace();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -106,15 +107,27 @@ public class MainPanel extends javax.swing.JPanel {
 
         diceCouple1.setOpaque(false);
 
+        javax.swing.GroupLayout pirateFace2Layout = new javax.swing.GroupLayout(pirateFace2);
+        pirateFace2.setLayout(pirateFace2Layout);
+        pirateFace2Layout.setHorizontalGroup(
+            pirateFace2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 118, Short.MAX_VALUE)
+        );
+        pirateFace2Layout.setVerticalGroup(
+            pirateFace2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(pirateFace1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134)
-                .addComponent(diceCouple1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                .addGap(121, 121, 121))
+                .addGap(101, 101, 101)
+                .addComponent(diceCouple1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(114, 114, 114)
+                .addComponent(pirateFace2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,6 +136,7 @@ public class MainPanel extends javax.swing.JPanel {
                     .addComponent(pirateFace1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(diceCouple1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pirateFace2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel2.setOpaque(false);
@@ -217,17 +231,6 @@ public class MainPanel extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout pirateFace2Layout = new javax.swing.GroupLayout(pirateFace2);
-        pirateFace2.setLayout(pirateFace2Layout);
-        pirateFace2Layout.setHorizontalGroup(
-            pirateFace2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 118, Short.MAX_VALUE)
-        );
-        pirateFace2Layout.setVerticalGroup(
-            pirateFace2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -235,21 +238,16 @@ public class MainPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 653, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pirateFace2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pirateFace2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
