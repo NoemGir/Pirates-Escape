@@ -48,11 +48,14 @@ public class GUIScenario {
                 case 27:
                     board.addCase(new LuckyLukeShadowCase(i));
                     break;
+                case 28:
+                    board.addCase(new SwapCase(i));
+                    break;
                 case 29:
                    board.addCase(new FinishLine(i));
                    break;
                 default:
-                   board.addCase(new SwapCase(i));
+                   board.addCase(new Case(i));
             }
         }
 
