@@ -3,8 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-import boundary.graphics.Dialog;
-import boundary.graphics.FunctionnalKernelAdapter;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.LinkedList;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import BoundaryForTestingPurpose.TestPirateGameBoundary;
 import control.ActivateBoxControl;
 import control.MoveControl;
 import control.PirateGameControl;
@@ -20,25 +29,13 @@ import model.entities.Pirate;
 import model.entities.PortalCase;
 import model.entities.StartCase;
 import model.entities.SwapCase;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import BoundaryForTestingPurpose.TestPirateGameBoundary;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static scenario.ConsoleScenario.NB_CASES;
-
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
  * @author Robin
  */
 public class TestControlBox {
+	 private int NB_CASES = 30;
      private Board board ;
      LinkedList<Pirate> listPirate ;
      private TestPirateGameBoundary functionnalKernelAdapter;
@@ -46,6 +43,7 @@ public class TestControlBox {
      private MoveControl moveControl;
      private VerifyEndGameControl verifyEndGameControl ;
      private PirateGameControl pirateGameControl;
+     
     public TestControlBox() {
     }
     

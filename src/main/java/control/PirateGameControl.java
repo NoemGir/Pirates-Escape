@@ -175,5 +175,15 @@ public class PirateGameControl{
         return board.getCases().get(idBox).getImageLink();
     }
 
+    /**
+     * Méthode crée pour les test
+     * 
+     * @param activePlayer le joueur actif
+     */
+	public void setActivePlayer(Pirate activePlayer) {
+
+		this.activePirate = activePlayer;
+	}
+
 
 }
