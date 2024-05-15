@@ -10,35 +10,56 @@ import javax.swing.JButton;
 /**
  * Panel Personnalisé représentant l'ensemble de dés ainsi que leur bouton associé
  * 
- * @author Robin MOUNIER
+ * @author Robin MOUNIE
  */
 public class DiceCouple extends javax.swing.JPanel {
 
     private Dialog dialog;
-    private int player =0;
+    
     /**
      * Creates new form CoupleDe
      */
     public DiceCouple() {
         initComponents();
+        dice1.setIdDice(1);
+        dice2.setIdDice(2);
     }
     
+    /**
+     * lance le roulement des deux dés
+     * @param val1 la valeur sur laquelle tombera le premier dé
+     * @param val2 la valeur sur laquelle tombera le second dé
+     */
     public void displayDices(int val1,int val2){
         dice1.rollDice(val1);
         dice2.rollDice(val2);
     }
-    public void setDicesPlayer(){
+    
+    /**
+     * défini le joueur actuel
+     * @param player le joueur actuel
+     */
+    public void setDicesPlayer(int player){
         dice1.setJoueur(player);
         dice2.setJoueur(player);
-        player=(player+1) %2;
     }
     
+    /**
+     * défini le dialog
+     * @param dialog 
+     */
     public void setDialog(Dialog dialog){
+        System.out.println("boundary.graphics.personalizedComponents.DiceCouple.setDialog()" + this);
         this.dialog = dialog;
         
         dice1.setDialog(dialog);
         dice2.setDialog(dialog);
     }
+    
+    /**
+     * Récupère le bouton permettant de lancer les dés
+     * @return le bouton
+     */
     public JButton getButton(){
         return this.jButton1;
     }
@@ -115,6 +136,10 @@ public class DiceCouple extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * actions réalisées lors du pressement du bouton
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int display1 = dialog.getDiceResult(0);
         int display2 = dialog.getDiceResult(1);

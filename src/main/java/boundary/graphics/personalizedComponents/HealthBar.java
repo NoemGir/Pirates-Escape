@@ -11,16 +11,21 @@ package boundary.graphics.personalizedComponents;
  */
 public class HealthBar extends javax.swing.JPanel {
 
-    private int hearts;
+    private int hearts = 5;
     private String soundDamage = "/damage_taken_sound.wav";
+    private String soundHealing = "/healing.wav";
     /**
      * Creates new form HealtBar
      */
     public HealthBar() {
         initComponents();
-        repaintHearts(5);
+        repaintHearts(hearts);
     }
-
+    
+    /**
+     * Paint les coeurs selon le nombre indiqué
+     * @param hearts le nombre de coeurs à paindre
+     */
     public void repaintHearts(int hearts){
         this.hearts = hearts;
         switch (hearts){
@@ -151,14 +156,31 @@ public class HealthBar extends javax.swing.JPanel {
 
         add(heartPanel5);
     }// </editor-fold>//GEN-END:initComponents
-    
+    /**
+     * Recupère le nombre de coeurs paints
+     * @return le nombre de coeurs paints
+     */
     public int getHearts() {
         return hearts;
     }
-
+    
+    /**
+     * Récupère le son lié aux pertes de points de vies
+     * @return le nom du fichier contenant le son voulu
+     */
     public String getSoundDamage() {
         return soundDamage;
     }
+    
+    /**
+     * Récupère le son lié a la récupération de points de vies
+     * @return le nom du fichier contenant le son voulu
+     */
+    public String getSoundHealing() {
+        return soundHealing;
+    }
+    
+    
     
     
 

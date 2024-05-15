@@ -14,8 +14,8 @@ import model.entities.Pirate;
  */
 public class PirateGameControl{
 
-    public final int NB_PLAYER = 2;
-    public final int HEALTH_MAX = 5;
+    public static final int NB_PLAYER = 2;
+    public static final int HEALTH_MAX = 5;
 
     private Board board;
 
@@ -24,7 +24,7 @@ public class PirateGameControl{
     private VerifyEndGameControl verifyEndControl;
     private ActivateBoxControl activateBoxControl;
 
-    private Pirate activPirate = null;
+    private Pirate activePirate = null;
     private ListIterator<Pirate> itPirate;
 
     /**
@@ -47,36 +47,39 @@ public class PirateGameControl{
      *  Initie et commence le jeu
      */
     public void startGame() {
+        activePirate = null;
+        activateBoxControl.reset();
         boundary.startGame();
         initGame();
         newPlayerTurn();
     }
 
     /**
-     * Vérifie fin de jeu et lance un tour pour un nouveau joueur
-     *
-     * @param pirate le nouveau joueur
+     * Vérifie si fin de jeu et lance un tour pour un nouveau joueur
      */
     public void newPlayerTurn(){
         if (!verifyEndGameManagement()){
-            activPirate = changePlayer();
+            activePirate = changePlayer();
             moveControl.throwDiceMovement();
         }
     }
     
     public void moveFinished(Case box){
         
-        activateBoxControl.activateBox(board.getListPirate(), activPirate, box);
+        activateBoxControl.activateBox(board.getListPirate(), activePirate, box);
         
         if(! activateBoxControl.mustWait()){
             verifyPlayAgain();
         }
     }
     
+    /**
+     * Vérifie si le joueur actuelle doit rejouer ou non
+     */
     public void verifyPlayAgain(){
         if(moveControl.playAgain()){
             if (!verifyEndGameManagement()){
-                boundary.playAgain(activPirate.getIdPirate());
+                boundary.playAgain(activePirate.getIdPirate());
                 moveControl.throwDiceMovement();
             }
         }
@@ -110,6 +113,7 @@ public class PirateGameControl{
      * Initie les joueurs présents dans le jeu
      */
     private void initGame() {
+        board.initBoard();
         for(int i = 0; i < NB_PLAYER; i++) {
             String newName = boundary.askPirateName(i);
 
@@ -122,29 +126,51 @@ public class PirateGameControl{
     /**
      * Vérifie si le jeu et terminé et continue en conséquence
      *
-     * @param pirate le pirate qui vient de jouer
      * @return True si le jeu est terminé, false sinon
      */
     public boolean verifyEndGameManagement(){
-        if(verifyEndControl.gameEnded(board.getListPirate(), activPirate )){
+        if(verifyEndControl.gameEnded(board.getListPirate(), activePirate )){
             System.out.println("jeux bien terminé !");
             return true;
         }
         return false;
     }
-
+    
+    /**
+     * Récupère le nom du pirate associé à l'identifiant
+     * 
+     * @param idPirate l'identifiant du pirate
+     * @return le nom du pirate
+     */
     public String getPirateName(int idPirate){
         return board.getListPirate().get(idPirate).getName();
     }
 
+    /**
+     * Récupère le nom de la case associé à l'identifiant
+     * 
+     * @param idBox l'identifiant de la case
+     * @return le nom de la case
+     */
     public String getCaseName(int idBox){
         return board.getCases().get(idBox).getName();
     }
 
-    public Pirate getActivPirate() {
-        return activPirate;
+    /**
+     * Récupère le pirate qui joue actuellement
+     * 
+     * @return le pirate entrain de faire son tour
+     */
+    public Pirate getActivePirate() {
+        return activePirate;
     }
     
+    /**
+     * Récupère le nom de l'image associé à l'identifiant de la case
+     * 
+     * @param idBox l'identifiant de la case 
+     * @return le nom de l'image associé à la case
+     */
     public String getBoxLink(int idBox){
         return board.getCases().get(idBox).getImageLink();
     }

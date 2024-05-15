@@ -15,7 +15,8 @@ public class PirateGameBoundary implements IBoundary{
 
     private PirateGameControl pirateGameControl;
     private IMovePirate movePirate;
-    private IThrowDice throwDIce;
+    private IMovePirate movePirateEffect;
+    private IThrowDice throwDice;
 
     @Override
     public void startGame() {
@@ -25,7 +26,7 @@ public class PirateGameBoundary implements IBoundary{
     @Override
     public void movePirate( int idPirate, int boxNumber) {
         String pirateName = pirateGameControl.getPirateName(idPirate);
-        String box = pirateGameControl.getCaseName(idPirate);
+        String box = pirateGameControl.getCaseName(boxNumber);
         System.out.println("Le pirate " + pirateName + " doit bouger sur la case " + boxNumber + " : " + box);
       //Décommenter section suivante si déplacement manuelle avec console
         /*
@@ -43,8 +44,9 @@ public class PirateGameBoundary implements IBoundary{
     @Override
     public void movePirateAuto(int idPirate, int boxNumber){
         String pirateName = pirateGameControl.getPirateName(idPirate);
-        String box = pirateGameControl.getCaseName(idPirate);
+        String box = pirateGameControl.getCaseName(boxNumber);
         System.out.println("Le pirate " + pirateName + " bouge automatiquement sur la case " + boxNumber + " : " + box);
+        movePirateEffect.moveFinished();
     }
 
 
@@ -58,9 +60,9 @@ public class PirateGameBoundary implements IBoundary{
     @Override
     public void throwDoubleDice() {
         System.out.println("Lancement de dés ! ");
-        System.out.println("Le dé 1 tombe sur " + throwDIce.getFirstDiceDisplay());
-        System.out.println("Le dé 2 tombe sur " + throwDIce.getSecondDiceDisplay());
-        throwDIce.doubleDicesFinished();
+        System.out.println("Le dé 1 tombe sur " + throwDice.getFirstDiceDisplay());
+        System.out.println("Le dé 2 tombe sur " + throwDice.getSecondDiceDisplay());
+        throwDice.doubleDicesFinished();
     }
 
     @Override
@@ -94,6 +96,10 @@ public class PirateGameBoundary implements IBoundary{
         System.out.println("Le pirate adverse viens de se fouler la cheville ! " + pirateName + " peut rejouer");
     }
 
+    public void setMovePirateEffect(IMovePirate movePirateEffect) {
+        this.movePirateEffect = movePirateEffect;
+    }
+
     public void setPirateGameControl(PirateGameControl pirateGameControl) {
         this.pirateGameControl = pirateGameControl;
     }
@@ -102,7 +108,7 @@ public class PirateGameBoundary implements IBoundary{
         this.movePirate = movePirate;
     }
 
-    public void setThrowDIce(IThrowDice throwDIce) {
-        this.throwDIce = throwDIce;
+    public void setThrowDice(IThrowDice throwDice) {
+        this.throwDice = throwDice;
     }
 }

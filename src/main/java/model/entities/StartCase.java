@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 /**
+ * 
+ * Classe correspondant à la case de départ
  *
  * @author Robin
  */

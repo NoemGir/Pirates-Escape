@@ -24,20 +24,25 @@ public class CasePanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * @author Robien MOUNIE
+     * 
+     * @param boxImage le lien de l'image à mettre sur la case
+     */
     public void setBoxImage(String boxImage) {
         try{
-            this.boxImage =ImageIO.read(new File(getClass().getResource(boxImage).toURI()));
+            this.boxImage = ImageIO.read(new File(getClass().getResource(boxImage).toURI()));
         }catch(Exception e){
             //System.out.println("boundary.graphics.personalizedComponents.CasePanel.setBoxImage() : Error loading image box");
         }
         repaint();
     }
+    
+    
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-                g.drawImage(this.boxImage, 0, 0, getWidth(), getHeight(), this);
-
+        g.drawImage(this.boxImage, 0, 0, getWidth(), getHeight(), this);
     }
     
     
@@ -61,7 +66,7 @@ public class CasePanel extends javax.swing.JPanel {
     * Remet une bordeur classique à la case
     */
     public void putBlackBorder(){
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 1));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 252, 225), 1));
     }
     
     /**
@@ -75,11 +80,12 @@ public class CasePanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 252, 225)));
         setMaximumSize(new java.awt.Dimension(1000, 1000));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(70, 70));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

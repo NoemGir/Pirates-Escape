@@ -31,12 +31,20 @@ public class GridModel extends javax.swing.JPanel {
         manualInit();
     }
 
+    /**
+     * Défini le dialog
+     * 
+     * @param dialog 
+     */
     public void setDialog(Dialog dialog) {
         this.dialog = dialog;
         dialog.addPiratePawn(piratePawn1);
         dialog.addPiratePawn(piratePawn2);
     }
 
+    /**
+     * Réalise l'initialisation manuelle de la grille
+     */
     private void manualInit(){
         try{
             background = ImageIO.read(new File(getClass().getResource("/BackGround.jpg").toURI()));
@@ -55,6 +63,12 @@ public class GridModel extends javax.swing.JPanel {
         repaint();
     }
 
+    /**
+     * 
+     * Récupère le layeredPane de la grille
+     * 
+     * @return le layeredPane
+     */
     public JLayeredPane getjLayeredPane1() {
         return jLayeredPane1;
     }
@@ -72,6 +86,7 @@ public class GridModel extends javax.swing.JPanel {
         piratePawn2 = new boundary.graphics.personalizedComponents.PiratePawn();
         gridPanel = new javax.swing.JPanel();
 
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(58, 22, 7), 5, true));
         setPreferredSize(new java.awt.Dimension(550, 400));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -117,7 +132,7 @@ public class GridModel extends javax.swing.JPanel {
                 .addComponent(piratePawn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(piratePawn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(452, Short.MAX_VALUE))
+                .addContainerGap(442, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -131,7 +146,7 @@ public class GridModel extends javax.swing.JPanel {
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(piratePawn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -148,14 +163,27 @@ public class GridModel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Récupère le panel contenant la grille
+     * 
+     * @return la grille
+     */
     public JPanel getGridPanel() {
         return gridPanel;
     }
 
+    /**
+     * Action réalisé lors de l'appuie de la souris sur la grille
+     * @param evt 
+     */
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         dialog.eventMousePressedGrid(evt.getPoint());
     }//GEN-LAST:event_formMousePressed
 
+    /**
+     * modifie la permission de redéfinir la position des pions
+     * @param resetPawnEnabled permission
+     */
     public void setResetPawnEnabled(boolean resetPawnEnabled) {
         this.resetPawnEnabled = resetPawnEnabled;
     }
@@ -164,10 +192,10 @@ public class GridModel extends javax.swing.JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-        if(resetPawnEnabled){
+       // if(resetPawnEnabled){
             piratePawn1.resetLocation();
             piratePawn2.resetLocation();
-        }
+       // }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;

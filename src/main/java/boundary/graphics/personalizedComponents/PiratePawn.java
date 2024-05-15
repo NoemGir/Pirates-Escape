@@ -5,6 +5,8 @@
 package boundary.graphics.personalizedComponents;
 
 import boundary.GraphicsUtils;
+import boundary.graphics.Dialog;
+import boundary.graphics.SlidePawn;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -20,6 +22,8 @@ public class PiratePawn extends javax.swing.JPanel {
     private int offset = 0;
     private Color color = Color.red;
     private Component box;
+
+    private SlidePawn slidePawn;
 
     /**
      * Creates new form PiratePawn
@@ -44,6 +48,11 @@ public class PiratePawn extends javax.swing.JPanel {
      */
     public void setBox(Component box) {
         this.box = box;
+    }
+    
+    public void slide(Component casePanel){
+        this.box = null;
+        slidePawn.slidePawnToComponent(casePanel);
     }
 
     /**
@@ -114,11 +123,20 @@ public class PiratePawn extends javax.swing.JPanel {
      * Methode appellée lorsque un repaint du plateau est activé, le plus souvent si la fenêtre change de taille
      *
      */
-    void resetLocation() {
+    public void resetLocation() {
         if(box != null){
             Point location = GraphicsUtils.computeLocationPawnInCase(box);
             moveTo(location);
         }
+    }
+    
+    /**
+     *  Défini le dialog
+     * 
+     * @param dialog 
+     */
+    public void setDialog(Dialog dialog){
+        slidePawn = new SlidePawn(dialog, this);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

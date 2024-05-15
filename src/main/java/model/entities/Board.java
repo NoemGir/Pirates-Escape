@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Board{
     private int nbCase;
-    private LinkedList<Pirate> listPirate = new LinkedList<>();
+    private LinkedList<Pirate> listPirate;
     private List<Case> cases = new LinkedList<>();
 
     /**
@@ -23,6 +23,14 @@ public class Board{
     */
     public Board(int nbCase) {
         this.nbCase = nbCase;
+        initBoard();
+    }
+    
+    /**
+     * Initialise le plateau avec ses joueurs initiaux
+     */
+    public void initBoard(){
+        listPirate = new LinkedList<>();
     }
 
     /**

@@ -2,7 +2,7 @@ package scenario;
 
 import boundary.graphics.Dialog;
 import boundary.graphics.FunctionnalKernelAdapter;
-import boundary.graphics.personalizedComponents.MainFrame;
+import boundary.graphics.personalizedComponents.GameFrame;
 import control.ActivateBoxControl;
 import control.MoveControl;
 import control.PirateGameControl;
@@ -52,7 +52,7 @@ public class GUIScenario {
                    board.addCase(new FinishLine(i));
                    break;
                 default:
-                   board.addCase(new GargamelleCase(i));
+                   board.addCase(new SwapCase(i));
             }
         }
 
@@ -71,8 +71,8 @@ public class GUIScenario {
         moveControl.setPirateGameControl(pirateGameControl);
         activateBoxControl.setPirateGameControl(pirateGameControl);
 
-        MainFrame mainFrame = new MainFrame();
-        mainFrame.setDialog(dialog);
+        GameFrame gameFrame = new GameFrame();
+        gameFrame.setDialog(dialog);
 
         pirateGameControl.startGame();
     }
