@@ -3,6 +3,7 @@ package control;
 import boundary.IBoundary;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 import model.entities.Case;
 import model.entities.Pirate;
 
@@ -34,9 +35,12 @@ public class ActivateBoxControl implements IMovePirate{
         pirateMoved = 0;
         LinkedList<Integer> positionInitialPirate = new LinkedList<>();
      
-        for(Pirate p : listePirate){
-            positionInitialPirate.add(p.getPosition());
-        }
+        listePirate.forEach( (Pirate p) -> positionInitialPirate.add(p.getPosition()) );
+        
+        // Ancienne version du foreach au dessus (juste pour montrer qu'on sait faire et que voila)
+        //for(Pirate p : listePirate){
+        //    positionInitialPirate.add(p.getPosition());
+        //}
         
         box.effect().accept(listePirate, pirate);
         

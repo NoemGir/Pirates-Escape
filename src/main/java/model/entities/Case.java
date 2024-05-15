@@ -12,7 +12,7 @@ import java.util.*;
 public class Case {
     private String name = "Case Normale";
     private int number;
-		private String imageLink;
+    private String imageLink;
 
     /**
     * Constructeur de la classe Case.
