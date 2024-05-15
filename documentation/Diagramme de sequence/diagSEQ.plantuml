@@ -3,6 +3,7 @@ hide footbox
 title Diagramme de séquence - Méthode activateBox()
 
 participant ActivateBox as "ActivateBoxControl"
+participant PortalCase as "PortalCase"
 participant Case as "Case"
 participant Pirate as "Pirate"
 participant IBoundary as "IBoundary"
@@ -10,26 +11,46 @@ participant IBoundary as "IBoundary"
 
 -> ActivateBox : activateBox(listePirate, pirate, box)
 activate ActivateBox
-ActivateBox -> ActivateBox : LinkedList<Integer> positionInitialPirate = new LinkedList<>();
 loop Pirate p : listePirate
     ActivateBox -> Pirate : getPosition()
     activate Pirate
     Pirate --> ActivateBox : position
     deactivate Pirate
-    ActivateBox -> ActivateBox : positionInitialPirate.add(position)
 end
 
-ActivateBox -> Case : effect(listePirate, pirate)
+ActivateBox -> PortalCase : effect(listePirate, pirate)
+activate PortalCase
+PortalCase -> Pirate : ajustPosition(5)
+activate Pirate
+Pirate --> PortalCase
+deactivate Pirate
+PortalCase -> Pirate : ajustHp(-3)
+activate Pirate
+Pirate --> PortalCase
+deactivate Pirate
+PortalCase -> Case : super() 
 activate Case
     loop Pirate p : listePirates
-        alt !(p.equals(pirate)) && (p.getPosition().equals(pirate.getPosition()))
+    Case -> Pirate : getPosition()
+    activate Pirate
+    Pirate --> Case : position
+    deactivate Pirate
+    Case -> Pirate : getPosition()
+    activate Pirate
+    Pirate -> Case : postionPirate2
+    deactivate Pirate
+        alt !(p == pirate) && (position == postionPirate2)
             Case -> Pirate : ajustHP((Integer hp) -> hp-1)
-            Pirate --> Case            
+            activate Pirate
+            Pirate --> Case        
+            deactivate Pirate    
         end
     end
+Case --> PortalCase
 deactivate Case
 
-Case --> ActivateBox
+PortalCase --> ActivateBox
+deactivate PortalCase
 
 loop Pirate p : listePirates
     ActivateBox -> Pirate : getPosition()
@@ -44,9 +65,11 @@ loop Pirate p : listePirates
     activate Pirate
     Pirate --> ActivateBox : hp
     deactivate Pirate
-    alt ! position.equals(positionInitialPirate.get(i))
-        ActivateBox -> ActivateBox : pirateMoved +=1;
+    alt position != positionInitiale
         ActivateBox -> IBoundary : movePirateAuto(id, position)
+        activate IBoundary
+        IBoundary --> ActivateBox
+        deactivate IBoundary
     end
     
     ActivateBox -> IBoundary : displayPV(id, hp)
@@ -55,6 +78,6 @@ loop Pirate p : listePirates
     deactivate IBoundary
 end
 
-ActivateBox -->]
+[<-- ActivateBox
 deactivate ActivateBox
 @enduml
