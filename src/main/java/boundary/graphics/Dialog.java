@@ -107,7 +107,7 @@ public class Dialog implements IPirates {
 
     @Override
     public void changePirate(int idNewPirate) {
-        listPirateFace.forEach( p -> p.ChangeImage() );
+        listPirateFace.forEach( p -> p.changeImageColor() );
         
         // Ancienne version du forEach pour montrer qu'on sait faire
         //for(PirateFace p : listPirateFace)

@@ -46,7 +46,7 @@ public class ActivateBoxControl implements IMovePirate{
         nbPirateMoved = 0;
         LinkedList<Integer> positionInitialPirate = new LinkedList<>();
 
-        listePirate.forEach( (Pirate p) -> positionInitialPirate.add(p.getPosition()) );
+        listPirate.forEach( (Pirate p) -> positionInitialPirate.add(p.getPosition()) );
 
         // Ancienne version du foreach au dessus
         //for(Pirate p : listePirate){
