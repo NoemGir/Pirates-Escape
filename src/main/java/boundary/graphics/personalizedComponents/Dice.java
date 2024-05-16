@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package boundary.graphics.personalizedComponents;
 
-import boundary.graphics.Dialog;
-import boundary.graphics.DiceRoll;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.LinkedList;
+
 import javax.imageio.ImageIO;
+
+import boundary.graphics.Dialog;
+import boundary.graphics.DiceRoll;
 
 /**
  * Panel Personnalisé représentant un dé
