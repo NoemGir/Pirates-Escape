@@ -9,7 +9,7 @@ import java.util.function.Function;
  * 
  */
 public class Pirate {
-    private int idPirate;
+    private Integer idPirate;
     private Integer position = 0;
     private String name;
     private Integer hp;
@@ -21,7 +21,7 @@ public class Pirate {
     * @param name Le nom du pirate dans le jeu.
     * @param hp Le nombre d'hp possédé par le pirate.
     */
-    public Pirate(int idPirate, String name, Integer hp) {
+    public Pirate(Integer idPirate, String name, Integer hp) {
         this.idPirate = idPirate;
         this.name = name;
         this.hp = hp;
@@ -39,7 +39,8 @@ public class Pirate {
             Pirate pirate = (Pirate) obj;
             return this.name.equals(pirate.name)
                     && this.getHp().equals(pirate.getHp())
-                    && this.getPosition().equals(pirate.getPosition());
+                    && this.getPosition().equals(pirate.getPosition())
+                    && this.getIdPirate().equals(pirate.getIdPirate());
         }
         return false;
     }
@@ -124,7 +125,7 @@ public class Pirate {
     * 
     * @return L'id du pirate dans le jeu.
     */
-    public int getIdPirate() {
+    public Integer getIdPirate() {
         return idPirate;
     }
         
