@@ -92,4 +92,9 @@ public class Case {
     public int getNumber() {
         return number;
     }
+
+	@Override
+	public String toString() {
+		return "Case " + number + " : " +name;
+	}
 }

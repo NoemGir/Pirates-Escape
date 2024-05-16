@@ -10,7 +10,7 @@ import BoundaryForTestingPurpose.TestPirateGameBoundary;
 import control.VerifyEndGameControl;
 import model.entities.Pirate;
 
-class testVerifyEndControl {
+class TestVerifyEndControl {
 	
 	private LinkedList<Pirate> listPirate ;
     private VerifyEndGameControl verifyEndGameControl ;

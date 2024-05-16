@@ -34,6 +34,7 @@ public class GameFrame extends javax.swing.JFrame {
         mainPanel1 = new boundary.graphics.personalizedComponents.MainPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pirate Escape");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
