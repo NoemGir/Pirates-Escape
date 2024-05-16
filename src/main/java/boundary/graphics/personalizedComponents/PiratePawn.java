@@ -4,13 +4,14 @@
  */
 package boundary.graphics.personalizedComponents;
 
-import boundary.GraphicsUtils;
-import boundary.graphics.Dialog;
-import boundary.graphics.SlidePawn;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Point;
+
+import boundary.GraphicsUtils;
+import boundary.graphics.Dialog;
+import boundary.graphics.SlidePawn;
 
 /**
  * Panel personnalisé représentant un pion

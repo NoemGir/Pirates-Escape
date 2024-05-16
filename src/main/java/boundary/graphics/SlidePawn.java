@@ -4,12 +4,14 @@
  */
 package boundary.graphics;
 
-import boundary.GraphicsUtils;
-import boundary.graphics.personalizedComponents.PiratePawn;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
+
 import javax.swing.Timer;
+
+import boundary.GraphicsUtils;
+import boundary.graphics.personalizedComponents.PiratePawn;
 
 /**
  * Classe créer pour générer le déplacement en glissade des pions

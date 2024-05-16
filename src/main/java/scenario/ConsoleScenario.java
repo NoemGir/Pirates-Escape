@@ -1,9 +1,6 @@
 package scenario;
 
 import boundary.PirateGameBoundary;
-import boundary.graphics.Dialog;
-import boundary.graphics.FunctionnalKernelAdapter;
-import boundary.graphics.personalizedComponents.GameFrame;
 import control.ActivateBoxControl;
 import control.MoveControl;
 import control.PirateGameControl;

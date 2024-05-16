@@ -5,7 +5,6 @@ control\IMovePirate.class
 boundary\graphics\Dialog.class
 boundary\graphics\IPirates.class
 control\PirateGameControl.class
-scenario\GUIScenario.class
 model\entities\Dice.class
 boundary\graphics\personalizedComponents\GridModel$1.class
 model\entities\Pirate.class
@@ -26,19 +25,14 @@ boundary\graphics\FunctionnalKernelAdapter.class
 boundary\graphics\personalizedComponents\PiratePawn.class
 boundary\PirateGameBoundary.class
 boundary\graphics\personalizedComponents\HealthBar.class
-boundary\graphics\SlidePawn.class
 boundary\graphics\personalizedComponents\PirateFace.class
 boundary\graphics\personalizedComponents\GridModel.class
 boundary\graphics\personalizedComponents\MainPanel$1.class
 boundary\graphics\personalizedComponents\HeartPanel.class
-boundary\graphics\personalizedComponents\MainPanel.class
-boundary\graphics\personalizedComponents\GameFrame$1.class
 model\entities\FinishLine.class
 control\MoveControl.class
 boundary\GraphicsUtils.class
 control\IThrowDice.class
 boundary\IBoundary.class
-boundary\graphics\personalizedComponents\GameFrame.class
-scenario\ConsoleScenario.class
 boundary\graphics\personalizedComponents\DiceCouple$1.class
 model\entities\GargamelleCase.class

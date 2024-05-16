@@ -1,22 +1,24 @@
 package boundary.graphics;
 
-import boundary.GraphicsUtils;
-import boundary.graphics.personalizedComponents.CasePanel;
-import boundary.graphics.personalizedComponents.PirateFace;
-import boundary.graphics.personalizedComponents.DiceCouple;
-import boundary.graphics.personalizedComponents.GridModel;
-import boundary.graphics.personalizedComponents.HealthBar;
-import boundary.graphics.personalizedComponents.MainPanel;
-import boundary.graphics.personalizedComponents.GameFrame;
-import boundary.graphics.personalizedComponents.PiratePawn;
 import java.awt.Component;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
 import javax.swing.Icon;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+
+import boundary.GraphicsUtils;
+import boundary.graphics.personalizedComponents.CasePanel;
+import boundary.graphics.personalizedComponents.DiceCouple;
+import boundary.graphics.personalizedComponents.GameFrame;
+import boundary.graphics.personalizedComponents.GridModel;
+import boundary.graphics.personalizedComponents.HealthBar;
+import boundary.graphics.personalizedComponents.MainPanel;
+import boundary.graphics.personalizedComponents.PirateFace;
+import boundary.graphics.personalizedComponents.PiratePawn;
 
 /**
 * Le Dialog s'occupe de gérer les liens entre les différentes composants graphiques, et le Noyau fonctionnel
