@@ -6,7 +6,6 @@ import java.util.function.Function;
  * Cette classe regroupe des méthodes pour les objets Pirate.
  * 
  * @author Corentin JERE
- * 
  */
 public class Pirate {
     private Integer idPirate;
@@ -128,7 +127,4 @@ public class Pirate {
     public Integer getIdPirate() {
         return idPirate;
     }
-        
-        
-
 }

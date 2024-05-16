@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import model.entities.*;
@@ -31,7 +23,11 @@ public class TestPirate {
     private Pirate pDead = new Pirate(1, "p1", 0);
     private List<LambdaTestStructure> listeDesTestsStruct = new ArrayList();
     
-    
+    /**
+    * Class interne servant de structure pour l'utilisation des stream avec les assertEquals
+    * 
+    * @author Corentin JERE
+    */ 
     public class LambdaTestStructure{
         protected Pirate pirate;
         protected Object optionalArg;
@@ -48,18 +44,9 @@ public class TestPirate {
         }
     }
     
-    
-    public TestPirate() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
+    /** 
+    * @author Corentin JERE
+    */
     @BeforeEach
     public void setUp() {
         p1_1_5_0 = new Pirate(1, "p1", 5);
@@ -74,12 +61,10 @@ public class TestPirate {
         pDead = new Pirate(1, "p1", 0);
         listeDesTestsStruct.clear();
     }
-    
-    @AfterEach
-    public void tearDown() {
-    }
   
-    
+    /** 
+    * @author Corentin JERE
+    */
     @Test
     public void testGettersSetters(){
         listeDesTestsStruct.add(new LambdaTestStructure(p1_1_5_0, new Object[]{(String)"p1",(Integer)1,(Integer)5,(Integer)0}));
@@ -108,6 +93,9 @@ public class TestPirate {
         assertEquals(25, p.getPosition());
     }
     
+    /** 
+    * @author Corentin JERE
+    */
     @Test
     public void testEquals(){
         listeDesTestsStruct.add(new LambdaTestStructure(p1_1_5_0, p1_1_5_0, true));
@@ -136,6 +124,9 @@ public class TestPirate {
         listeDesTestsStruct.stream().forEach( consumerTest );
     }
     
+    /** 
+    * @author Corentin JERE
+    */
     @Test
     public void testIsDead(){
         listeDesTestsStruct.add(new LambdaTestStructure(p1_1_5_0, false));
@@ -156,6 +147,9 @@ public class TestPirate {
         listeDesTestsStruct.stream().forEach( consumerTest );
     }
     
+    /** 
+    * @author Corentin JERE
+    */
     @Test
     public void testAjustHp(){
         Function<Integer, Integer> fP1 = (Integer x) -> x+1;
@@ -185,6 +179,9 @@ public class TestPirate {
         listeDesTestsStruct.stream().forEach( consumerTest );
     }
     
+    /** 
+    * @author Corentin JERE
+    */
     @Test
     public void testAjustPosition(){
         Function<Integer, Integer> fP10 = (Integer x) -> x+10;

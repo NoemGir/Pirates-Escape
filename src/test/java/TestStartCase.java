@@ -1,21 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
-import model.entities.Case;
+import model.entities.StartCase;
 import model.entities.Pirate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Class de test pour la classe Case.
+ * Class de test pour la classe StartCase.
  * 
  * @author Corentin JERE
  */
-public class TestCase{
+public class TestStartCase{
     private Pirate p1;
     private Pirate p2;
     private List<Pirate> pirates = new ArrayList();
-    private Case nc;
+    private StartCase nc;
     
     /**
      * @author Corentin JERE
@@ -25,7 +25,7 @@ public class TestCase{
         p1 = new Pirate(2, "p1", 5);
         p1.setPosition(1);
         p2 = new Pirate(1, "p2", 5);
-        nc = new Case(1);
+        nc = new StartCase(1);
         pirates.clear();
         pirates.add(p1);
         pirates.add(p2);

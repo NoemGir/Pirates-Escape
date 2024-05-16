@@ -7,7 +7,6 @@ import java.util.function.*;
  * Cette classe regroupe des méthodes pour les objets MrKrabsCase (les cases spéciales Mr. Krabs de Bob l'éponge).
  *
  * @author Corentin JERE
- *
  */
 public class MrKrabsCase extends Case {
     /**

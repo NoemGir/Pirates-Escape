@@ -7,7 +7,6 @@ import java.util.function.*;
  * Cette classe regroupe des méthodes pour les objets GargamelleCase (les cases spéciales Gargamelle des Shtroumpfs).
  *
  * @author Corentin JERE
- *
  */
 public class GargamelleCase extends Case {
     /**
