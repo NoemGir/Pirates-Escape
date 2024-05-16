@@ -7,7 +7,6 @@ import java.util.function.*;
  * Cette classe regroupe des méthodes pour les objets SwapCase (les cases spéciales swap UNO).
  *
  * @author Corentin JERE
- *
  */
 public class SwapCase extends Case {
     /**
@@ -42,5 +41,4 @@ public class SwapCase extends Case {
             super.effect().accept(pirates, pirate);
         };
     }
-
 }

@@ -7,7 +7,6 @@ import java.util.function.*;
  * Cette classe regroupe des méthodes pour les objets NurseCase (Les cases spéciales Infermière Joelle).
  *
  * @author Corentin JERE
- *
  */
 public class NurseCase extends Case {
     /**
