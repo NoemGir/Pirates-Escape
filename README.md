@@ -19,4 +19,4 @@ Pour accéder aux tests, il faut se rendre dans le dossier src/test/.
 
 ## Lambdas 
 
-Les lambdas ont été utilisées dans beaucoup d'endroits, de différentes manière (surtout pour les BiConsummer des méthodes effect() de chaque classe cases). Mais aussi dans les fichiers Test des entitées (principalement TestPirate et TestBoard). 
+Les lambdas ont été utilisées dans beaucoup d'endroits, de différentes manières (surtout pour les BiConsummer des méthodes effect() de chaque classe case). Mais aussi dans les fichiers Test des entitées (principalement TestPirate et TestBoard). 
