@@ -4,12 +4,18 @@
  */
 package boundary.graphics.personalizedComponents;
 
-import boundary.graphics.Dialog;
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+
 import javax.imageio.ImageIO;
+import javax.swing.JScrollPane;
+
+import boundary.graphics.Dialog;
 
 /**
  *
@@ -29,12 +35,13 @@ public class MainPanel extends javax.swing.JPanel {
         pirateFace2.setPirateImage("/harlock");
         pirateFace2.changeImageColor();
         pirateFace2.setLiner(Color.blue);
-        
+
         try{
             background = ImageIO.read(new File(getClass().getResource("/wall.jpeg").toURI()));
         }catch(Exception e){
             System.out.println("MainPanel : Erreur de charcgement du fond d'écrant ");
         }
+        
         repaint();
     }
     
@@ -141,7 +148,12 @@ public class MainPanel extends javax.swing.JPanel {
 
         jPanel2.setOpaque(false);
 
+        jScrollPane1.setOpaque(false);
+
+        jTextArea1.setBackground(new java.awt.Color(63, 142, 122));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 204));
         jTextArea1.setRows(5);
         jTextArea1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(79, 49, 41)));
         jScrollPane1.setViewportView(jTextArea1);

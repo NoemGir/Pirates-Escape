@@ -7,7 +7,6 @@ import java.util.*;
  * Cette classe regroupe des méthodes pour les objets Case (normal).
  *
  * @author Corentin JERE
- *
  */
 public class Case {
     private String name = "Case Normale";
@@ -30,15 +29,14 @@ public class Case {
     * @param imageLink le lien de l'image associée a la case
     */
     public Case(int number,String imageLink) {
-                    this.number = number;
-                    this.imageLink = imageLink;
+        this.number = number;
+        this.imageLink = imageLink;
     }
 
     /**
     * Retourne un BiConsumer étant la fonction de l'effet de la case sur la liste des joueurs et le joueur courant, en utilisant des lambdas.
     *
     * @return un BiConsumer étant la fonction de l'effet de la case.
-    *
     */
     public BiConsumer<List<Pirate>, Pirate> effect(){
         return (List<Pirate> pirates, Pirate pirate) -> {
@@ -56,7 +54,6 @@ public class Case {
     * Getter du name de la case.
     *
     * @return le nom de la case.
-    *
     */
     public String getName() {
         return name;
@@ -67,17 +64,15 @@ public class Case {
     * Getter du name de la case.
     *
     * @return le nom de la case.
-    *
     */
     public String getImageLink() {
-                    return imageLink;
+        return imageLink;
     }
 
     /**
     * Setter du name de la case.
     *
     * @param name le nom de la case.
-    *
     */
     public void setName(String name) {
         this.name = name;
@@ -87,9 +82,13 @@ public class Case {
     * Getter du number de la case.
     *
     * @return le numéro de la case sur la plateau.
-    *
     */
     public int getNumber() {
         return number;
     }
+
+	@Override
+	public String toString() {
+		return "Case " + number + " : " +name;
+	}
 }

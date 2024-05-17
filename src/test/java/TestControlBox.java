@@ -137,10 +137,70 @@ public class TestControlBox {
         		&& 
         		this.listPirate.get(1).getPosition()==positionInitial2);
     }
-    
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    void testActivateBoxAvecCaseLuckyLuckQuandLePirateEstSeulSurSaCAse(){
+    	int numCase = 27;
+    	this.listPirate.get(0).setPosition(numCase);
+    	int positionInitial = this.listPirate.get(0).getPosition();
+    	this.listPirate.get(1).setPosition(1);
+    	int positionInitial2 = this.listPirate.get(1).getPosition();
+    	activateBoxControl.activateBox( this.board.getListPirate(), this.board.getListPirate().get(0), board.getCases().get(numCase));
+        assertTrue(this.listPirate.get(0).getHp()==3 
+        		&& 
+        		this.listPirate.get(0).getPosition()==positionInitial 
+        		&& 
+        		this.listPirate.get(1).getHp()==5 
+        		&& 
+        		this.listPirate.get(1).getPosition()==positionInitial2);
+    }
+    @Test
+    void testActivateBoxAvecCaseLuckyLuckQuandLesPirateSontsDeuxSurLaCase(){
+    	int numCase = 27;
+    	this.listPirate.get(0).setPosition(numCase);
+    	int positionInitial = this.listPirate.get(0).getPosition();
+    	this.listPirate.get(1).setPosition(numCase);
+    	int positionInitial2 = this.listPirate.get(1).getPosition();
+    	activateBoxControl.activateBox( this.board.getListPirate(), this.board.getListPirate().get(0), board.getCases().get(numCase));
+    	assertTrue(this.listPirate.get(0).getHp()==2 
+        		&& 
+        		this.listPirate.get(0).getPosition()==positionInitial 
+        		&& 
+        		this.listPirate.get(1).getHp()==4 
+        		&& 
+        		this.listPirate.get(1).getPosition()==positionInitial2);
+    }
+    @Test
+    void testActivateBoxAvecCaseGargamelQuandLePirateEstSeulSurSaCAse(){
+    	int numCase = 15;
+    	this.listPirate.get(0).setPosition(numCase);
+    	int positionInitial = this.listPirate.get(0).getPosition();
+    	this.listPirate.get(1).setPosition(1);
+    	int positionInitial2 = this.listPirate.get(1).getPosition();
+    	activateBoxControl.activateBox( this.board.getListPirate(), this.board.getListPirate().get(0), board.getCases().get(numCase));
+        assertTrue(this.listPirate.get(0).getHp()==4 
+        		&& 
+        		this.listPirate.get(0).getPosition()==positionInitial 
+        		&& 
+        		this.listPirate.get(1).getHp()==5 
+        		&& 
+        		this.listPirate.get(1).getPosition()==positionInitial2);
+    }
+    @Test
+    void testActivateBoxAvecCaseGargamelQuandLesPirateSontsDeuxSurLaCase(){
+    	int numCase = 15;
+    	this.listPirate.get(0).setPosition(numCase);
+    	int positionInitial = this.listPirate.get(0).getPosition();
+    	this.listPirate.get(1).setPosition(numCase);
+    	int positionInitial2 = this.listPirate.get(1).getPosition();
+    	activateBoxControl.activateBox( this.board.getListPirate(), this.board.getListPirate().get(0), board.getCases().get(numCase));
+    	assertTrue(this.listPirate.get(0).getHp()==3 
+        		&& 
+        		this.listPirate.get(0).getPosition()==positionInitial 
+        		&& 
+        		this.listPirate.get(1).getHp()==4 
+        		&& 
+        		this.listPirate.get(1).getPosition()==positionInitial2);
+    }
+
+
 }

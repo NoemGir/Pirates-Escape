@@ -24,7 +24,7 @@ import model.entities.PortalCase;
 import model.entities.StartCase;
 import model.entities.SwapCase;
 
-class testMoveControl {
+class TestMoveControl {
 	
 	 private int NB_CASES = 30;
      private Board board ;
@@ -35,7 +35,7 @@ class testMoveControl {
      private VerifyEndGameControl verifyEndGameControl ;
      private PirateGameControl pirateGameControl;
      
-    public testMoveControl() {
+    public TestMoveControl() {
     }
     
     @BeforeAll

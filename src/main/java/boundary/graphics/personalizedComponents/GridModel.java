@@ -4,14 +4,16 @@
  */
 package boundary.graphics.personalizedComponents;
 
-import boundary.graphics.Dialog;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
+
 import javax.imageio.ImageIO;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+
+import boundary.graphics.Dialog;
 
 /**
  * Panel Personnalisé représentant le plateau

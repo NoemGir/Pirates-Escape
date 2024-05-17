@@ -19,7 +19,7 @@ public class Board{
     *
     * @author Robin MOUNIE
     *
-    * @param nbCase Le numéro de la case sur le plateau.
+    * @param nbCase Le nombre de case sur le plateau.
     */
     public Board(int nbCase) {
         this.nbCase = nbCase;

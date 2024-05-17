@@ -7,7 +7,6 @@ import java.util.function.*;
  * Cette classe regroupe des méthodes pour les objets LuckyLukeShadowCase (les cases spéciales de l'ombre de lucky luke).
  *
  * @author Corentin JERE
- *
  */
 public class LuckyLukeShadowCase extends Case {
     /**

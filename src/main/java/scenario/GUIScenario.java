@@ -1,5 +1,7 @@
 package scenario;
 
+import static scenario.ConsoleScenario.NB_CASES;
+
 import boundary.graphics.Dialog;
 import boundary.graphics.FunctionnalKernelAdapter;
 import boundary.graphics.personalizedComponents.GameFrame;
@@ -9,15 +11,14 @@ import control.PirateGameControl;
 import control.VerifyEndGameControl;
 import model.entities.Board;
 import model.entities.Case;
-import model.entities.PortalCase;
 import model.entities.FinishLine;
 import model.entities.GargamelleCase;
 import model.entities.LuckyLukeShadowCase;
 import model.entities.MrKrabsCase;
 import model.entities.NurseCase;
+import model.entities.PortalCase;
 import model.entities.StartCase;
 import model.entities.SwapCase;
-import static scenario.ConsoleScenario.NB_CASES;
 
 
 /*
