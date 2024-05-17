@@ -23,8 +23,8 @@ public class SlidePawn{
     private Dialog dialog;
     
     private PiratePawn pawn;
-    private Timer timerY = new Timer(10, (ActionEvent e) -> moveY(e));
-    private Timer timerX = new Timer(1, (ActionEvent e) -> moveX(e));
+    private Timer timerY = new Timer(6, (ActionEvent e) -> moveY(e));
+    private Timer timerX = new Timer(6, (ActionEvent e) -> moveX(e));
     private Point location;
     private Point destination;
     
