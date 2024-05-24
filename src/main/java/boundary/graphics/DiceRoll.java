@@ -42,7 +42,7 @@ public class DiceRoll {
         }
 
         /**
-         * Débute le roulement du dé
+         * DiceRoll : Débute le roulement du dé
          * 
          * @param value la valeure sur laquelle le dé va attérir
          */
@@ -54,7 +54,7 @@ public class DiceRoll {
         }  
         
         /**
-         * Opérations a réaliser à chaque appel du timer
+         * DiceRoll : Opérations à réaliser à chaque appel du timer
          * @param e 
          */
         private void timerEventHandler(java.awt.event.ActionEvent e){

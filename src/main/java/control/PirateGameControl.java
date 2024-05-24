@@ -55,7 +55,8 @@ public class PirateGameControl{
     }
 
     /**
-     * Vérifie si fin de jeu et lance un tour pour un nouveau joueur
+     * PirateGameControl : Vérifie si fin de jeu et 
+     * lance un tour pour un nouveau joueur
      */
     public void newPlayerTurn(){
         if (!verifyEndGameManagement()){

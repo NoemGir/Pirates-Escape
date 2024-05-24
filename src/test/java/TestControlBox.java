@@ -128,7 +128,8 @@ public class TestControlBox {
     	int positionInitial = this.listPirate.get(0).getPosition();
     	this.listPirate.get(1).setPosition(2);
     	int positionInitial2 = this.listPirate.get(1).getPosition();
-    	activateBoxControl.activateBox( this.board.getListPirate(), this.board.getListPirate().get(0), board.getCases().get(0));
+    	activateBoxControl.activateBox( this.board.getListPirate(), 
+    			this.board.getListPirate().get(0), board.getCases().get(0));
         assertTrue(this.listPirate.get(0).getHp()==4 
         		&& 
         		this.listPirate.get(0).getPosition()==positionInitial 

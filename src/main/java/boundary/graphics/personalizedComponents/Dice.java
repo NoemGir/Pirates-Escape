@@ -82,7 +82,7 @@ public class Dice extends javax.swing.JPanel {
     }
     
     /**
-     * Lance le roulement du dé
+     * Dice Lance le roulement du dé
      * 
      * @param v la valeur sur laquelle le dé va tomber
      */

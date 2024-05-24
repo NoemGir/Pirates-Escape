@@ -19,6 +19,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     private IMovePirate movePirate;
     private IMovePirate movePirateEffect;
     private PirateGameControl pirateGameControl;
+    
     private IThrowDice throwDice;
 
 
@@ -38,6 +39,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
         }
     }
 
+    // IFunctionnalKernelAdapter -> FunctionnalKernelAdapter
     @Override
     public void diceFinished() {
         throwDice.doubleDicesFinished();
@@ -53,6 +55,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
         movePirateEffect.moveFinished();    
     }
 
+    //IBoundary -> FunctionnalKernelAdapteur
     @Override
     public void throwDoubleDice() {
         dialog.activateThrowDice();
@@ -87,7 +90,7 @@ public class FunctionnalKernelAdapter implements IFunctionnalKernel, IBoundary{
     public void changePlayer( int idPirate) {
         dialog.changePirate(idPirate);
         String pirateName = pirateGameControl.getPirateName(idPirate);
-        System.out.println("\nC'est au tour de " + pirateName + " de jouer. AArggh !! " );
+        dialog.display("C'est au tour de " + pirateName + " de jouer. AArggh !! " );
 
     }
 

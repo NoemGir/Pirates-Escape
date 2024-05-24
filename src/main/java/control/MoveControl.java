@@ -14,8 +14,10 @@ import model.entities.Pirate;
 */
 public class MoveControl implements IMovePirate, IThrowDice {
 
-	private Board board;
-	private IBoundary boundary;
+		private Board board;
+	
+		private IBoundary boundary;
+		
         private PirateGameControl pirateGameControl;
 
 
@@ -48,7 +50,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	}
 
         /**
-         * Lance le tirage des dés liées au mouvement
+         * MoveControl : Lance le tirage des dés liées au mouvement
          */
         public void throwDiceMovement(){
             dice1.throwDice();
@@ -57,6 +59,7 @@ public class MoveControl implements IMovePirate, IThrowDice {
             boundary.throwDoubleDice();
         }
 
+        // IThrowDice -> MoveControl
         @Override
         public void doubleDicesFinished() {
             int distance = dice1.getDisplayValue() + dice2.getDisplayValue();

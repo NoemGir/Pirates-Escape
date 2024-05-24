@@ -26,7 +26,7 @@ public class DiceCouple extends javax.swing.JPanel {
     }
     
     /**
-     * lance le roulement des deux dés
+     * DiceCouple : lance le roulement des deux dés
      * @param val1 la valeur sur laquelle tombera le premier dé
      * @param val2 la valeur sur laquelle tombera le second dé
      */
@@ -49,7 +49,6 @@ public class DiceCouple extends javax.swing.JPanel {
      * @param dialog 
      */
     public void setDialog(Dialog dialog){
-        System.out.println("boundary.graphics.personalizedComponents.DiceCouple.setDialog()" + this);
         this.dialog = dialog;
         
         dice1.setDialog(dialog);
@@ -137,15 +136,15 @@ public class DiceCouple extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * actions réalisées lors du pressement du bouton
+     * DiceCouple : actions réalisées lors du pressement du bouton
      * @param evt 
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         int display1 = dialog.getDiceResult(0);
         int display2 = dialog.getDiceResult(1);
         displayDices(display1,display2);
         jButton1.setEnabled(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

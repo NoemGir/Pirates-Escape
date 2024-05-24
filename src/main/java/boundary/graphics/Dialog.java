@@ -186,6 +186,7 @@ public class Dialog implements IPirates {
         }
     }
 
+    // IPirates -> Dialog
     @Override
     public void activateThrowDice() {
         diceCouple.getButton().setEnabled(true);
@@ -203,7 +204,8 @@ public class Dialog implements IPirates {
     }
 
     /**
-    * Indique a l'adaptateur Fonctionnel quand les deux dés on terminés de tourner
+    * Dialog : Indique a l'adaptateur Fonctionnel 
+    * quand les deux dés on terminés de tourner
     */
     public void diceFinished(){
         if(nbDiceRunning != 0){

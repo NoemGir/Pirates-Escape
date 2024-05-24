@@ -64,7 +64,8 @@ public class SlidePawn{
     }
     
     /**
-    * methode appelée par le TimerX, chargée de bouger le pion de 1 pixel horizontalement dans la direction de la destination
+    * methode appelée par le TimerX, chargée de bouger le pion de 1 pixel
+    * horizontalement dans la direction de la destination
     * 
     * @author Noémie GIREAUD
     * 
