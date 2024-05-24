@@ -36,7 +36,7 @@ public class PirateFace extends javax.swing.JPanel {
      */
     private void loadImage(){
         try{
-        	System.out.println(getClass().getResource(imageName+".jpg"));
+           System.out.println(getClass().getResource(imageName+".jpg"));
            BufferedImage image = ImageIO.read(new File(getClass().getResource(imageName+".jpg").toURI()));
            scaledImage = image.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
            color = scaledImage;
