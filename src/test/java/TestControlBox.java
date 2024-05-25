@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.LinkedList;
@@ -146,6 +147,7 @@ public class TestControlBox {
     	this.listPirate.get(1).setPosition(1);
     	int positionInitial2 = this.listPirate.get(1).getPosition();
     	activateBoxControl.activateBox( this.board.getListPirate(), this.board.getListPirate().get(0), board.getCases().get(numCase));
+    	activateBoxControl.moveFinished();
         assertTrue(this.listPirate.get(0).getHp()==3 
         		&& 
         		this.listPirate.get(0).getPosition()==positionInitial 
@@ -201,6 +203,26 @@ public class TestControlBox {
         		this.listPirate.get(1).getHp()==4 
         		&& 
         		this.listPirate.get(1).getPosition()==positionInitial2);
+    }
+
+    @Test
+    void testMoveFinished() {
+    	pirateGameControl.setActivePlayer(this.listPirate.get(0));
+    	activateBoxControl.setNbPirateMoved(1);
+    	activateBoxControl.moveFinished();
+    	int nbPirateMoved = activateBoxControl.getNbPirateMoved();
+    	System.out.println("azertuij : "+nbPirateMoved);
+    	int positionInitial = this.listPirate.get(0).getPosition();
+    	int positionInitial2 = this.listPirate.get(1).getPosition();
+    	assertTrue( 
+        		this.listPirate.get(0).getPosition()==positionInitial 
+        		&& 
+        		this.listPirate.get(1).getPosition()==positionInitial2);
+    }
+    @Test
+    void testMoveFinishedFailing() {
+    	activateBoxControl.setNbPirateMoved(1);
+    	assertThrows(NullPointerException.class,()->activateBoxControl.moveFinished());
     }
 
 

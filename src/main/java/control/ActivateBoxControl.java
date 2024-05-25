@@ -82,7 +82,11 @@ public class ActivateBoxControl implements IMovePirate{
         }
     }
 
-    /**
+    public void setNbPirateMoved(int nbPirateMoved) {
+		this.nbPirateMoved = nbPirateMoved;
+	}
+
+	/**
      * Défini le pirateGameControl
      *
      * @param pirateGameControl
@@ -90,6 +94,10 @@ public class ActivateBoxControl implements IMovePirate{
     public void setPirateGameControl(PirateGameControl pirateGameControl) {
         this.pirateGameControl = pirateGameControl;
     }
+
+	public int getNbPirateMoved() {
+		return nbPirateMoved;
+	}
 
 
 }
