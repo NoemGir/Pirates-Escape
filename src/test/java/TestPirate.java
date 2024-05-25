@@ -1,11 +1,15 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import model.entities.*;
+
+import model.entities.Pirate;
 
 /**
  * Class regroupant toutes les méthodes de tests nécessaires pour la classe Pirate, avec l'utilisation de Stream pour ajouter un peu de lambda.
@@ -122,6 +126,8 @@ public class TestPirate {
         
         // Utilisation d'un stream !!!
         listeDesTestsStruct.stream().forEach( consumerTest );
+        
+        assertNotEquals(p1_1_5_0, 0);
     }
     
     /** 
@@ -208,4 +214,15 @@ public class TestPirate {
         // Utilisation d'un stream !!!
         listeDesTestsStruct.stream().forEach( consumerTest );
     }
+    
+    /** 
+     * @author Corentin JERE
+     */
+     @Test
+     public void testToString(){
+    	 assertEquals("Pirate{idPirate=1, position=0, name=p1, hp=5}", p1_1_5_0.toString());
+    	 assertEquals("Pirate{idPirate=2, position=0, name=p1, hp=5}", p1_2_5_0.toString());
+    	 assertEquals("Pirate{idPirate=2, position=30, name=p1, hp=5}", p1_2_5_30.toString());
+     }
+    
 }

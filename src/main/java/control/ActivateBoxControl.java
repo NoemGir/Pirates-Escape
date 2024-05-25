@@ -52,7 +52,6 @@ public class ActivateBoxControl implements IMovePirate{
         //for(Pirate p : listePirate){
         //    positionInitialPirate.add(p.getPosition());
         //}
-
         box.effect().accept(listPirate, pirate);
 
         for(int i = 0; i<listPirate.size(); i++){

@@ -1,13 +1,17 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.entities.Board;
 import model.entities.Case;
 import model.entities.Pirate;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Class de test pour la classe Board.
@@ -21,6 +25,7 @@ class TestBoard {
     private Pirate pirateTest2;
     private Pirate pirateTest3;
     private List<LambdaTestStructure> listeDesTestsStruct = new ArrayList();
+    private List<Case> cases;
 
     /**
     * Class interne servant de structure pour l'utilisation des stream avec les assertEquals
@@ -42,6 +47,7 @@ class TestBoard {
      */
     @BeforeEach
     public void setUp() {
+    	cases = new LinkedList<>();
         board = new Board(15);
 
         pirateTest1 = new Pirate(0, "PirateTest1", 5);
@@ -54,7 +60,9 @@ class TestBoard {
 
 
         for(int i = 0; i < board.getNbCase(); i++) {
-            board.addCase(new Case(i));
+        	Case box = new Case(i);
+            board.addCase(box);
+            cases.add(box);
         }
     }
 
@@ -138,4 +146,32 @@ class TestBoard {
             System.err.println(" --> EXCEPTION ERROR");
         }
     }
+    
+    /**
+     * @author Noemie
+     *
+     */
+    @Test
+    public void testGetters() {
+    	int i = 0;
+    	for(Case box : cases) {
+    		assertTrue(box == board.getCases().get(i));
+    		i++;
+    	}
+    	
+        assertEquals(pirateTest1, board.getListPirate().get(0));
+        assertEquals(pirateTest2, board.getListPirate().get(1));
+        assertEquals(pirateTest3, board.getListPirate().get(2));
+        assertEquals(3, board.getListPirate().size());
+        
+        assertEquals(0, board.getLocationPlayer(pirateTest1.getName()));
+        assertEquals(0, board.getLocationPlayer(pirateTest2.getName()));
+        assertEquals(0, board.getLocationPlayer(pirateTest3.getName()));
+        
+        pirateTest1.setPosition(5);
+        assertEquals(5, board.getLocationPlayer(pirateTest1.getName()));
+
+    }
+    
+    
 }

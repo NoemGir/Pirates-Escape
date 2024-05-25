@@ -1,4 +1,8 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.LinkedList;
 
@@ -101,22 +105,22 @@ class TestMoveControl {
     	Pirate tata = listPirate.get(1);
     	
     	moveControl.move(toto, 1);
-    	assertTrue(toto.getPosition() == 1);
+    	assertEquals(toto.getPosition(),1);
     	
     	moveControl.move(tata, 30);
-    	assertTrue(tata.getPosition() == 28);
+    	assertEquals(tata.getPosition(),28);
     	
     	moveControl.move(toto, 7);
-    	assertTrue(toto.getPosition() == 8);
+    	assertEquals(toto.getPosition(),8);
     	
     	moveControl.move(tata, 9);
-    	assertTrue(tata.getPosition() == 21);
+    	assertEquals(tata.getPosition(),21);
     }
     
     @Test
     void testThrowDiceMovement(){
-		assertTrue(moveControl.getFirstDiceDisplay() == 1);
-    	assertTrue(moveControl.getFirstDiceDisplay() == 1);
+    	assertEquals(moveControl.getFirstDiceDisplay(), 1);
+    	assertEquals(moveControl.getFirstDiceDisplay(), 1);
     	
     	boolean different = false;
     	//vérification si le premier dé change 
@@ -156,25 +160,25 @@ class TestMoveControl {
     	moveControl.setSecondDiceDisplay(2);
     	
     	moveControl.doubleDicesFinished();
-    	assertTrue(toto.getPosition() == 4);
+    	assertEquals(toto.getPosition(),4);
 
     	moveControl.setFirstDiceDisplay(9);
     	moveControl.setSecondDiceDisplay(10);
     	
     	moveControl.doubleDicesFinished();
-    	assertTrue(toto.getPosition() == 23);
+    	assertEquals(toto.getPosition(),23);
     	
     	moveControl.setFirstDiceDisplay(5);
     	moveControl.setSecondDiceDisplay(6);
     	
     	moveControl.doubleDicesFinished();
-    	assertTrue(toto.getPosition() == 24);
+    	assertEquals(toto.getPosition(),24);
     	
     	pirateGameControl.setActivePlayer(tata);
 
     	moveControl.doubleDicesFinished();
-    	assertTrue(tata.getPosition() == 11);
-    	assertTrue(toto.getPosition() == 24);
+    	assertEquals(tata.getPosition(),11);
+    	assertEquals(toto.getPosition(),24);
     	
     }
     
@@ -198,6 +202,21 @@ class TestMoveControl {
     	moveControl.setFirstDiceDisplay(5);
     	
     	assertTrue(moveControl.playAgain());
+    }
+    
+    @Test
+    void testMoveFinished(){
+    	pirateGameControl.setActivePlayer(listPirate.get(0));
+    	moveControl.move(listPirate.get(0), 29);
+    	moveControl.setFirstDiceDisplay(-1);
+    	moveControl.setSecondDiceDisplay(-1);
+    	
+    	moveControl.moveFinished();
+    	
+    	assertEquals(-1, moveControl.getFirstDiceDisplay());
+    	assertEquals(-1, moveControl.getSecondDiceDisplay());
+    	assertEquals(listPirate.get(0), pirateGameControl.getActivePirate());
+    	
     }
     
     

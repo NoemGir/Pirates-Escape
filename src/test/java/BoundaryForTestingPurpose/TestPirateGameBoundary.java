@@ -47,7 +47,7 @@ public class TestPirateGameBoundary implements IBoundary{
 
     @Override
     	public String askPirateName(int idPirate) {
-    		return null;
+    		return "Pirate" + idPirate;
     	}
     
 

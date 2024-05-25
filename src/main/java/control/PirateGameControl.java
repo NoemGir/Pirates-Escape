@@ -66,7 +66,7 @@ public class PirateGameControl{
     }
     
     public void moveFinished(Case box){
-        
+    	
         activateBoxControl.activateBox(board.getListPirate(), activePirate, box);
         
         if(! activateBoxControl.mustWait()){
@@ -131,7 +131,6 @@ public class PirateGameControl{
      */
     public boolean verifyEndGameManagement(){
         if(verifyEndControl.gameEnded(board.getListPirate(), activePirate )){
-            System.out.println("jeux bien terminé !");
             return true;
         }
         return false;
@@ -182,9 +181,10 @@ public class PirateGameControl{
      * @param activePlayer le joueur actif
      */
 	public void setActivePlayer(Pirate activePlayer) {
-
 		this.activePirate = activePlayer;
 	}
 
-
+	public void setItPirate(ListIterator<Pirate> itPirate) {
+		this.itPirate = itPirate;
+	}
 }

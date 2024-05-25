@@ -34,8 +34,8 @@ public class MoveControl implements IMovePirate, IThrowDice {
 	public MoveControl(IBoundary boundary, Board board) {
 		this.boundary = boundary;
 		this.board = board;
-                this.dice1 = new Dice();
-                this.dice2 = new Dice();
+        this.dice1 = new Dice();
+        this.dice2 = new Dice();
 	}
         
         /**
